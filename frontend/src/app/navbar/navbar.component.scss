@@ -1,0 +1,37 @@
+@import '../../variables.scss';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid $lightgrey;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.025);
+}
+
+.social-link {
+  margin: 20px;
+  color: $blue;
+  transition: color 200ms;
+  &:hover {
+    color: $darkblue;
+    transition: color 200ms;
+  }
+}
+
+.navbar-signup {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background: $blue;
+  color: white;
+  transition: background-color 200ms;
+  margin: 10px;
+  font-size: 14px;
+  &:hover {
+    cursor: pointer;
+    background: $darkblue;
+    transition: background-color 200ms;
+  }
+}
