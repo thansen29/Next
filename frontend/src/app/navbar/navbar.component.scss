@@ -10,8 +10,19 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.025);
 }
 
+.navbar-main {
+  position: relative;
+}
+
+.navbar-items {
+  display: flex;
+}
+
 .social-link {
   margin: 20px;
+}
+
+.link {
   color: $blue;
   transition: color 200ms;
   &:hover {
@@ -33,5 +44,63 @@
     cursor: pointer;
     background: $darkblue;
     transition: background-color 200ms;
+  }
+  &:hover .navbar-items {
+    border: 1px solid black;
+  }
+}
+
+.icon {
+  display: none;
+  color: $blue;
+  font-size: 24px;
+  transition: color 200ms;
+}
+
+@media screen and (max-width: 60em) {
+  .navbar-items {
+    display: none;
+    padding-top: 20px;
+    &:hover {
+      display: inline-block;
+    }
+  }
+
+  .icon {
+    display: block;
+    &:hover {
+      cursor: pointer;
+      color: $darkblue;
+      transition: color 200ms;
+    }
+  }
+
+  .navbar-main:hover {
+    cursor: pointer;
+    &:hover .navbar-items {
+      display: inline-block;
+      position: absolute;
+      margin-top: 20px;
+      left: -50px;
+      padding: 10px;
+      & .navbar-signup {
+        background: white;
+        color: $blue;
+        font-size: 16px;
+        white-space: nowrap;
+        padding: 0;
+        transition: color 200ms;
+        margin-bottom: 20px;
+        &:hover {
+          transition: color 200ms;
+          color: $darkblue;
+        }
+      }
+      & .nav-button {
+        margin-left: 10px;
+        margin-top: -12px;
+      }
+
+    }
   }
 }
