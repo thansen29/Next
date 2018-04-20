@@ -15,28 +15,13 @@ export class AuthService {
                 this.authState = this.store.select('auth');
               }
 
-  isLoggedIn() {
-    let authenticated;
-    this.authState
-      .subscribe(
-        (state) => {
-          authenticated = state.authenticated;
-        },
-        (err) => {
-          console.log('IS LOGGED IN ERROR');
-        }
-      );
-    return authenticated;
-  }
 
-  logInUser() {
-    this.authToken.signIn({
-      email: 'tom@tet.com',
-      password: 'password'
-    })
+  logInUser(email: string, password: string) {
+    this.authToken.signIn({ email, password })
       .subscribe(
         (response) => {
-          this.store.dispatch(new authActions.Signup());
+          this.store.dispatch(new authActions.Signin());
+          //navigate elsewhere
         },
         (error) => {
           const message = JSON.parse(error._body).errors[0];
@@ -50,7 +35,7 @@ export class AuthService {
     this.store.dispatch(new authActions.Logout())
   }
 
-  signupUser() {
+  signupUser(email: string, password: string) {
   }
 
 }

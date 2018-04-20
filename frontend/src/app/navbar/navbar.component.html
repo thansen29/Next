@@ -21,21 +21,21 @@
 
       <li class="nav-button">
         <button
-          *ngIf="!loggedIn"
+          *ngIf="!(authState | async).authenticated"
           class="navbar-signup"
           [routerLink]="['/signup']">
           Sign up
         </button>
 
         <button
-          *ngIf="loggedIn"
+          *ngIf="(authState | async).authenticated"
           class="navbar-signup"
           (click)="signoutUser()">
           Sign out
         </button>
       </li>
 
-      <li class="nav-button" *ngIf="!loggedIn">
+      <li class="nav-button" *ngIf="!(authState | async).authenticated">
         <button
           class="navbar-signup"
           [routerLink]="['/login']">

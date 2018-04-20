@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -14,13 +15,15 @@ export class AuthFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  authUser() {
-    this.page === "Sign up" ? this.authService.signupUser() : this.authService.logInUser()
-    // if (this.page === "Sign up") {
-    //   this.authService.signupUser();
-    // } else {
-    //   this.authService.logInUser();
-    // }
+  onSubmit(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    if (this.page === "Sign up") {
+      this.authService.signupUser(email, password);
+    } else {
+      this.authService.logInUser(email, password);
+    }
+
   }
 
 }

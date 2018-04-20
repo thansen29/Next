@@ -12,17 +12,19 @@
       class="auth-input email"
       placeholder="Email"
       required
+      ngModel
+      name="email"
       email>
 
     <input
       class="auth-input password"
+      type="password"
       placeholder="Password"
+      ngModel
+      name="password"
       required>
 
-    <button
-      class="auth-button"
-      type="button"
-      (click)="authUser()">
+    <button class="auth-button">
       {{ page }}
     </button>
 

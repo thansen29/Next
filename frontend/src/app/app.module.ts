@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.reducer';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+// import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -40,7 +40,6 @@ import { AuthService } from './auth/auth.service';
     AngularFontAwesomeModule,
     FormsModule,
     StoreModule.forRoot(reducers),
-    StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [Angular2TokenService, AuthService],

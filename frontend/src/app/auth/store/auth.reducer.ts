@@ -14,12 +14,10 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
   switch (action.type) {
     case AuthActions.SIGNUP:
       case AuthActions.SIGNIN:
-        debugger
         return {
           authenticated: true
         };
     case AuthActions.LOGOUT:
-      debugger
       return {
         authenticated: false
       };
