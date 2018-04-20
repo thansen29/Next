@@ -10,19 +10,27 @@
 
     <input
       class="auth-input email"
-      placeholder="Email">
+      placeholder="Email"
+      required
+      email>
 
     <input
       class="auth-input password"
-      placeholder="Password">
+      placeholder="Password"
+      required>
 
     <button
       class="auth-button">
       {{ page }}
     </button>
 
-    <div class="forgot-pw">
+    <div class="forgot-pw" *ngIf="page === 'Log in'">
       Forgot your password?
+    </div>
+
+    <div class="terms" *ngIf="page === 'Sign up'">
+      By signing up for Next, you agree to the
+      <a class="service" href="https://image.ibb.co/eR49z7/haveagreatday.jpg">Terms of Service</a>
     </div>
 
   </form>
