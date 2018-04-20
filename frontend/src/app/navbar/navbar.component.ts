@@ -1,18 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Angular2TokenService } from 'angular2-token';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
   loggedIn: boolean;
 
-  constructor(private authToken: Angular2TokenService) { }
+  //need subscription listening to changes in the store to actively update loggedIn status?
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.loggedIn = this.authToken.userSignedIn() ?  true : false;
+    this.loggedIn = this.authService.isLoggedIn();
+    console.log(this.loggedIn);
+  }
+
+  ngOnChanges() {
+    debugger
+  }
+
+  signoutUser() {
+    this.authService.signoutUser()
   }
 
 }

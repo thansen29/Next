@@ -26,10 +26,11 @@
           [routerLink]="['/signup']">
           Sign up
         </button>
-        
+
         <button
           *ngIf="loggedIn"
-          class="navbar-signup">
+          class="navbar-signup"
+          (click)="signoutUser()">
           Sign out
         </button>
       </li>

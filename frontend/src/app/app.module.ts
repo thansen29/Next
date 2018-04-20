@@ -20,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
+import { AuthService } from './auth/auth.service';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [Angular2TokenService],
+  providers: [Angular2TokenService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
