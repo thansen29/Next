@@ -3,6 +3,10 @@
     src="../../../assets/check.png"
     class="check" />
 
+    <div class="auth-error" *ngIf="(authState | async).error">
+      {{ (authState | async).error }}
+    </div>
+
   <form
     class="auth-form"
     (ngSubmit)="onSubmit(form)"
@@ -24,7 +28,9 @@
       name="password"
       required>
 
-    <button class="auth-button">
+    <button
+      [ngClass]="{ 'auth-button': form.valid, 'auth-button-disabled': form.invalid }"
+      [disabled]="form.invalid">
       {{ page }}
     </button>
 

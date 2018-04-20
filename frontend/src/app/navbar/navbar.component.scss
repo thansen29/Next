@@ -87,14 +87,16 @@
   .navbar-main:hover {
     cursor: pointer;
     &:hover .navbar-items {
+      background: white;
       display: inline-block;
       position: absolute;
-      margin-top: 20px;
+      margin-top: 25px;
       left: -50px;
       padding: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.025);
       & .navbar-signup {
-        background: $blue;
-        color: white;
+        background: transparent;
+        color: $blue;
         font-size: 16px;
         white-space: nowrap;
         padding: 0;
@@ -102,15 +104,15 @@
         margin-bottom: 20px;
         &:hover {
           transition: color 200ms;
-          color: $lightgrey;
+          color: $darkblue;
         }
       }
       & .link {
-        color: white;
+        color: $blue;
         transition: color 200ms;
         &:hover {
           transition: color 200ms;
-          color: $lightgrey;
+          color: $darkblue;
         }
       }
       & .nav-button {

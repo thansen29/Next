@@ -15,7 +15,7 @@
 }
 
 .auth-form {
-  margin-top: 20px;
+  margin-top: 5px;
   border-radius: 5px;
   border: 1px solid $lightgrey;
   height: 22%;
@@ -51,6 +51,12 @@
   background-position-y: center;
   background-position-x: 2%;
   background-repeat: no-repeat;
+  &.ng-touched.ng-invalid {
+    border: 1px solid red;
+    &:after {
+      content: 'Please use valid email format'
+    }
+  }
 }
 
 .password {
@@ -79,6 +85,18 @@
   }
 }
 
+.auth-button-disabled {
+  width: 90%;
+  background: cornflowerblue;
+  border: none;
+  padding: 10px;
+  align-self: center;
+  margin: 20px 0;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
 .forgot-pw {
   color: $blue;
   align-self: center;
@@ -96,10 +114,16 @@
   align-self: center;
 }
 
-.service{
+.service {
   color: $darkgrey;
   &:hover {
     cursor: pointer;
     color: $darkestgrey;
   }
+}
+
+.auth-error {
+  color: red;
+  align-self: center;
+  margin-top: 10px;
 }
