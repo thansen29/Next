@@ -22,6 +22,8 @@ export class AppComponent {
     //       console.log('auth response: ', res);
     //       console.log('auth response headers: ', res.headers.toJSON());
     //       console.log('auth response body: ', res.json());
+    //       console.log('Signed in? ', this.authToken.userSignedIn());
+    //
     //     },
     //     (err) => {
     //       console.log('auth error', err)

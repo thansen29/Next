@@ -21,13 +21,20 @@
 
       <li class="nav-button">
         <button
+          *ngIf="!loggedIn"
           class="navbar-signup"
           [routerLink]="['/signup']">
           Sign up
         </button>
+        
+        <button
+          *ngIf="loggedIn"
+          class="navbar-signup">
+          Sign out
+        </button>
       </li>
 
-      <li class="nav-button">
+      <li class="nav-button" *ngIf="!loggedIn">
         <button
           class="navbar-signup"
           [routerLink]="['/login']">
