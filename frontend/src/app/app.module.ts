@@ -1,10 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http';
 import { Angular2TokenService } from 'angular2-token';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule } from '@angular/forms';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/app.reducer';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,8 +35,12 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    HttpClientModule,
     AngularFontAwesomeModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot(reducers),
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [Angular2TokenService],
   bootstrap: [AppComponent]
