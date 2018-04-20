@@ -1,9 +1,29 @@
 <section class="auth-container">
+  <img
+    src="../../../assets/check.png"
+    class="check" />
 
   <form
     class="auth-form"
     (ngSubmit)="onSubmit(form)"
     #form="ngForm">
+
+    <input
+      class="auth-input email"
+      placeholder="Email">
+
+    <input
+      class="auth-input password"
+      placeholder="Password">
+
+    <button
+      class="auth-button">
+      {{ page }}
+    </button>
+
+    <div class="forgot-pw">
+      Forgot your password?
+    </div>
 
   </form>
 

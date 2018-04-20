@@ -3,6 +3,87 @@
 .auth-container {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: whitesmoke;
+}
+
+.check {
+  width: 100px;
+  height: 100px;
+  margin-top: 5%;
+}
+
+.auth-form {
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid $lightgrey;
+  height: 22%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.auth-input {
+  padding: 15px 50px;
+  font-size: 14px;
+  width: 100%;
+  color: $darkgrey;
+  box-sizing: border-box;
+  border-bottom: 1px solid $lightgrey;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  &:focus {
+    outline: none;
+  }
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+}
+
+.email {
+  background-image: url('../../../assets/mail.svg');
+  background-size: 7%;
+  background-position-y: center;
+  background-position-x: 3%;
+  background-repeat: no-repeat;
+}
+
+.password {
+  background-image: url('../../../assets/lock.svg');
+  background-size: 7%;
+  background-position-y: center;
+  background-position-x: 3%;
+  background-repeat: no-repeat;
+}
+
+.auth-button {
+  width: 90%;
   background: $blue;
+  border: none;
+  padding: 10px;
+  align-self: center;
+  margin: 20px 0;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 200ms;
+  &:hover {
+    background: $darkblue;
+    transition: background-color 200ms;
+    cursor: pointer;
+  }
+}
+
+.forgot-pw {
+  color: $blue;
+  align-self: center;
+  transition: color 200ms;
+  &:hover {
+    color: $darkblue;
+    transition: color 200ms;
+    cursor: pointer;
+  }
 }
