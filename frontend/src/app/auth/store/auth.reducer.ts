@@ -27,6 +27,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         error: action.payload
       }
     case AuthActions.CLEAR_ERRORS:
+      console.log('CLEARING ERRORS');
       return {
         ...state,
         error: ''

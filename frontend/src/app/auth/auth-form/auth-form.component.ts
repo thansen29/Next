@@ -2,8 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { Router, Event, NavigationStart } from '@angular/router';
+
 import * as fromApp from '../../store/app.reducer';
 import * as fromAuth from '../store/auth.reducer';
+import * as authActions from '../store/auth.actions';
 import { AuthService } from '../auth.service';
 
 
@@ -17,10 +20,19 @@ export class AuthFormComponent implements OnInit {
   authState: Observable<fromAuth.State>;
 
   constructor(private authService: AuthService,
-              private store: Store<fromApp.AppState>) { }
+              private store: Store<fromApp.AppState>,
+              private router: Router) { }
 
   ngOnInit() {
     this.authState = this.store.select('auth');
+    this.router.events
+      .subscribe(
+        (event: Event) => {
+          if (event instanceof NavigationStart) {
+            this.store.dispatch(new authActions.ClearErrors());
+          }
+        }
+      )
   }
 
   onSubmit(form: NgForm) {
