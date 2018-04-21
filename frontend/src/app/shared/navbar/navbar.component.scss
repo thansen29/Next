@@ -15,6 +15,9 @@
   &:hover {
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 .navbar-main {

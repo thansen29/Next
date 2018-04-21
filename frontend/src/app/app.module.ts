@@ -15,19 +15,20 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthService } from './auth/auth.service';
-import { CoreModule } from './core/core.module';
-
+import { HomeComponent } from './home/home.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     SignupComponent,
     LoginComponent,
     AuthFormComponent,
   ],
   imports: [
     BrowserModule,
-    CoreModule,
+    SharedModule,
     AppRoutingModule,
     HttpModule,
     HttpClientModule,
