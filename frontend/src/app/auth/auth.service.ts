@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
+import { Response, Headers } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromAuth from './store/auth.reducer';
@@ -15,11 +16,10 @@ export class AuthService {
                 this.authState = this.store.select('auth');
               }
 
-
   logInUser(email: string, password: string) {
     this.authToken.signIn({ email, password })
       .subscribe(
-        (response) => {
+        (response: Response) => {
           this.store.dispatch(new authActions.Signin());
           const token = response.headers._headers.get("access-token")[0];
           localStorage.setItem('token', token);
@@ -41,7 +41,7 @@ export class AuthService {
   signupUser(email: string, password: string) {
     this.authToken.registerAccount({ email, password })
       .subscribe(
-        (response) => {
+        (response: Response) => {
           this.store.dispatch(new authActions.Signup());
           //navigate elsewhere
         },

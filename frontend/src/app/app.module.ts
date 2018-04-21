@@ -30,7 +30,7 @@ import { AuthService } from './auth/auth.service';
     NavbarComponent,
     SignupComponent,
     LoginComponent,
-    AuthFormComponent
+    AuthFormComponent,
   ],
   imports: [
     BrowserModule,

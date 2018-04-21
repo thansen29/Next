@@ -83,6 +83,9 @@
     transition: background-color 200ms;
     cursor: pointer;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 .auth-button-disabled {
