@@ -4,6 +4,7 @@ export const SIGNUP = 'SIGNUP';
 export const SIGNIN = 'SIGNIN';
 export const LOGOUT = 'LOGOUT';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export class Signup implements Action {
   readonly type = SIGNUP;
@@ -23,9 +24,14 @@ export class AuthError implements Action {
   constructor(public payload: string) {}
 }
 
+export class ClearErrors implements Action {
+  readonly type = CLEAR_ERRORS;
+}
+
 export type AuthActions = (
   Signup |
   Signin |
   Logout |
-  AuthError
+  AuthError |
+  ClearErrors
 );

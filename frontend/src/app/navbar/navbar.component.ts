@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../auth/auth.service';
+import * as authActions from '../auth/store/auth.actions';
 import * as fromAuth from '../auth/store/auth.reducer';
 import * as fromApp from '../store/app.reducer';
 
@@ -18,8 +19,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.authState = this.store.select('auth');
-    // this.loggedIn = this.authService.isLoggedIn();
-    // console.log(this.loggedIn);
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.store.dispatch(new authActions.Signin());
+    }
   }
 
   signoutUser() {

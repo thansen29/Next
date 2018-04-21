@@ -21,6 +21,8 @@ export class AuthService {
       .subscribe(
         (response) => {
           this.store.dispatch(new authActions.Signin());
+          const token = response.headers._headers.get("access-token")[0];
+          localStorage.setItem('token', token);
           //navigate elsewhere
         },
         (error) => {
@@ -33,9 +35,21 @@ export class AuthService {
   signoutUser() {
     this.authToken.signOut();
     this.store.dispatch(new authActions.Logout())
+    localStorage.removeItem('token');
   }
 
   signupUser(email: string, password: string) {
+    this.authToken.registerAccount({ email, password })
+      .subscribe(
+        (response) => {
+          this.store.dispatch(new authActions.Signup());
+          //navigate elsewhere
+        },
+        (error) => {
+          const message = JSON.parse(error._body).errors.full_messages[0];
+          this.store.dispatch(new authActions.AuthError(message))
+        }
+      )
   }
 
 }
