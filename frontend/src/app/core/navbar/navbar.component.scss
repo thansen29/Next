@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import '../../../variables.scss';
 
 .navbar {
   display: flex;
@@ -56,6 +56,9 @@
   }
   &:hover .navbar-items {
     border: 1px solid black;
+  }
+  &:focus {
+    outline: none;
   }
 }
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from '../auth/auth.service';
-import * as authActions from '../auth/store/auth.actions';
-import * as fromAuth from '../auth/store/auth.reducer';
-import * as fromApp from '../store/app.reducer';
+import { AuthService } from '../../auth/auth.service';
+import * as authActions from '../../auth/store/auth.actions';
+import * as fromAuth from '../../auth/store/auth.reducer';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
   selector: 'navbar',
