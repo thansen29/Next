@@ -18,14 +18,12 @@ export class AuthGuard implements CanActivate {
     this.store.select('auth')
       .subscribe(
         (state) => {
-          debugger
           authed = state.authenticated;
         }
       );
-
-    if (!authed) {
-      this.router.navigate(['/login']);
-    }
-    return authed;
+      if (!authed) {
+        this.router.navigate(['/login']);
+      }
+      return authed;
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
 import { Response, Headers } from '@angular/http';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromAuth from './store/auth.reducer';
@@ -12,7 +13,8 @@ export class AuthService {
   authState: Observable<fromAuth.State>;
 
   constructor(private authToken: Angular2TokenService,
-              private store: Store<fromApp.AppState>) {
+              private store: Store<fromApp.AppState>,
+              private router: Router) {
                 this.authState = this.store.select('auth');
               }
 
@@ -23,7 +25,8 @@ export class AuthService {
           this.store.dispatch(new authActions.Signin());
           const token = response.headers._headers.get("access-token")[0];
           localStorage.setItem('token', token);
-          //navigate elsewhere
+          this.router.navigate(['/todos']);
+
         },
         (error) => {
           const message = JSON.parse(error._body).errors[0];
@@ -36,6 +39,7 @@ export class AuthService {
     this.authToken.signOut();
     this.store.dispatch(new authActions.Logout())
     localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   signupUser(email: string, password: string) {
@@ -43,7 +47,7 @@ export class AuthService {
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signup());
-          //navigate elsewhere
+          this.router.navigate(['/todos']);
         },
         (error) => {
           const message = JSON.parse(error._body).errors.full_messages[0];
