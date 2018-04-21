@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Router, Event, NavigationStart } from '@angular/router';
+import * as Typed from 'typed.js';
 
 import * as fromApp from '../../store/app.reducer';
 import * as fromAuth from '../store/auth.reducer';
@@ -43,7 +44,25 @@ export class AuthFormComponent implements OnInit {
     } else {
       this.authService.logInUser(email, password);
     }
+  }
 
+  demoLogin() {
+    const email = {
+      strings: ["demouser@next.com"],
+      typeSpeed: 50
+    }
+
+    const password = {
+      strings: ["password"],
+      typeSpeed: 40
+    }
+
+    new Typed('.email', email);
+    new Typed('.password', password);
+
+    setTimeout(() => {
+      this.authService.logInUser('demouser@next.com', 'password');
+    }, 1400)
   }
 
 }

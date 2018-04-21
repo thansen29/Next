@@ -29,9 +29,18 @@
       required>
 
     <button
+      type="submit"
       [ngClass]="{ 'auth-button': form.valid, 'auth-button-disabled': form.invalid }"
       [disabled]="form.invalid">
       {{ page }}
+    </button>
+
+    <button
+      type="button"
+      (click)="demoLogin()"
+      *ngIf="page === 'Log in'"
+      class="auth-button">
+      Demo Login
     </button>
 
     <div class="forgot-pw" *ngIf="page === 'Log in'">
