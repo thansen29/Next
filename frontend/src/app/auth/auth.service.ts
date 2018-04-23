@@ -23,7 +23,9 @@ export class AuthService {
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signin());
-          const token = response.headers._headers.get("access-token")[0];
+          const token = response.headers.get('access-token');
+          debugger
+          // const token = response.headers._headers.get("access-token")[0];
           localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
 
@@ -43,10 +45,14 @@ export class AuthService {
   }
 
   signupUser(email: string, password: string) {
-    this.authToken.registerAccount({ email, password })
+    this.authToken.registerAccount({ email, password, passwordConfirmation: password })
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signup());
+          // const token = response.headers._headers.get("access-token")[0];
+          const token = response.headers.get('access-token');
+
+          localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
         },
         (error) => {

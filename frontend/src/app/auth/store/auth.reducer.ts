@@ -1,4 +1,5 @@
 import * as AuthActions from './auth.actions';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export interface State {
   authenticated: boolean,
@@ -10,15 +11,17 @@ const initialState: State = {
   error: ''
 }
 
-export function authReducer(state = initialState, action: AuthActions.AuthActions) {
+export const authReducer = (state: State = initialState, action: AuthActions.AuthActions) => {
   switch (action.type) {
     case AuthActions.SIGNUP:
       case AuthActions.SIGNIN:
         return {
+          ...state,
           authenticated: true
         };
     case AuthActions.LOGOUT:
       return {
+        ...state,
         authenticated: false
       };
     case AuthActions.AUTH_ERROR:

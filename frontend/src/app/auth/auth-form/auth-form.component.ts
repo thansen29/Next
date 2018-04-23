@@ -46,7 +46,8 @@ export class AuthFormComponent implements OnInit {
     }
   }
 
-  demoLogin() {
+  demoLogin(form: NgForm) {
+    form.reset();
     const email = {
       strings: ["demouser@next.com"],
       typeSpeed: 50

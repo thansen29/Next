@@ -6,7 +6,7 @@ import * as fromApp from '../store/app.reducer';
 import * as fromAuth from './store/auth.reducer';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthProtect implements CanActivate {
 
   constructor(private store: Store<fromApp.AppState>,
               private router: Router) {}
@@ -15,10 +15,14 @@ export class AuthGuard implements CanActivate {
               state: RouterStateSnapshot): boolean {
 
     const token = Boolean(localStorage.getItem('token'));
-    if (!token) {
-      this.router.navigate(['/login']);
+
+    if (token) {
+      this.router.navigate(['todos'])
+      return false;
+
+    } else {
+      return true;
     }
-    return token;
 
     // let authed;
     // this.store.select('auth')
