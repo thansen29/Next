@@ -5,11 +5,10 @@ import { Observable } from 'rxjs/Observable';
 import { Router, Event, NavigationStart } from '@angular/router';
 import * as Typed from 'typed.js';
 
-import * as fromApp from '../../store/app.reducer';
-import * as fromAuth from '../store/auth.reducer';
+import { AppState } from '../../store/app.reducer'
+import { State as AuthState } from '../store/auth.reducer';
 import * as authActions from '../store/auth.actions';
 import { AuthService } from '../auth.service';
-
 
 @Component({
   selector: 'auth-form',
@@ -18,10 +17,10 @@ import { AuthService } from '../auth.service';
 })
 export class AuthFormComponent implements OnInit {
   @Input() page: string;
-  authState: Observable<fromAuth.State>;
+  authState: Observable<AuthState>;
 
   constructor(private authService: AuthService,
-              private store: Store<fromApp.AppState>,
+              private store: Store<AppState>,
               private router: Router) { }
 
   ngOnInit() {

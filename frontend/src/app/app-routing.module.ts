@@ -7,8 +7,8 @@ import { AuthProtect } from './auth/auth-protect.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthProtect] },
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthProtect] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthProtect] },
   { path: 'todos', loadChildren: './todos/todos.module#TodosModule' },
   { path: '**', redirectTo: '' },
 

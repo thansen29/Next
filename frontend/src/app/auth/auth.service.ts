@@ -4,28 +4,27 @@ import { Response, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as fromAuth from './store/auth.reducer';
-import * as fromApp from '../store/app.reducer';
+import { State as AuthState } from './store/auth.reducer';
+import { AppState } from '../store/app.reducer';
 import * as authActions from './store/auth.actions';
 
 @Injectable()
 export class AuthService {
-  authState: Observable<fromAuth.State>;
+  authState: Observable<AuthState>;
 
   constructor(private authToken: Angular2TokenService,
-              private store: Store<fromApp.AppState>,
+              private store: Store<AppState>,
               private router: Router) {
                 this.authState = this.store.select('auth');
               }
 
+  // TODO: unsubscribe?
   logInUser(email: string, password: string) {
     this.authToken.signIn({ email, password })
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signin());
           const token = response.headers.get('access-token');
-          debugger
-          // const token = response.headers._headers.get("access-token")[0];
           localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
 
@@ -49,7 +48,6 @@ export class AuthService {
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signup());
-          // const token = response.headers._headers.get("access-token")[0];
           const token = response.headers.get('access-token');
 
           localStorage.setItem('token', token);

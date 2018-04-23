@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+
 import { AuthService } from '../../auth/auth.service';
 import * as authActions from '../../auth/store/auth.actions';
-import * as fromAuth from '../../auth/store/auth.reducer';
-import * as fromApp from '../../store/app.reducer';
+import { State as AuthState } from '../../auth/store/auth.reducer';
+import { AppState } from '../../store/app.reducer';
 
 @Component({
   selector: 'navbar',
@@ -12,10 +13,10 @@ import * as fromApp from '../../store/app.reducer';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  authState: Observable<fromAuth.State>;
+  authState: Observable<AuthState>;
 
   constructor(private authService: AuthService,
-              private store: Store<fromApp.AppState>) { }
+              private store: Store<AppState>) { }
 
   ngOnInit() {
     this.authState = this.store.select('auth');
