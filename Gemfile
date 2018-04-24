@@ -36,6 +36,8 @@ gem 'aws-sdk', '< 3.0'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'rack-cors'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
