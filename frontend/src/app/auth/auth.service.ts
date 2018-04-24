@@ -45,7 +45,9 @@ export class AuthService {
           const token = response.headers.get('access-token');
           localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
-
+          // console.log(this.authToken.currentUserData());
+          // response.json().data.id
+          
         },
         (error) => {
           const message = JSON.parse(error._body).errors[0];
