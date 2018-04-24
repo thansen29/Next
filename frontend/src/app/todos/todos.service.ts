@@ -17,7 +17,7 @@ export class TodosService {
     this.tokenService.get('api/lists')
       .subscribe(
         (lists) => {
-          this.store.dispatch(new listActions.ReceiveLists(lists))
+          this.store.dispatch(new listActions.ReceiveLists(lists.json()))
           // debugger
         },
         (error) => {

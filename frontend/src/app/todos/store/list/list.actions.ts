@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Response } from '@angular/http';
 
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
@@ -8,7 +9,7 @@ export const DELETE_LIST = 'DELETE_LIST';
 
 export class ReceiveLists implements Action {
   readonly type = RECEIVE_LISTS;
-  constructor(public payload: Object ) {}
+  constructor(public payload: Response ) {}
 }
 export class ReceiveList implements Action {
   readonly type = RECEIVE_LIST;

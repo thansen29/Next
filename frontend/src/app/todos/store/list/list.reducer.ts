@@ -2,17 +2,16 @@ import * as ListActions from './list.actions';
 import { ActionReducer, Action } from '@ngrx/store';
 
 export interface State {
-  lists: string[],
+  lists: Object,
 }
 
 const initialState: State = {
-  lists: [],
+  lists: Object,
 }
 
 export const listReducer = (state: State = initialState, action: ListActions.ListActions) => {
   switch (action.type) {
     case ListActions.RECEIVE_LISTS:
-      debugger
       return {
         ...state,
         lists: action.payload
