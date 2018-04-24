@@ -8,14 +8,32 @@ import { State as AuthState } from './store/auth.reducer';
 import { AppState } from '../store/app.reducer';
 import * as authActions from './store/auth.actions';
 
+// import { AuthService as SocialService, SocialUser } from "angular4-social-login";
+// import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
+
 @Injectable()
 export class AuthService {
   authState: Observable<AuthState>;
+  // user: SocialUser;
 
   constructor(private authToken: Angular2TokenService,
               private store: Store<AppState>,
-              private router: Router) {
+              private router: Router,
+              ) {
+
                 this.authState = this.store.select('auth');
+                // private socialService: SocialService
+                // this.socialService.authState.subscribe(
+                //   (user) => {
+                //     if (user) {
+                //       this.user = user;
+
+                //     }
+                //   }, 
+                //   (error) => {
+                //     debugger
+                //   }
+                // );
               }
 
   // TODO: unsubscribe?
@@ -59,5 +77,36 @@ export class AuthService {
         }
       )
   }
+
+  // googleSignin() {
+  //   this.authToken.signInOAuth('google')
+  //     .subscribe(
+  //       (response) => {
+  //         debugger
+  //       },
+  //       (error) => {
+  //         debugger
+  //       }
+  //     )
+  // }
+
+  // processOAuthCallback() {
+  //   debugger
+  // }
+
+  // googleSignin() {
+  //   this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  //   console.log(this.user);
+    
+  // }
+
+  // authSignout() {
+  //   this.socialService.signOut();
+  // }
+
+  // processOAuthCallback() {
+  //   debugger
+  //   this.authToken.processOAuthCallback();
+  // }
 
 }

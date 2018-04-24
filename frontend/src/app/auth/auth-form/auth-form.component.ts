@@ -10,6 +10,7 @@ import { State as AuthState } from '../store/auth.reducer';
 import * as authActions from '../store/auth.actions';
 import { AuthService } from '../auth.service';
 
+
 @Component({
   selector: 'auth-form',
   templateUrl: './auth-form.component.html',
@@ -33,6 +34,18 @@ export class AuthFormComponent implements OnInit {
           }
         }
       )
+
+      // gapi.load('auth2', () => {
+      //   console.log('hERE');
+        
+      //   gapi.auth2.init({
+      //     client_id: '787448972798-5o09ub62l1l7bhsrjam8t3lhd8be3mij.apps.googleusercontent.com',
+      //     scope: 'email',
+      //     fetch_basic_profile: true
+      //   });
+      // });
+      
+
   }
 
   onSubmit(form: NgForm) {
@@ -64,5 +77,15 @@ export class AuthFormComponent implements OnInit {
       this.authService.logInUser('demouser@next.com', 'password');
     }, 1400)
   }
+
+  // authSignout() {
+    // this.authService.authSignout();
+  // }
+ 
+
+  // googleSignin() {
+    // this.authService.googleSignin();
+    // this.authService.googleSignin();
+  // }
 
 }

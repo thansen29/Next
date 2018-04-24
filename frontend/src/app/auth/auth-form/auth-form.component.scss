@@ -133,3 +133,13 @@
   align-self: center;
   margin-top: 10px;
 }
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  & div {
+    margin: 0 15px;
+  }
+}
+

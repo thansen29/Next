@@ -12,5 +12,6 @@ export class AppComponent {
 
   constructor(private authToken: Angular2TokenService) {
     this.authToken.init(environment.token_auth_config);
+   
   }
 }

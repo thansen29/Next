@@ -27,6 +27,7 @@
     "@ngrx/store-devtools": "^5.2.0",
     "angular-font-awesome": "^3.1.2",
     "angular2-token": "^0.2.0-beta.14",
+    "angular4-social-login": "^1.1.1",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "rxjs": "^5.5.6",
