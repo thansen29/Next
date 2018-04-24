@@ -1,39 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Angular2TokenService } from 'angular2-token';
-import { Response, Headers } from '@angular/http';
+import { Response } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Angular2TokenService } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
 import { State as AuthState } from './store/auth.reducer';
 import { AppState } from '../store/app.reducer';
 import * as authActions from './store/auth.actions';
 
-// import { AuthService as SocialService, SocialUser } from "angular4-social-login";
-// import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
-
 @Injectable()
 export class AuthService {
   authState: Observable<AuthState>;
-  // user: SocialUser;
 
-  constructor(private authToken: Angular2TokenService,
-              private store: Store<AppState>,
+  constructor(private store: Store<AppState>,
               private router: Router,
-              ) {
+              private authToken: Angular2TokenService) {
 
                 this.authState = this.store.select('auth');
-                // private socialService: SocialService
-                // this.socialService.authState.subscribe(
-                //   (user) => {
-                //     if (user) {
-                //       this.user = user;
-
-                //     }
-                //   }, 
-                //   (error) => {
-                //     debugger
-                //   }
-                // );
               }
 
   // TODO: unsubscribe?
@@ -45,9 +29,6 @@ export class AuthService {
           const token = response.headers.get('access-token');
           localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
-          // console.log(this.authToken.currentUserData());
-          // response.json().data.id
-          
         },
         (error) => {
           const message = JSON.parse(error._body).errors[0];
@@ -79,36 +60,4 @@ export class AuthService {
         }
       )
   }
-
-  // googleSignin() {
-  //   this.authToken.signInOAuth('google')
-  //     .subscribe(
-  //       (response) => {
-  //         debugger
-  //       },
-  //       (error) => {
-  //         debugger
-  //       }
-  //     )
-  // }
-
-  // processOAuthCallback() {
-  //   debugger
-  // }
-
-  // googleSignin() {
-  //   this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  //   console.log(this.user);
-    
-  // }
-
-  // authSignout() {
-  //   this.socialService.signOut();
-  // }
-
-  // processOAuthCallback() {
-  //   debugger
-  //   this.authToken.processOAuthCallback();
-  // }
-
 }
