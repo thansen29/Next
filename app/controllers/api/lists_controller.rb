@@ -1,9 +1,9 @@
-class ListsController < ApplicationController
+class Api::ListsController < ApplicationController
     def index 
         debugger
         @lists = List.all
-        # where author id == current user id
-        # order alphabetically
+            .where(user_id: current_user.id)
+            .order(:title, :asc)
     end 
 
     def create

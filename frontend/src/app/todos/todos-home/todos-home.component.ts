@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app.reducer';
+import { TodosService } from '../todos.service';
 
 @Component({
   selector: 'app-todos-home',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private todosService: TodosService,
+              private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.todosService.fetchLists();
   }
 
 }
