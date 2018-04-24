@@ -26,8 +26,6 @@ export class AuthService {
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signin());
-          const token = response.headers.get('access-token');
-          localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
         },
         (error) => {
@@ -40,7 +38,6 @@ export class AuthService {
   signoutUser() {
     this.authToken.signOut();
     this.store.dispatch(new authActions.Logout())
-    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 
@@ -49,9 +46,6 @@ export class AuthService {
       .subscribe(
         (response: Response) => {
           this.store.dispatch(new authActions.Signup());
-          const token = response.headers.get('access-token');
-
-          localStorage.setItem('token', token);
           this.router.navigate(['/todos']);
         },
         (error) => {
@@ -59,5 +53,9 @@ export class AuthService {
           this.store.dispatch(new authActions.AuthError(message))
         }
       )
+  }
+
+  isSignedIn() {
+    return this.authToken.userSignedIn();
   }
 }

@@ -1,9 +1,7 @@
 class Api::ListsController < ApplicationController
     def index 
-        debugger
         @lists = List.all
-            .where(user_id: current_user.id)
-            .order(:title, :asc)
+            .where(author_id: current_user.id)
     end 
 
     def create
