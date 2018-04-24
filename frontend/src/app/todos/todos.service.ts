@@ -4,6 +4,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from '../store/app.reducer';
 import { Angular2TokenService } from 'angular2-token';
+import * as listActions from './store/list/list.actions';
 
 @Injectable()
 export class TodosService {
@@ -15,11 +16,12 @@ export class TodosService {
     // this.httpClient.get('http://localhost:3000/api/lists')
     this.tokenService.get('api/lists')
       .subscribe(
-        (list) => {
-          debugger
+        (lists) => {
+          this.store.dispatch(new listActions.ReceiveLists(lists))
+          // debugger
         },
         (error) => {
-          debugger
+          // debugger
         }
       )
   }
