@@ -1,0 +1,29 @@
+@import '../../variables.scss';
+
+.todos-container {
+    height: 100%;
+    background: $blue;
+    display: flex;
+}
+
+.list-container {
+    height: 100%;
+    margin-top: 2%;
+    margin-left: 5%;
+    width: 15%;
+    background: $softblue;
+}
+
+.task-container {
+    width: 42%;
+    margin-top: 2%;
+    margin-left: 5%;
+    background: $softblue;    
+}
+
+.task-view-container {
+    width: 42%;
+    margin-top: 2%;
+    background: $softblue;
+    border: 1px solid black;
+}

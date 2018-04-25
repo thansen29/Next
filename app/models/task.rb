@@ -11,7 +11,8 @@
 #
 
 class Task < ApplicationRecord 
-    validates :author, :title, presence: true
+    validates :author, :title, :list, presence: true
+    validates :completed, inclusion: { in: [true, false] }
 
     belongs_to :author,
         class_name: :User,

@@ -1,0 +1,16 @@
+<section class="list-container">
+    <header>
+      <h1>Lists</h1>
+    </header>
+  
+    <ul class="list-ul">
+      <li
+      class="list-item"
+      *ngFor="let list of lists"
+      (click)="selectList(list)">
+        {{ list.title }} <br>
+      </li> 
+    </ul>
+  
+  </section>
+  

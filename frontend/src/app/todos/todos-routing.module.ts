@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TodosHomeComponent } from './todos-home/todos-home.component';
+import { TodosHomeComponent } from './todos-home.component';
 import { AuthGuard } from '../auth/auth-guard.service';
 
 const todoRoutes: Routes = [

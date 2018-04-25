@@ -7,12 +7,11 @@ import { TodosService } from '../todos.service';
 import { AppState } from '../../store/app.reducer';
 
 @Component({
-  selector: 'app-todos-home',
-  templateUrl: './todos-home.component.html',
-  styleUrls: ['./todos-home.component.scss']
+  selector: 'list-component',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class TodosHomeComponent implements OnInit {
-  // listState: Observable<any>;
+export class ListComponent implements OnInit {
   lists;
   constructor(private todosService: TodosService,
               private store: Store<AppState>) { }
@@ -28,6 +27,11 @@ export class TodosHomeComponent implements OnInit {
           }
         }
       )
+  }
+
+  selectList(list) {
+    // debugger
+    this.todosService.fetchTasks(list.id);
   }
 
 }
