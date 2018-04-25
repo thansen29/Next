@@ -1,4 +1,4 @@
-json.extract! list, :id, :author_id, :title
+json.extract! list, :id, :title
 
 json.tasks do
   list.tasks.each do |task|

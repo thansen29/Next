@@ -1,12 +1,13 @@
 import * as TaskActions from './task.actions';
 import { ActionReducer, Action } from '@ngrx/store';
+import { Task } from '../../../shared/task.model';
 
 export interface State {
-  tasks: Object,
+  tasks: Task[],
 }
 
 const initialState: State = {
-  tasks: Object,
+  tasks: []
 }
 
 export const taskReducer = (state: State = initialState, action: TaskActions.TaskActions) => {

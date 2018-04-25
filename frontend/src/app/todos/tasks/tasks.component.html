@@ -5,7 +5,8 @@
 <ul class="task-ul">
     <li
     class="task-item"
-    *ngFor="let task of tasks">
+    *ngFor="let task of tasks"
+    (click)="selectTask(task)">
       {{ task.title }} <br>
     </li> 
   </ul>

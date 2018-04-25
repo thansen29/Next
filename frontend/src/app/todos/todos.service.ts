@@ -7,6 +7,8 @@ import { Angular2TokenService } from 'angular2-token';
 import * as listActions from './store/list/list.actions';
 import * as taskActions from './store/task/task.actions';
 
+// TODO: these fetch functions should really pass through an array of 
+// list items and an array of task items - effects?
 @Injectable()
 export class TodosService {
 

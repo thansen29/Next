@@ -1,12 +1,13 @@
 import * as ListActions from './list.actions';
 import { ActionReducer, Action } from '@ngrx/store';
+import { List } from '../../../shared/list.model';
 
 export interface State {
-  lists: Object,
+  lists: List[],
 }
 
 const initialState: State = {
-  lists: Object,
+  lists: [],
 }
 
 export const listReducer = (state: State = initialState, action: ListActions.ListActions) => {
