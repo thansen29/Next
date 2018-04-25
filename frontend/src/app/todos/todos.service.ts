@@ -14,15 +14,12 @@ export class TodosService {
               private tokenService: Angular2TokenService) { }
 
   fetchLists() {
-    // this.httpClient.get('http://localhost:3000/api/lists')
     this.tokenService.get('api/lists')
       .subscribe(
         (lists) => {
           this.store.dispatch(new listActions.ReceiveLists(lists.json()))
-          // debugger
         },
         (error) => {
-          // debugger
         }
       )
   }
@@ -31,7 +28,6 @@ export class TodosService {
     this.tokenService.get(`api/tasks/lists/${id}`)
       .subscribe(
         (tasks) => {
-          debugger
           this.store.dispatch(new taskActions.ReceiveTasks(tasks.json()))
         }
       )

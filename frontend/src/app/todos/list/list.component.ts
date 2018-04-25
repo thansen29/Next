@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
+import { Router } from '@angular/router';
 import * as _ from 'lodash';
+
 import { TodosService } from '../todos.service';
-// import { State as listState} from '../store/list/list.reducer';
 import { AppState } from '../../store/app.reducer';
 
 @Component({
@@ -14,7 +15,8 @@ import { AppState } from '../../store/app.reducer';
 export class ListComponent implements OnInit {
   lists;
   constructor(private todosService: TodosService,
-              private store: Store<AppState>) { }
+              private store: Store<AppState>,
+              private router: Router) { }
 
   ngOnInit() {
     this.todosService.fetchLists();
@@ -26,12 +28,12 @@ export class ListComponent implements OnInit {
             this.lists = _.values(state.lists)
           }
         }
-      )
+      );
   }
 
   selectList(list) {
-    // debugger
-    this.todosService.fetchTasks(list.id);
+    const id = list.id;
+    this.todosService.fetchTasks(id);
   }
 
 }

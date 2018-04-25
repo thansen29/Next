@@ -7,6 +7,7 @@
       <li
       class="list-item"
       *ngFor="let list of lists"
+      [routerLink]="[list.id]"
       (click)="selectList(list)">
         {{ list.title }} <br>
       </li> 
