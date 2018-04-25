@@ -8,12 +8,14 @@ import { TodosRoutingModule } from './todos-routing.module';
 import { TodosHomeComponent } from './todos-home.component';
 import { ListComponent } from './list/list.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskItemComponent } from './tasks/task-item/task-item.component';
 
 @NgModule({
   declarations: [
     TodosHomeComponent,
     ListComponent,
     TasksComponent,
+    TaskItemComponent,
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,13 @@
-<p>
-  tasks works!
-</p>
-
 <ul class="task-ul">
-    <li
-    class="task-item"
+  <task-item 
     *ngFor="let task of tasks"
-    (click)="selectTask(task)">
+    [task]="task">
+
+  </task-item>
+    <!-- <li
+      class="task-item"
+      *ngFor="let task of tasks"
+      (click)="selectTask(task)">
       {{ task.title }} <br>
-    </li> 
+    </li>  -->
   </ul>

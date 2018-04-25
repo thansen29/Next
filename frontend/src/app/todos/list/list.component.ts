@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
@@ -19,8 +18,7 @@ export class ListComponent implements OnInit, OnDestroy {
   subscription: Subscription
 
   constructor(private todosService: TodosService,
-              private store: Store<AppState>,
-              private router: Router) { }
+              private store: Store<AppState>) { }
 
   ngOnInit() {
     this.todosService.fetchLists();
