@@ -7,6 +7,7 @@ import { Task } from '../../../shared/task.model';
 import { Subscription } from 'rxjs/Subscription';
 import * as TaskActions from '../../store/task/task.actions';
 
+
 @Component({
   selector: 'task-view',
   templateUrl: './task-view.component.html',

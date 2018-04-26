@@ -45,7 +45,7 @@ export class TodosService {
       .subscribe(
         (tasks) => {
           _.forEach(tasks.json(), task => {
-            newTasks.push(new Task(task.id, task.title, task.description, task.created_at, task.completed));
+            newTasks.push(new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at));
           })
           this.store.dispatch(new TaskActions.ReceiveTasks(newTasks))
         }

@@ -1,23 +1,43 @@
 <section class="task-view-container">
-  {{ listName }}
+  <header class="list-title">
+    {{ listName }}
+  </header>
 
   <main class="task-data-wrapper">
     <div class="task-data">
-      {{ taskCount }}
+      <span class="task-count">{{ taskCount }}</span>
+      <span class="count-label">tasks</span>
     </div>
 
-    <div class="task-data">
-      {{ completedCount }}
+    <div class="task-data completed">
+      <span>{{ completedCount }}</span>
+      <span class="count-label">completed</span>
     </div>
   </main>
 
   <section 
     class="task-info"
     *ngIf="task">
-    {{ task.title }} <br>
-    {{ task.description }} <br>
-    {{ task.createdAt }} <br>
-    {{ task.completed }}
+
+    <div class="row">
+      <span class="info-label">Title</span>
+      <span>{{ task.title }}</span>
+    </div>
+
+    <div class="row">
+      <span class="info-label">Description</span>
+      <span>{{ task.description }}</span>
+    </div>
+
+    <div class="row">
+      <span class="info-label">Created At</span>
+      <span>{{ task.createdAt | amCalendar }}</span>
+    </div>
+
+    <div class="row">
+      <span class="info-label">Completed</span>
+      <span>{{ task.completed ? (task.updatedAt | amCalendar) : 'Not yet' }}</span>
+    </div>
     
   </section>
 </section>
