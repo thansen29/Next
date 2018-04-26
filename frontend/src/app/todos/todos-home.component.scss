@@ -21,9 +21,13 @@
     background: $softblue;    
 }
 
+.task-header {
+    padding: 20px;
+}
+
 .task-view-container {
     width: 42%;
     margin-top: 2%;
     background: $softblue;
-    border: 1px solid black;
+    border-left: 1px solid $darkblue;
 }

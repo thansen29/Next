@@ -9,6 +9,7 @@ import { TodosHomeComponent } from './todos-home.component';
 import { ListComponent } from './list/list.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskItemComponent } from './tasks/task-item/task-item.component';
+import { TaskViewComponent } from './tasks/task-view/task-view.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TaskItemComponent } from './tasks/task-item/task-item.component';
     ListComponent,
     TasksComponent,
     TaskItemComponent,
+    TaskViewComponent,
   ],
   imports: [
     CommonModule,
