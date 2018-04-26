@@ -4,10 +4,12 @@ import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from '../store/app.reducer';
 import { Angular2TokenService } from 'angular2-token';
+import * as _ from 'lodash';
 import * as listActions from './store/list/list.actions';
 import * as taskActions from './store/task/task.actions';
+import { List } from '../shared/list.model';
+import { Task } from '../shared/task.model';
 
-// TODO: these fetch functions should really pass through an array of 
 // list items and an array of task items - effects?
 @Injectable()
 export class TodosService {
@@ -16,10 +18,14 @@ export class TodosService {
               private tokenService: Angular2TokenService) { }
 
   fetchLists() {
+    const newLists: List[] = [];
     this.tokenService.get('api/lists')
       .subscribe(
         (lists) => {
-          this.store.dispatch(new listActions.ReceiveLists(lists.json()))
+          _.map(lists.json(), list => {
+            newLists.push(new List(list.id, list.title, list.tasks));
+          })
+          this.store.dispatch(new listActions.ReceiveLists(newLists))
         },
         (error) => {
         }
@@ -27,10 +33,14 @@ export class TodosService {
   }
 
   fetchTasks(id: number) {
+    const newTasks: Task[] = [];
     this.tokenService.get(`api/tasks/lists/${id}`)
       .subscribe(
         (tasks) => {
-          this.store.dispatch(new taskActions.ReceiveTasks(tasks.json()))
+          _.map(tasks.json(), task => {
+            newTasks.push(new Task(task.id, task.title, task.description, task.created_at, task.completed));
+          })
+          this.store.dispatch(new taskActions.ReceiveTasks(newTasks))
         }
       )
   }

@@ -28,9 +28,7 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select('task')
       .subscribe(
         (state) => {
-          if (state.tasks instanceof Object) {
-            this.tasks = _.values(state.tasks);
-          }
+          this.tasks = state.tasks;
         }
       );
   }

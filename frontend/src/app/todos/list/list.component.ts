@@ -26,9 +26,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select('list')
       .subscribe(
         (state) => {
-          if (state.lists instanceof Object) {
-            this.lists = _.values(state.lists)
-          }
+          this.lists = state.lists;
         }
       );
   }
