@@ -25,6 +25,8 @@ export class AuthService {
     this.authToken.signIn({ email, password })
       .subscribe(
         (response: Response) => {
+          const token = response.headers.get('access-token');
+          localStorage.setItem('token', token);
           this.store.dispatch(new authActions.Signin());
           this.router.navigate(['/todos']);
         },
@@ -37,6 +39,7 @@ export class AuthService {
 
   signoutUser() {
     this.authToken.signOut();
+    localStorage.removeItem('token');
     this.store.dispatch(new authActions.Logout())
     this.router.navigate(['/login']);
   }
@@ -45,6 +48,8 @@ export class AuthService {
     this.authToken.registerAccount({ email, password, passwordConfirmation: password })
       .subscribe(
         (response: Response) => {
+          const token = response.headers.get('access-token');
+          localStorage.setItem('token', token);
           this.store.dispatch(new authActions.Signup());
           this.router.navigate(['/todos']);
         },
@@ -56,6 +61,8 @@ export class AuthService {
   }
 
   isSignedIn() {
-    return this.authToken.userSignedIn();
+    // return this.authToken.userSignedIn();
+    return Boolean(localStorage.getItem('token'));
+    
   }
 }
