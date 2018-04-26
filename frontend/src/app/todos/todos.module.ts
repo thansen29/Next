@@ -9,8 +9,8 @@ import { ListComponent } from './list/list.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskItemComponent } from './tasks/task-item/task-item.component';
 import { TaskViewComponent } from './tasks/task-view/task-view.component';
-import { EffectsModule } from '@ngrx/effects';
-import { ListEffects } from './store/list/list.effects';
+// import { EffectsModule } from '@ngrx/effects';
+// import { ListEffects } from './store/list/list.effects';
 
 
 

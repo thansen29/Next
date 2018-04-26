@@ -32,8 +32,9 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   selectList(list: List) {
-    const id = list.id;
-    this.todosService.fetchTasks(id);
+    // const id = list.id;
+    this.todosService.selectList(list)
+    // this.todosService.fetchTasks(id);
   }
 
   ngOnDestroy() {

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../shared/task.model';
+import { TodosService } from '../../todos.service';
+
 
 @Component({
   selector: 'task-item',
@@ -10,7 +12,7 @@ export class TaskItemComponent implements OnInit {
   @Input() task: Task
   checked: boolean;
 
-  constructor() { }
+  constructor(private todosService: TodosService) { }
 
   ngOnInit() {
   }
@@ -20,6 +22,7 @@ export class TaskItemComponent implements OnInit {
   }
 
   selectTask(task: Task) {
+    this.todosService.selectTask(task);
   }
 
 }
