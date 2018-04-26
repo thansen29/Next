@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 import { TodosService } from '../todos.service';
 import { AppState } from '../../store/app.reducer';
 import { List } from '../../shared/list.model';
-import { ActivatedRoute } from '@angular/router';
+import { Router, Event, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'list-component',
@@ -20,19 +20,34 @@ export class ListComponent implements OnInit, OnDestroy {
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
-              private route: ActivatedRoute) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.todosService.fetchLists();
-    // debugger
-    // this.todosService.setSelectedList(id)
-
+    
     this.subscription = this.store.select('list')
       .subscribe(
         (state) => {
           this.lists = state.lists;
         }
-      );
+      )
+    
+      // let url = this.router.url.split('/');
+      // const id = +url[url.length-1];
+      // if (id) {
+      //   let selectedList = _.find(state.lists, ['id', id]);
+      //   if (selectedList) {
+      //     this.todosService.selectList(selectedList);
+      //   }
+      // }
+      // this.router.events
+      //   .subscribe(
+      //     (event: Event) => {
+      //       if (event instanceof NavigationStart) {
+      //         debugger
+      //       }
+      //     }
+      //   )
   }
 
   selectList(list: List) {
