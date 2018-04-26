@@ -8,10 +8,15 @@ import { Task } from '../../../shared/task.model';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task: Task
+  checked: boolean;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  handleCheck() {
+    this.checked = !this.checked;
   }
 
   selectTask(task: Task) {

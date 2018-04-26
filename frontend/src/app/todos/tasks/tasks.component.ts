@@ -37,6 +37,7 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.todosService.clearTasks();
   }
 
 }

@@ -35,4 +35,8 @@ export class TodosService {
       )
   }
 
+  clearTasks() {
+    this.store.dispatch(new taskActions.ClearTasks())
+  }
+
 }

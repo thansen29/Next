@@ -1,0 +1,27 @@
+@import '../../../../variables.scss';
+
+.task-item-wrapper {
+    border-bottom: 1px dotted;
+    padding: 10px;
+    border-bottom-color: $darkblue;
+    transition: background-color 200ms;
+    display: flex;
+    &:hover {
+        transition: background-color 200ms;        
+        background: $blue;
+        cursor: pointer;
+    }
+}
+
+.task-item {
+}
+
+.checkbox {
+    margin-right: 10px;
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none;
+    }
+}

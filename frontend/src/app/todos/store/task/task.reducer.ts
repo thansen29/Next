@@ -17,7 +17,11 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
         ...state,
         tasks: action.payload
       };  
-
+    case TaskActions.CLEAR_TASKS:
+      return {
+        ...state,
+        tasks: []
+      }
     default:
       return state;
   }  
