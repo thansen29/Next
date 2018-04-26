@@ -1,7 +1,9 @@
 <ul class="task-ul">
   <task-item 
     *ngFor="let task of tasks"
-    [task]="task">
+    [task]="task"
+    (click)="selectTask(task)"
+    [selectedId]="selectedId">
 
   </task-item>
   </ul>

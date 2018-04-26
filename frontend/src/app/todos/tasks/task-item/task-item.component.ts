@@ -10,6 +10,7 @@ import { TodosService } from '../../todos.service';
 })
 export class TaskItemComponent implements OnInit {
   @Input() task: Task
+  @Input() selectedId: number;
   checked: boolean;
 
   constructor(private todosService: TodosService) { }

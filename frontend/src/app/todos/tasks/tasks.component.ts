@@ -16,12 +16,14 @@ import { Task } from '../../shared/task.model';
 export class TasksComponent implements OnInit, OnDestroy {
   tasks: Task[];
   subscription: Subscription;
+  selectedId: number;
 
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // debugger
     const id = +this.route.snapshot.params['id'];
     this.todosService.fetchTasks(id);
 
@@ -31,6 +33,10 @@ export class TasksComponent implements OnInit, OnDestroy {
           this.tasks = state.tasks;
         }
       );
+  }
+
+  selectTask(task: Task) {
+    this.selectedId = task.id;
   }
 
   ngOnDestroy() {
