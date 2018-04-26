@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import { TodosService } from '../todos.service';
 import { AppState } from '../../store/app.reducer';
 import { List } from '../../shared/list.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'list-component',
@@ -18,10 +19,13 @@ export class ListComponent implements OnInit, OnDestroy {
   subscription: Subscription
 
   constructor(private todosService: TodosService,
-              private store: Store<AppState>) { }
+              private store: Store<AppState>,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.todosService.fetchLists();
+    // debugger
+    // this.todosService.setSelectedList(id)
 
     this.subscription = this.store.select('list')
       .subscribe(
@@ -32,9 +36,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   selectList(list: List) {
-    // const id = list.id;
     this.todosService.selectList(list)
-    // this.todosService.fetchTasks(id);
   }
 
   ngOnDestroy() {

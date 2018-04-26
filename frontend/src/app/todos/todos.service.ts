@@ -35,7 +35,6 @@ export class TodosService {
 
   selectList(list: List) {
     this.fetchTasks(list.id);
-    // clear selected task
     this.store.dispatch(new TaskActions.ClearSelected());
     this.store.dispatch(new ListActions.SelectList(list))
   }
@@ -57,8 +56,11 @@ export class TodosService {
     this.store.dispatch(new TaskActions.SelectTask(task));
   }
 
-  clearTasks() {
+  clearEverything() {
     this.store.dispatch(new TaskActions.ClearTasks())
+    this.store.dispatch(new TaskActions.ClearSelected());   
+    this.store.dispatch(new ListActions.ClearSelected());    
+
   }
 
 }

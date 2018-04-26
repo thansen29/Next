@@ -1,13 +1,23 @@
 <section class="task-view-container">
-  List Title
+  {{ listName }}
 
   <main class="task-data-wrapper">
     <div class="task-data">
-      Num tasks
+      {{ taskCount }}
     </div>
 
     <div class="task-data">
-        Num completed
+      {{ completedCount }}
     </div>
   </main>
+
+  <section 
+    class="task-info"
+    *ngIf="task">
+    {{ task.title }} <br>
+    {{ task.description }} <br>
+    {{ task.createdAt }} <br>
+    {{ task.completed }}
+    
+  </section>
 </section>

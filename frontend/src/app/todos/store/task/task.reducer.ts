@@ -1,5 +1,5 @@
 import * as TaskActions from './task.actions';
-import * as ListActions from '../list/list.actions';
+// import * as ListActions from '../list/list.actions';
 import { ActionReducer, Action } from '@ngrx/store';
 import { Task } from '../../../shared/task.model';
 
@@ -10,13 +10,11 @@ export interface State {
 
 const initialState: State = {
   tasks: [],
-  selectedTask: {
-    task: null,
-    list: ''
-  }
+  selectedTask: null
+
 }
 
-export const taskReducer = (state: State = initialState, action: TaskActions.TaskActions | ListActions.ListActions) => {
+export const taskReducer = (state: State = initialState, action: TaskActions.TaskActions) => {
   switch (action.type) {
     case TaskActions.RECEIVE_TASKS:
       return {
@@ -34,20 +32,12 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
         selectedTask: initialState.selectedTask
       }
     case TaskActions.SELECT_TASK:
-      let newTask = Object.assign({}, state.selectedTask);
-      newTask['task'] = action.payload;
+      // let newTask = Object.assign({}, state.selectedTask);
+      // newTask['task'] = action.payload;
       return {
         ...state,
-        selectedTask: newTask
+        selectedTask: action.payload
       }
-    case ListActions.SELECT_LIST:
-    let newSelectedTask = Object.assign({}, state.selectedTask )
-    newSelectedTask['list'] = action.payload.title; 
-      return {
-        ...state,
-        selectedTask: newSelectedTask
-      }
-      
     default:
       return state;
   }  

@@ -9,6 +9,7 @@ export const SELECT_LIST = 'SELECT_LIST';
 export const CREATE_LIST = 'CREATE_LIST';
 export const EDIT_LIST = 'EDIT_LIST';
 export const DELETE_LIST = 'DELETE_LIST';
+export const CLEAR_SELECTED = 'CLEAR_SELECTED';
 
 export class FetchLists implements Action {
   readonly type = FETCH_LISTS;
@@ -40,11 +41,16 @@ export class DeleteList implements Action {
   readonly type = DELETE_LIST;
 }
 
+export class ClearSelected implements Action {
+  readonly type = CLEAR_SELECTED;
+}
+
 export type ListActions = (
   ReceiveLists |
   ReceiveList |
   SelectList |
   CreateList |
   EditList |
-  DeleteList 
+  DeleteList |
+  ClearSelected
 );

@@ -4,10 +4,12 @@ import { List } from '../../../shared/list.model';
 
 export interface State {
   lists: List[],
+selectedList: List
 }
 
 const initialState: State = {
   lists: [],
+  selectedList: null
 }
 
 export const listReducer = (state: State = initialState, action: ListActions.ListActions) => {
@@ -17,6 +19,16 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         ...state,
         lists: action.payload
       };  
+    case ListActions.SELECT_LIST:
+      return {
+        ...state,
+        selectedList: action.payload
+      }
+    case ListActions.CLEAR_SELECTED:
+      return {
+        ...state,
+        selectedList: null
+      }
     case ListActions.RECEIVE_LIST:
       return {
         ...state
