@@ -15,7 +15,8 @@ export class AuthService {
 
   constructor(private store: Store<AppState>,
               private router: Router,
-              private authToken: Angular2TokenService) {
+              private authToken: Angular2TokenService,
+              private httpClient: HttpClient) {
 
                 this.authState = this.store.select('auth');
               }
@@ -45,17 +46,28 @@ export class AuthService {
   }
 
   signupUser(email: string, password: string) {
-    this.authToken.registerAccount({ email, password, passwordConfirmation: password })
+    // this.authToken.registerAccount({ email, password, passwordConfirmation: password })
+    //   .subscribe(
+    //     (response: Response) => {
+    //       const token = response.headers.get('access-token');
+    //       localStorage.setItem('token', token);
+    //       this.store.dispatch(new authActions.Signup());
+    //       this.router.navigate(['/todos']);
+    //     },
+    //     (error) => {
+    //       const message = JSON.parse(error._body).errors.full_messages[0];
+    //       this.store.dispatch(new authActions.AuthError(message))
+    //     }
+    //   )
+
+    this.httpClient.post('http://localhost:3000/api/users', { user: { email, password }})
       .subscribe(
-        (response: Response) => {
-          const token = response.headers.get('access-token');
-          localStorage.setItem('token', token);
-          this.store.dispatch(new authActions.Signup());
-          this.router.navigate(['/todos']);
+        (response) => {
+          debugger
         },
         (error) => {
-          const message = JSON.parse(error._body).errors.full_messages[0];
-          this.store.dispatch(new authActions.AuthError(message))
+          debugger
+          // _.values(error.error) => dispatch the uath action for errors
         }
       )
   }

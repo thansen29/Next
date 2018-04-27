@@ -1,42 +1,43 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :integer          not null, primary key
-#  provider               :string           default("email"), not null
-#  uid                    :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  allow_password_change  :boolean          default(FALSE)
-#  remember_created_at    :datetime
-#  sign_in_count          :integer          default(0), not null
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string
-#  last_sign_in_ip        :string
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
-#  name                   :string
-#  nickname               :string
-#  image                  :string
-#  email                  :string
-#  tokens                 :json
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#
-
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
-  include DeviseTokenAuth::Concerns::User
+  validates :email, :password_digest, :session_token, presence: true
+  validates :email, uniqueness: true
+  validates :password, length: { minimum: 5, allow_nil: true }
 
   has_many :lists
   has_many :tasks
 
+  attr_reader :password
+  after_initialize :ensure_session_token
+
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+    user && user.is_password?(password) ? user : nil
+  end
+
+  def reset_session_token!
+    self.session_token = generate_session_token
+    self.save!
+    self.session_token
+  end
+
+  def generate_session_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  private
+  def ensure_session_token
+    self.session_token ||= generate_session_token
+  end
+
 end
+
+
