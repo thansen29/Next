@@ -1,14 +1,13 @@
 import * as ListActions from './list.actions';
 import { ActionReducer, Action } from '@ngrx/store';
-import { List } from '../../../shared/list.model';
 
 export interface State {
-  lists: List[],
-selectedList: List
+  lists: Object,
+  selectedList: Object
 }
 
 const initialState: State = {
-  lists: [],
+  lists: {},
   selectedList: null
 }
 
@@ -20,9 +19,10 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         lists: action.payload
       };  
     case ListActions.SELECT_LIST:
+      const selection = state.lists[action.payload];
       return {
         ...state,
-        selectedList: action.payload
+        selectedList: selection
       }
     case ListActions.CLEAR_SELECTED:
       return {

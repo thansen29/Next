@@ -26,13 +26,15 @@ export class ListComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select('list')
       .subscribe(
         (state) => {
-          this.lists = state.lists;
+          this.lists = _.map(state.lists, list => {
+            return new List(list.id, list.title, list.taskIds);
+          })
         }
       )
   }
   
-  selectList(list: List) {
-    this.todosService.selectList(list)
+  selectList(listId: number) {
+    this.todosService.selectList(listId)
   }
 
   ngOnDestroy() {

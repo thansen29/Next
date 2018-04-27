@@ -22,13 +22,15 @@ export class TasksComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id'];
-    this.todosService.fetchTasks(id);
+    // const id = +this.route.snapshot.params['id'];
+    // this.todosService.fetchTasks(id);
 
     this.subscription = this.store.select('task')
       .subscribe(
         (state) => {
-          this.tasks = state.tasks;
+          this.tasks = _.map(state.tasks, task => {
+            return new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at);
+          })
         }
       );
   }

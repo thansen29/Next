@@ -30,7 +30,7 @@ export class TaskViewComponent implements OnInit, OnDestroy {
       .subscribe(
         (state) => {
           this.task = state.selectedTask;
-          this.taskCount = state.tasks.length;
+          this.taskCount = _.size(state.tasks);
           this.completedCount = _.filter(state.tasks, ['completed', true]).length;
         }
       )

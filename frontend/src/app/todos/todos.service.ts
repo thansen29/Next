@@ -19,35 +19,27 @@ export class TodosService {
 
 
   fetchLists() {
-    const newLists: List[] = [];
     this.tokenService.get('api/lists')
       .subscribe(
         (lists) => {
-          _.forEach(lists.json(), list => {
-            newLists.push(new List(list.id, list.title, list.tasks));
-          })
-          this.store.dispatch(new ListActions.ReceiveLists(newLists))
+          this.store.dispatch(new ListActions.ReceiveLists(lists.json()))
         },
         (error) => {
         }
       )
   }
 
-  selectList(list: List) {
-    this.fetchTasks(list.id);
-    this.store.dispatch(new TaskActions.ClearSelected());
-    this.store.dispatch(new ListActions.SelectList(list))
+  selectList(listId: number) {
+    this.store.dispatch(new ListActions.SelectList(listId))
+    this.store.dispatch(new TaskActions.ClearTasks());
+    this.fetchTasks(listId);
   }
 
   fetchTasks(id: number) {
-    const newTasks: Task[] = [];
     this.tokenService.get(`api/tasks/lists/${id}`)
       .subscribe(
         (tasks) => {
-          _.forEach(tasks.json(), task => {
-            newTasks.push(new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at));
-          })
-          this.store.dispatch(new TaskActions.ReceiveTasks(newTasks))
+          this.store.dispatch(new TaskActions.ReceiveTasks(tasks.json()))
         }
       )
   }

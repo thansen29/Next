@@ -10,7 +10,7 @@ export const CLEAR_TASKS = 'CLEAR_TASKS';
 
 export class ReceiveTasks implements Action {
   readonly type = RECEIVE_TASKS;
-  constructor(public payload: Task[] ) {}
+  constructor(public payload: Object ) {}
 }
 
 export class SelectTask implements Action {

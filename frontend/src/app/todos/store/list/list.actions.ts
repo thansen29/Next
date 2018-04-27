@@ -17,7 +17,7 @@ export class FetchLists implements Action {
 
 export class ReceiveLists implements Action {
   readonly type = RECEIVE_LISTS;
-  constructor(public payload: List[] ) {}
+  constructor(public payload: Object ) {}
 }
 
 export class ReceiveList implements Action {
@@ -26,7 +26,7 @@ export class ReceiveList implements Action {
 
 export class SelectList implements Action {
   readonly type = SELECT_LIST;
-  constructor(public payload: List ) {}
+  constructor(public payload: number ) {}
 }
 
 export class CreateList implements Action {
