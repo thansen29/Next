@@ -22,7 +22,8 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
     case TaskActions.CLEAR_TASKS:
       return {
         ...state,
-        tasks: []
+        tasks: {},
+        selectedTask: null
       }
     case TaskActions.CLEAR_SELECTED:
       return {

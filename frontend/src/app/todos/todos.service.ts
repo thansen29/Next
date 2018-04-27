@@ -10,7 +10,6 @@ import * as TaskActions from './store/task/task.actions';
 import { List } from '../shared/list.model';
 import { Task } from '../shared/task.model';
 
-// TODO: better way to create the task and list objects? effects?
 @Injectable()
 export class TodosService {
 

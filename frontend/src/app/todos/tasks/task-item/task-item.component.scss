@@ -8,7 +8,7 @@
     display: flex;
     &:hover {
         transition: background-color 200ms;        
-        background: $blue;
+        background: $softblue;
         cursor: pointer;
     }
 }
@@ -27,7 +27,7 @@
 }
 
 .background {
-    background: $blue;
+    background: $softblue;
 }
 
 .white { 

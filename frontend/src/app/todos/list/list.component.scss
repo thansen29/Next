@@ -1,8 +1,7 @@
 @import '../../../variables.scss';
 
 header {
-    padding-left: 5px;
-    padding-top: 5px;
+    padding: 5px 10px;
 }
 .list-ul {
     background: $softblue;
@@ -13,6 +12,7 @@ header {
 
 .list-item {
     margin: 8px 0;
+    padding: 0 5px;
     &:hover {
         cursor: pointer;
     }
