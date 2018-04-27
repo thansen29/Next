@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Angular2TokenService } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
+
 import { State as AuthState } from './store/auth.reducer';
 import { AppState } from '../store/app.reducer';
-import * as authActions from './store/auth.actions';
+import * as AuthActions from './store/auth.actions';
 
 @Injectable()
 export class AuthService {
@@ -15,65 +15,61 @@ export class AuthService {
 
   constructor(private store: Store<AppState>,
               private router: Router,
-              private authToken: Angular2TokenService,
               private httpClient: HttpClient) {
 
                 this.authState = this.store.select('auth');
               }
 
-  // TODO: unsubscribe?
+  // TODO: migration to change author id to user id to bootstrap list ids in with user
   logInUser(email: string, password: string) {
-    this.authToken.signIn({ email, password })
+    this.httpClient.post('api/session', { email, password })
       .subscribe(
-        (response: Response) => {
-          const token = response.headers.get('access-token');
-          localStorage.setItem('token', token);
-          this.store.dispatch(new authActions.Signin());
-          this.router.navigate(['/todos']);
+        (response) => {
+          localStorage.setItem('token', response['token']);
+          this.store.dispatch(new AuthActions.Signin());
+          this.router.navigate(['todos']);
         },
         (error) => {
-          const message = JSON.parse(error._body).errors[0];
-          this.store.dispatch(new authActions.AuthError(message))
+          console.log('LOGIN FAILED');
+          const errors = _.values(error.error);
+          this.store.dispatch(new AuthActions.AuthError(errors));
         }
-      );
+      )
   }
 
   signoutUser() {
-    this.authToken.signOut();
-    localStorage.removeItem('token');
-    this.store.dispatch(new authActions.Logout())
-    this.router.navigate(['/login']);
-  }
-
-  signupUser(email: string, password: string) {
-    // this.authToken.registerAccount({ email, password, passwordConfirmation: password })
-    //   .subscribe(
-    //     (response: Response) => {
-    //       const token = response.headers.get('access-token');
-    //       localStorage.setItem('token', token);
-    //       this.store.dispatch(new authActions.Signup());
-    //       this.router.navigate(['/todos']);
-    //     },
-    //     (error) => {
-    //       const message = JSON.parse(error._body).errors.full_messages[0];
-    //       this.store.dispatch(new authActions.AuthError(message))
-    //     }
-    //   )
-
-    this.httpClient.post('http://localhost:3000/api/users', { user: { email, password }})
+    this.httpClient.delete('api/session')
       .subscribe(
         (response) => {
-          debugger
+          localStorage.removeItem('token');
+          this.store.dispatch(new AuthActions.Logout())
+          this.router.navigate(['/login']);
         },
         (error) => {
           debugger
-          // _.values(error.error) => dispatch the uath action for errors
+          console.log('SIGNOUT FAILED');
+          
+        }
+      )
+  }
+
+  signupUser(email: string, password: string) {
+    this.httpClient.post('api/users', { user: { email, password }})
+      .subscribe(
+        (response) => {
+          localStorage.setItem('token', response['token']);
+          this.store.dispatch(new AuthActions.Signup());
+          this.router.navigate(['todos']);
+        },
+        (error) => {
+          console.log("SIGNUP FAILED")
+          const errors = _.values(error.error);
+          this.store.dispatch(new AuthActions.AuthError(errors));
         }
       )
   }
 
   isSignedIn() {
     return Boolean(localStorage.getItem('token'));
-    
   }
 }

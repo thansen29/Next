@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { Response } from '@angular/http';
 import { Task } from '../../../shared/task.model';
 
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { AppState } from '../store/app.reducer';
-import { Angular2TokenService } from 'angular2-token';
 import * as _ from 'lodash';
+
+import { AppState } from '../store/app.reducer';
 import * as ListActions from './store/list/list.actions';
 import * as TaskActions from './store/task/task.actions';
 import { List } from '../shared/list.model';
@@ -14,25 +14,29 @@ import { Task } from '../shared/task.model';
 export class TodosService {
 
   constructor(private store: Store<AppState>,
-              private tokenService: Angular2TokenService) { }
+              private httpClient: HttpClient) { }
 
 
   fetchLists() {
-    this.tokenService.get('api/lists')
+    this.httpClient.get('api/lists')
       .subscribe(
         (lists) => {
-          this.store.dispatch(new ListActions.ReceiveLists(lists.json()))
+          this.store.dispatch(new ListActions.ReceiveLists(lists))
         },
         (error) => {
+          debugger
         }
       )
   }
 
   fetchList(listId: number) {
-    this.tokenService.get(`api/lists/${listId}`)
+    this.httpClient.get(`api/lists/${listId}`)
       .subscribe(
         (list) => {
-          this.store.dispatch(new ListActions.SelectList(list.json()))
+          this.store.dispatch(new ListActions.SelectList(list))
+        },
+        (error) => {
+          debugger
         }
       )
   }
@@ -44,10 +48,10 @@ export class TodosService {
   }
 
   fetchTasks(id: number) {
-    this.tokenService.get(`api/tasks/lists/${id}`)
+    this.httpClient.get(`api/tasks/lists/${id}`)    
       .subscribe(
         (tasks) => {
-          this.store.dispatch(new TaskActions.ReceiveTasks(tasks.json()))
+          this.store.dispatch(new TaskActions.ReceiveTasks(tasks))
         }
       )
   }
@@ -60,7 +64,6 @@ export class TodosService {
     this.store.dispatch(new TaskActions.ClearTasks())
     this.store.dispatch(new TaskActions.ClearSelected());   
     this.store.dispatch(new ListActions.ClearSelected());    
-
   }
 
 }

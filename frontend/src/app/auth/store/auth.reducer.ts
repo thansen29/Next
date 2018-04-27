@@ -2,13 +2,11 @@ import * as AuthActions from './auth.actions';
 import { ActionReducer, Action } from '@ngrx/store';
 
 export interface State {
-  currentUser: Object,
   authenticated: boolean,
   error: string
 }
 
 const initialState: State = {
-  currentUser: {},
   authenticated: false,
   error: ''
 }

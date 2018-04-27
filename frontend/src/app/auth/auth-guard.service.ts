@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { Angular2TokenService } from 'angular2-token';
+import { CanActivate, Router } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router,
-              private authToken: Angular2TokenService) {}
+  constructor(private router: Router) {}
 
   canActivate() {
     if (localStorage.getItem('token')) {
