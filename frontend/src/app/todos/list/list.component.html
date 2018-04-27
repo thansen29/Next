@@ -8,8 +8,8 @@
       class="list-item"
       *ngFor="let list of lists"
       [routerLink]="[list.id]"
-      routerLinkActive="active"
-      (click)="selectList(list.id)">
+      [ngClass]="{ active: selectedId === list.id }"
+      (click)="selectList(list)">
         {{ list.title }} <br>
       </li> 
     </ul>

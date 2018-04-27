@@ -19,10 +19,9 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         lists: action.payload
       };  
     case ListActions.SELECT_LIST:
-      const selection = state.lists[action.payload];
       return {
         ...state,
-        selectedList: selection
+        selectedList: action.payload
       }
     case ListActions.CLEAR_SELECTED:
       return {

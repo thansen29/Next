@@ -7,8 +7,7 @@ import { AuthGuard } from '../auth/auth-guard.service';
 const todoRoutes: Routes = [
   { path: '', component: TodosHomeComponent, canActivate: [AuthGuard], children: [
     { path: ':id', component: TasksComponent },
-  ] },
-  
+  ] }
 ];
 
 @NgModule({

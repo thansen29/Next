@@ -1,6 +1,4 @@
 import { Action } from '@ngrx/store';
-import { Response } from '@angular/http';
-import { List } from '../../../shared/list.model';
 
 export const FETCH_LISTS = 'FETCH_LISTS';
 export const RECEIVE_LISTS = 'RECEIVE_LISTS';
@@ -26,7 +24,7 @@ export class ReceiveList implements Action {
 
 export class SelectList implements Action {
   readonly type = SELECT_LIST;
-  constructor(public payload: number ) {}
+  constructor(public payload: Object ) {}
 }
 
 export class CreateList implements Action {

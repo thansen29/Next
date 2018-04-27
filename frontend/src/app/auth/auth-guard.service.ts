@@ -9,8 +9,7 @@ export class AuthGuard implements CanActivate {
               private authToken: Angular2TokenService) {}
 
   canActivate() {
-
-    if (this.authToken.userSignedIn()) {
+    if (localStorage.getItem('token')) {
       return true;
     } else {
       this.router.navigate(['/login']);

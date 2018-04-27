@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-todos-home',
@@ -8,10 +7,9 @@ import { Router} from '@angular/router';
 })
 export class TodosHomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.router.navigate(['todos']);
+  ngOnInit() {  
   }
 
 }

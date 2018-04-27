@@ -9,7 +9,7 @@ export class AuthProtect implements CanActivate {
               private authToken: Angular2TokenService) {}
 
   canActivate() {
-    if (this.authToken.userSignedIn()) {
+    if (localStorage.getItem('token')) {
       this.router.navigate(['/todos']);
       return false;
     } else {
@@ -18,17 +18,3 @@ export class AuthProtect implements CanActivate {
   }
 }
 
-  // canActivate(route: ActivatedRouteSnapshot,
-  //             state: RouterStateSnapshot): boolean {
-
-  //   const token = Boolean(localStorage.getItem('token'));
-
-  //   if (token) {
-  //     this.router.navigate(['todos'])
-  //     return false;
-
-  //   } else {
-  //     return true;
-  //   }
-
-  // }

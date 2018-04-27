@@ -29,10 +29,19 @@ export class TodosService {
       )
   }
 
-  selectList(listId: number) {
-    this.store.dispatch(new ListActions.SelectList(listId))
+  fetchList(listId: number) {
+    this.tokenService.get(`api/lists/${listId}`)
+      .subscribe(
+        (list) => {
+          this.store.dispatch(new ListActions.SelectList(list.json()))
+        }
+      )
+  }
+
+  selectList(list: List) {
+    this.store.dispatch(new ListActions.SelectList(list))
     this.store.dispatch(new TaskActions.ClearTasks());
-    this.fetchTasks(listId);
+    this.fetchTasks(list.id);
   }
 
   fetchTasks(id: number) {
