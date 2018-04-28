@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-import { Angular2TokenService } from 'angular2-token';
 
 import { reducers } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -39,7 +38,7 @@ import { SharedModule } from './shared/shared.module';
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [AuthService, Angular2TokenService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

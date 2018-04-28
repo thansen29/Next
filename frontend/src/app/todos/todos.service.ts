@@ -71,7 +71,7 @@ export class TodosService {
     this.httpClient.post('api/lists', { title })
       .subscribe(
         (list) => {
-          this.store.dispatch(new ListActions.ReceiveList(list);
+          this.store.dispatch(new ListActions.ReceiveList(list));
         },
         (error) => {
           debugger
