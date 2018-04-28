@@ -18,37 +18,37 @@ export class ReceiveLists implements Action {
   constructor(public payload: Object ) {}
 }
 
-export class ReceiveList implements Action {
-  readonly type = RECEIVE_LIST;
-}
-
 export class SelectList implements Action {
   readonly type = SELECT_LIST;
   constructor(public payload: Object ) {}
-}
-
-export class CreateList implements Action {
-  readonly type = CREATE_LIST;
-}
-
-export class EditList implements Action {
-  readonly type = EDIT_LIST;
-}
-
-export class DeleteList implements Action {
-  readonly type = DELETE_LIST;
 }
 
 export class ClearSelected implements Action {
   readonly type = CLEAR_SELECTED;
 }
 
+export class ReceiveList implements Action {
+  readonly type = RECEIVE_LIST;
+  constructor(public payload: Object ) {}  
+}
+
+
+// export class CreateList implements Action {
+//   readonly type = CREATE_LIST;
+// }
+
+// export class EditList implements Action {
+//   readonly type = EDIT_LIST;
+// }
+
+// export class DeleteList implements Action {
+//   readonly type = DELETE_LIST;
+// }
+
+
 export type ListActions = (
   ReceiveLists |
   ReceiveList |
   SelectList |
-  CreateList |
-  EditList |
-  DeleteList |
   ClearSelected
 );

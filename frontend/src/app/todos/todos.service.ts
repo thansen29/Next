@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import { AppState } from '../store/app.reducer';
 import * as ListActions from './store/list/list.actions';
 import * as TaskActions from './store/task/task.actions';
+import * as ModalActions from '../shared/ui/modal/store/modal.actions';
 import { List } from '../shared/list.model';
 import { Task } from '../shared/task.model';
 
@@ -66,4 +67,23 @@ export class TodosService {
     this.store.dispatch(new ListActions.ClearSelected());    
   }
 
+  createList(title: string) {
+    this.httpClient.post('api/lists', { title })
+      .subscribe(
+        (list) => {
+          this.store.dispatch(new ListActions.ReceiveList(list);
+        },
+        (error) => {
+          debugger
+        }
+      )
+  }
+
+  openModal() {
+    this.store.dispatch(new ModalActions.OpenModal());
+  }
+
+  closeModal() {
+    this.store.dispatch(new ModalActions.CloseModal());
+  }
 }

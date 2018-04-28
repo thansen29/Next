@@ -1,5 +1,6 @@
-import * as ListActions from './list.actions';
 import { ActionReducer, Action } from '@ngrx/store';
+import * as _ from 'lodash';
+import * as ListActions from './list.actions';
 
 export interface State {
   lists: Object,
@@ -29,21 +30,12 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         selectedList: null
       }
     case ListActions.RECEIVE_LIST:
+    let newList = { [action.payload['id']]: action.payload }
+    let newLists = _.assign(state.lists, newList);
       return {
-        ...state
+        ...state,
+        lists: newLists
       };
-    case ListActions.CREATE_LIST:
-      return {
-        ...state
-      };
-    case ListActions.EDIT_LIST:
-      return {
-        ...state
-      };
-    case ListActions.DELETE_LIST:
-      return {
-        ...state
-      }
     default:
       return state;
   }  

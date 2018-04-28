@@ -8,6 +8,7 @@ import { TodosService } from '../todos.service';
 import { AppState } from '../../store/app.reducer';
 import { List } from '../../shared/list.model';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'list-component',
@@ -18,6 +19,7 @@ export class ListComponent implements OnInit, OnDestroy {
   lists: List[];
   subscription: Subscription
   selectedId: number;
+  modalState: any; 
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
@@ -47,10 +49,26 @@ export class ListComponent implements OnInit, OnDestroy {
           }
         }
       )
+
+    this.modalState = this.store.select('modal');
   }
   
   selectList(list: List) {
     this.todosService.selectList(list)
+  }
+
+  openModal() {
+    this.todosService.openModal();
+  }
+
+  closeModal() {
+    this.todosService.closeModal();
+  }
+
+  onSubmit(form: NgForm) {
+    const title = form.value.title;
+    this.todosService.createList(title);
+    this.closeModal();
   }
 
   ngOnDestroy() {

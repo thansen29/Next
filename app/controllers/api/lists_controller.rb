@@ -6,8 +6,7 @@ class Api::ListsController < ApplicationController
     end 
 
     def create
-        debugger
-        @list = List.new(list_params)
+        @list = List.new(user_id: current_user.id, title: list_params['title'])
         if @list.save
             render :show
         else

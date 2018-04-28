@@ -1,6 +1,57 @@
 <section class="list-container">
+  <modal-component *ngIf="(modalState | async).isOpen">
+      <section class="modal-screen">
+        <main class="content-container">
+
+          <header class="modal-header">
+            <h1>Add a list</h1>
+            <span 
+              class="close-modal"
+              (click)="closeModal()">&times;</span>
+          </header>
+  
+          <form 
+            (ngSubmit)="onSubmit(form)"
+            #form="ngForm"
+            class="add-list-form">
+            
+            <label>Please enter a new list name:</label>
+            <input 
+              type="text"
+              required
+              ngModel
+              name="title" 
+              class="form-input">
+
+              <div class="button-wrapper">
+                <button 
+                  [disabled]="form.invalid"
+                  [ngClass]="{ 'add-button': form.valid, 'add-button-disabled': form.invalid }">
+                  Add
+                </button>
+    
+                <button 
+                  class="cancel-button" 
+                  type="button"
+                  (click)="closeModal()">
+                  Cancel
+                </button>
+              </div>
+          </form>
+        </main>
+
+
+
+      </section>
+  </modal-component>
+
     <header>
       <h1>Lists</h1>
+      <button 
+        class="add-list"
+        (click)="openModal()">
+        +
+      </button>
     </header>
   
     <ul class="list-ul">

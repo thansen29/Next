@@ -18,6 +18,7 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
+// import { ModalComponent } from './shared/ui/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    AuthFormComponent
+    AuthFormComponent,
   ],
   imports: [
     BrowserModule,

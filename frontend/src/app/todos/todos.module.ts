@@ -10,6 +10,8 @@ import { ListComponent } from './list/list.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskItemComponent } from './tasks/task-item/task-item.component';
 import { TaskViewComponent } from './tasks/task-view/task-view.component';
+import { ModalComponent } from '../shared/ui/modal/modal.component';
+// import { SharedModule } from '../shared/shared.module';
 // import { EffectsModule } from '@ngrx/effects';
 // import { ListEffects } from './store/list/list.effects';
 
@@ -22,6 +24,7 @@ import { TaskViewComponent } from './tasks/task-view/task-view.component';
     TasksComponent,
     TaskItemComponent,
     TaskViewComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
