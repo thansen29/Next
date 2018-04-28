@@ -10,11 +10,8 @@
 #
 
 class List < ApplicationRecord
-    validates :author, :title, presence: true
+    validates :user, :title, presence: true
 
-    belongs_to :author,
-        class_name: :User,
-        foreign_key: :author_id
-
+    belongs_to :user
     has_many :tasks
 end 

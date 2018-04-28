@@ -1,7 +1,7 @@
 class Api::ListsController < ApplicationController
     def index 
         @lists = List.all
-            .where(author_id: current_user.id)
+            .where(user_id: current_user.id)
             .includes(:tasks)
     end 
 

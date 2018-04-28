@@ -25,9 +25,10 @@ export class AuthService {
     this.httpClient.post('api/session', { email, password })
       .subscribe(
         (response) => {
+          const first = response['listId'];
           localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signin());
-          this.router.navigate(['todos']);
+          this.router.navigate(['todos', first]);
         },
         (error) => {
           console.log('LOGIN FAILED');
