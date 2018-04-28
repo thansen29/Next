@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
-
-import { reducers } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { SharedModule } from './shared/shared.module';
+import { reducers } from './store/app.reducer';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -16,12 +17,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
-import { SharedModule } from './shared/shared.module';
-// import { ModalComponent } from './shared/ui/modal/modal.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     HomeComponent,
     SignupComponent,
     LoginComponent,

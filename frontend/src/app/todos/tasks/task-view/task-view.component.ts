@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
+import { Subscription } from 'rxjs/Subscription';
+
 import { AppState } from '../../../store/app.reducer';
 import { TodosService } from '../../todos.service';
 import { Task } from '../../../shared/task.model';
-import { Subscription } from 'rxjs/Subscription';
 import * as TaskActions from '../../store/task/task.actions';
-
 
 @Component({
   selector: 'task-view',
@@ -18,13 +18,12 @@ export class TaskViewComponent implements OnInit, OnDestroy {
   listName: string;
   taskCount: number;
   completedCount: number;
-
   subscription: Subscription;
-
+  listSub: Subscription;
+  
   constructor(private store: Store<AppState>,
               private todosService: TodosService) { }
 
-  // need to fetch list title on page refresh
   ngOnInit() {
     this.subscription = this.store.select('task')
       .subscribe(
@@ -35,7 +34,7 @@ export class TaskViewComponent implements OnInit, OnDestroy {
         }
       )
 
-    this.store.select('list')
+    this.listSub = this.store.select('list')
       .subscribe(
         (state) => {
           if (state.selectedList) {
@@ -47,6 +46,7 @@ export class TaskViewComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.listSub.unsubscribe();
     this.store.dispatch(new TaskActions.ClearSelected());
   }
 

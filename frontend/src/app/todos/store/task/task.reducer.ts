@@ -31,8 +31,6 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
         selectedTask: initialState.selectedTask
       }
     case TaskActions.SELECT_TASK:
-      // let newTask = Object.assign({}, state.selectedTask);
-      // newTask['task'] = action.payload;
       return {
         ...state,
         selectedTask: action.payload

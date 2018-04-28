@@ -19,8 +19,6 @@ export class AuthService {
 
                 this.authState = this.store.select('auth');
               }
-
-  // TODO: migration to change author id to user id to bootstrap list ids in with user
   logInUser(email: string, password: string) {
     this.httpClient.post('api/session', { email, password })
       .subscribe(
@@ -47,7 +45,6 @@ export class AuthService {
           this.router.navigate(['/login']);
         },
         (error) => {
-          debugger
           console.log('SIGNOUT FAILED');
           
         }

@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Task } from '../../../shared/task.model';
 import { TodosService } from '../../todos.service';
 import { AppState } from '../../../store/app.reducer';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'task-item',
