@@ -1,7 +1,14 @@
 <div 
   class="task-item-wrapper"
   (click)="selectTask(task)"
-  [ngClass]="{ background: task.id === selectedId }">
+  [ngClass]="{ background: task.id === selectedId }"
+  (mouseover)="triggerHover()"
+  (mouseleave)="triggerHover()">
+
+  <!-- class="fa fa-ellipsis-v" -->
+  <i 
+    [ngClass]="{ 'fa fa-ellipsis-v': hovered }">
+  </i>
 
   <input 
     type="checkbox"

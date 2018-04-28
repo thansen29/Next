@@ -11,6 +11,7 @@
         background: $softblue;
         cursor: pointer;
     }
+    position: relative;
 }
 
 .task-item {
@@ -32,4 +33,20 @@
 
 .white { 
     color: white;
+}
+
+.fa-ellipsis-v {
+    color: $grey;
+    font-size: 12px;
+    align-self: center;
+    position: absolute;
+    left: 10px;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
 }

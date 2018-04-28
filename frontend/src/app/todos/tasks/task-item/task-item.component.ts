@@ -15,6 +15,7 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   selectedId: number;
   checked: boolean;
   subscription: Subscription;
+  hovered: boolean = false;
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>) { }
@@ -37,6 +38,10 @@ export class TaskItemComponent implements OnInit, OnDestroy {
 
   selectTask(task: Task) {
     this.todosService.selectTask(task);
+  }
+
+  triggerHover() {
+    this.hovered = !this.hovered
   }
 
   ngOnDestroy() {

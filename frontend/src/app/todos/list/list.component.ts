@@ -27,6 +27,7 @@ export class ListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.todosService.fetchLists();
       
+    //remember list selection on page refresh
     const url = this.router.url.split('/');
     let id;
     if (!isNaN(+url[url.length - 1])) {
