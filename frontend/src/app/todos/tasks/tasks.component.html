@@ -1,3 +1,42 @@
+<header class="task-header">
+    <div class="top-row">
+        Tasks header and such
+    </div>
+
+    <!-- TODO: why the fuck does the form/header change size by 10 px when typing in input -->
+    <form 
+      class="create-task-form"
+      (ngSubmit)="onSubmit(form)"
+      #form="ngForm">
+
+      <input 
+        type="text"
+        class="task-input"
+        placeholder="Add a task..."
+        (focus)="focus()"
+        ngModel
+        name="title"
+        required>
+        
+      <!-- TODO: make this appearance slide down/up -->
+      <div class="bottom-row" *ngIf="focused">
+        <textarea 
+          name="description" 
+          ngModel
+          placeholder="Description(optional)">
+        </textarea>
+
+        <button
+          [ngClass]="{ 'create-task-button': !form.invalid, 'create-task-button-disabled': form.invalid }">
+          Add Task
+        </button>
+
+      </div>
+
+    </form>
+
+</header>
+
 <ul class="task-ul">
   <task-item 
     *ngFor="let task of tasks"

@@ -1,0 +1,72 @@
+@import '../../../variables.scss';
+
+.task-header {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-row {
+    margin-bottom: 10px;
+}
+
+.create-task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-input {
+    padding: 5px;
+    font-size: 12px;
+    color: $grey;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $mediumgrey;
+    border-radius: 3px;
+    &:focus {
+        border: 1px solid cornflowerblue;
+        color: $darkgrey;
+    }
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    & textarea {
+        padding: 5px;
+        border: 1px solid $mediumgrey;
+        border-radius: 3px;
+        width: 50%;
+        &:focus {
+            border: 1px solid cornflowerblue;
+        }
+    }
+}
+
+.create-task-button {
+    margin-top: 10px;
+    padding: 10px;
+    background: $blue;
+    color: white;
+    transition: background-color 200ms;
+    border: none;
+    font-size: 14px;
+    &:hover {
+        background: $darkblue;
+        transition: background-color 200ms;        
+    }
+}
+
+.create-task-button-disabled {
+    align-self: flex-end;
+    padding: 10px;
+    background: cornflowerblue;
+    color: white;
+    border: none;   
+    font-size: 14px;     
+    &:hover {
+        cursor: default;
+    }
+}

@@ -42,6 +42,18 @@ export class TodosService {
       )
   }
 
+  createList(title: string) {
+    this.httpClient.post('api/lists', { title })
+      .subscribe(
+        (list) => {
+          this.store.dispatch(new ListActions.ReceiveList(list));
+        },
+        (error) => {
+          debugger
+        }
+      )
+  }
+
   selectList(list: List) {
     this.store.dispatch(new ListActions.SelectList(list))
     this.store.dispatch(new TaskActions.ClearTasks());
@@ -61,22 +73,22 @@ export class TodosService {
     this.store.dispatch(new TaskActions.SelectTask(task));
   }
 
-  clearEverything() {
-    this.store.dispatch(new TaskActions.ClearTasks())
-    this.store.dispatch(new TaskActions.ClearSelected());   
-    this.store.dispatch(new ListActions.ClearSelected());    
-  }
-
-  createList(title: string) {
-    this.httpClient.post('api/lists', { title })
+  createTask(title: string, description: string, listId: number) {
+    this.httpClient.post('api/tasks', { task: { title, description, list_id: listId } })
       .subscribe(
-        (list) => {
-          this.store.dispatch(new ListActions.ReceiveList(list));
+        (task) => {
+          this.store.dispatch(new TaskActions.ReceiveTask(task));
         },
         (error) => {
           debugger
         }
       )
+  }
+
+  clearEverything() {
+    this.store.dispatch(new TaskActions.ClearTasks())
+    this.store.dispatch(new TaskActions.ClearSelected());   
+    this.store.dispatch(new ListActions.ClearSelected());    
   }
 
   openModal() {

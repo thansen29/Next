@@ -37,3 +37,23 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+input:focus {
+  outline: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+img:focus {
+  outline: none;
+}

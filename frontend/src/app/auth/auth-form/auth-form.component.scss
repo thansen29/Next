@@ -35,9 +35,6 @@
   border-left: none;
   border-right: none;
   transition: color 100ms;
-  &:focus {
-    outline: none;
-  }
   &:focus::-webkit-input-placeholder {
     color: transparent;
     transition: color 100ms;
@@ -80,10 +77,6 @@
   &:hover {
     background: $darkblue;
     transition: background-color 200ms;
-    cursor: pointer;
-  }
-  &:focus {
-    outline: none;
   }
 }
 
@@ -97,17 +90,8 @@
   color: white;
   font-size: 16px;
   border-radius: 5px;
-}
-
-.forgot-pw {
-  color: $blue;
-  align-self: center;
-  transition: color 200ms;
-  margin-bottom: 15px;
   &:hover {
-    color: $darkblue;
-    transition: color 200ms;
-    cursor: pointer;
+    cursor: default;
   }
 }
 

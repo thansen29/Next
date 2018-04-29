@@ -30,8 +30,8 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         selectedList: null
       }
     case ListActions.RECEIVE_LIST:
-    let newList = { [action.payload['id']]: action.payload }
-    let newLists = _.assign(state.lists, newList);
+      let newList = { [action.payload['id']]: action.payload }
+      let newLists = _.assign(state.lists, newList);
       return {
         ...state,
         lists: newLists

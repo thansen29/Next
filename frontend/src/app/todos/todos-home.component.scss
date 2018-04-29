@@ -2,7 +2,6 @@
 
 .todos-container {
     height: 100%;
-    // background: $blue;
     background: $softblue;    
     display: flex;
 }
@@ -16,7 +15,6 @@
     flex-wrap: wrap;
     justify-content: center;
     border-radius: 5px;
-    // background: $softblue;
 }
 
 .task-container {
@@ -27,13 +25,7 @@
     border-radius: 5px;    
 }
 
-.task-header {
-    padding: 20px;
-}
-
 .task-view-container {
     width: 42%;
     margin-top: 2%;
-    // background: $softblue;
-    // border-left: 1px solid $darkblue;
 }

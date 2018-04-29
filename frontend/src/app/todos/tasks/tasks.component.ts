@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import { TodosService } from '../todos.service';
 import { AppState } from '../../store/app.reducer';
 import { Task } from '../../shared/task.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'tasks-component',
@@ -15,15 +16,18 @@ import { Task } from '../../shared/task.model';
 })
 export class TasksComponent implements OnInit, OnDestroy {
   tasks: Task[];
+  id: number;
   subscription: Subscription;
+  focused: boolean = false;
+  
 
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id'];
-    this.todosService.fetchTasks(id);
+    this.id = +this.route.snapshot.params['id'];
+    this.todosService.fetchTasks(this.id);
     
     this.subscription = this.store.select('task')
       .subscribe(
@@ -33,6 +37,17 @@ export class TasksComponent implements OnInit, OnDestroy {
           })
         }
       );
+  }
+
+  focus() {
+    this.focused = true; 
+  }
+
+  onSubmit(form: NgForm) {
+    const title = form.value.title;
+    const description = form.value.description;
+    this.todosService.createTask(title, description, this.id);
+    form.reset();
   }
 
   ngOnDestroy() {

@@ -20,10 +20,6 @@ header {
         background: $blue;
         color: white;
         transition: background-color 200ms;
-        cursor: pointer;
-    }
-    &:focus {
-        outline: none;
     }
 }
 
@@ -39,9 +35,6 @@ header {
     // padding: 0 5px;
     &:hover {
         cursor: pointer;
-    }
-    &:focus {
-        outline: none;
     }
 }
 
@@ -98,7 +91,6 @@ header {
     font-size: 12px;
     border: 1px solid $grey;
     &:focus {
-        outline: none;
         border: 1px solid cornflowerblue;
     }
 }
@@ -116,13 +108,9 @@ header {
     padding: 10px 20px;
     border: none;
     transition: background-color 200ms;    
-    &:focus {
-        outline: none;
-    }
     &:hover {
         transition: background-color 200ms;        
         background: $darkblue;
-        cursor: pointer;
     }
 }
 
@@ -134,8 +122,8 @@ header {
     font-size: 16px;
     padding: 10px 20px;
     border: none;
-    &:focus {
-        outline: none;
+    &:hover {
+        cursor: default;
     }
 }
 
@@ -146,12 +134,8 @@ header {
     font-size: 16px;
     transition: color 200ms;
     color: $darkgrey;
-    &:focus {
-        outline: none;
-    }
     &:hover {
         transition: color 200ms;        
-        cursor: pointer;
         color: $blue;
     }
 }
