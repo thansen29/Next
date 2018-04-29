@@ -2,8 +2,7 @@
 
 header {
     display: flex;
-    // padding: 5px 10px;
-    // justify-content: space-between;
+    justify-content: space-around;
 
 }
 
@@ -12,15 +11,31 @@ header {
     border-radius: 5px;
     color: $blue;
     background: transparent;
-    // padding: 1px 4px;
     font-weight: 800;
     transition: background-color 200ms;
-    margin-left: 20%;
     &:hover {
         background: $blue;
         color: white;
         transition: background-color 200ms;
     }
+}
+
+.edit-list {
+    background: transparent;
+    border: 1px solid #7ab2e0;    
+    color: $blue;
+    transition: background-color 200ms;    
+    &:hover {
+        background: $blue;
+        color: white;
+        transition: background-color 200ms;
+    }   
+}
+
+.invisible {
+    border: 1px solid transparent;    
+    background: transparent;
+    
 }
 
 .list-ul {
@@ -35,6 +50,9 @@ header {
     // padding: 0 5px;
     &:hover {
         cursor: pointer;
+    }
+    &:focus {
+        outline: none;
     }
 }
 

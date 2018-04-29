@@ -36,6 +36,14 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         ...state,
         lists: newLists
       };
+    case ListActions.UPDATE_LIST:
+      let updatedLists = _.assign({}, state.lists);
+      let oldList = updatedLists[action.payload['id']];
+      oldList.title = action.payload['title'];
+      return {
+        ...state,
+        lists: updatedLists
+      }
     default:
       return state;
   }  

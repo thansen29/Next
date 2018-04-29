@@ -20,6 +20,7 @@ export class ListComponent implements OnInit, OnDestroy {
   subscription: Subscription
   selectedId: number;
   modalState: any; 
+  mode: string;
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
@@ -57,6 +58,16 @@ export class ListComponent implements OnInit, OnDestroy {
     this.todosService.selectList(list)
   }
 
+  createList() {
+    this.mode = "Create";
+    this.todosService.openModal();
+  }
+
+  editList() {
+    this.mode = "Edit"
+    this.todosService.openModal();
+  }
+
   openModal() {
     this.todosService.openModal();
   }
@@ -67,7 +78,11 @@ export class ListComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm) {
     const title = form.value.title;
-    this.todosService.createList(title);
+    if (this.mode === "Create") {
+      this.todosService.createList(title);
+    } else {
+      this.todosService.editList(this.selectedId, title)
+    }
     this.closeModal();
   }
 

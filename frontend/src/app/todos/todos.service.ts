@@ -54,6 +54,18 @@ export class TodosService {
       )
   }
 
+  editList(id: number, title: string) {
+    this.httpClient.patch(`api/lists/${id}`, { title })
+      .subscribe(
+        (list) => {
+          this.store.dispatch(new ListActions.UpdateList(list));
+        },
+        (error) => {
+          debugger
+        }
+      )
+  }
+
   selectList(list: List) {
     this.store.dispatch(new ListActions.SelectList(list))
     this.store.dispatch(new TaskActions.ClearTasks());
