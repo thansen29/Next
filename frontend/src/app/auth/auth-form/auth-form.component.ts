@@ -66,4 +66,8 @@ export class AuthFormComponent implements OnInit {
     }, 1400)
   }
 
+  isValid(emailInput) {
+    debugger
+  }
+
 }
