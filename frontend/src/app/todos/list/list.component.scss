@@ -35,6 +35,9 @@ header {
 .invisible {
     border: 1px solid transparent;    
     background: transparent;
+    &:hover {
+        cursor: default;
+    }
     
 }
 

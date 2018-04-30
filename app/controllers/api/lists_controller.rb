@@ -10,7 +10,7 @@ class Api::ListsController < ApplicationController
         if @list.save
             render :show
         else
-          render json: { route: "You must give your list a title" }, status: 422
+          render json: { list: "You must give your list a title" }, status: 422
         end 
     end 
 
@@ -19,8 +19,12 @@ class Api::ListsController < ApplicationController
     end 
 
     def update
-        # @list = List.find(params[:id])
-        # current user.lists.find(params[:id])
+        @list = List.find(params[:id])
+        if @list.update(title: list_params['title'])
+            render :show
+        else 
+          render json: { list: "You must give your list a title" }, status: 422            
+        end 
     end 
 
     def delete

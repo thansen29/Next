@@ -52,7 +52,8 @@
 
       <button
         [ngClass]="{ 'edit-list': selectedId, 'invisible': !selectedId }"
-        (click)="editList()">
+        (click)="editList()"
+        [disabled]="!selectedId">
         <i 
           class="fa fa-pencil"
           *ngIf="selectedId">

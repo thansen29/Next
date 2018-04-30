@@ -33,7 +33,8 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   }
 
   // will need to do more with this soon
-  handleCheck() {
+  handleCheck(event) {
+    event.stopPropagation();
     this.checked = !this.checked;
   }
 

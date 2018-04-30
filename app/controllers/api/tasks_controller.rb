@@ -4,15 +4,17 @@ class Api::TasksController < ApplicationController
             .where(list_id: params[:id])
     end 
 
-    # def create
-    #     debugger
-    #     @list = List.new(list_params)
-    #     if @list.save
-    #         render :show
-    #     else
-    #       render json: { route: "You must give your list a title" }, status: 422
-    #     end 
-    # end 
+    def create
+        title = task_params['title']
+        desc = task_params['description']
+        list_id = task_params['list_id']
+        @task = Task.new(user_id: current_user.id, list_id: list_id, title: title, description: desc)
+        if @task.save
+            render :show
+        else
+          render json: { route: "You must give your task a title" }, status: 422
+        end 
+    end 
 
     # def show
     #     @list = List.find(params[:id])
@@ -30,7 +32,7 @@ class Api::TasksController < ApplicationController
     # end 
 
 
-    # def list_params
-    #     params.require(:list).permit(:title)
-    # end 
+    def task_params
+        params.require(:task).permit(:title, :description, :list_id)
+    end 
 end
