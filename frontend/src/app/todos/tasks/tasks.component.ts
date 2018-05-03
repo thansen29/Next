@@ -65,6 +65,10 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.focused = true; 
   }
 
+  unfocus() {
+    this.focused = false; 
+  }
+
   onSubmit(form: NgForm) {
     const title = form.value.title;
     const description = form.value.description;

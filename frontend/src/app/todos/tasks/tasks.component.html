@@ -12,14 +12,21 @@
           (ngSubmit)="onSubmit(form)"
           #form="ngForm">
     
-          <input 
-            type="text"
-            class="task-input"
-            placeholder="Add a task..."
-            (focus)="focus()"
-            ngModel
-            name="title"
-            required>
+          <div class="row">
+
+            <input 
+              type="text"
+              class="task-input"
+              placeholder="Add a task..."
+              (focus)="focus()"
+              ngModel
+              name="title"
+              required>
+
+              <span 
+                *ngIf="focused"
+                (click)="unfocus()">&times;</span>
+          </div>
             
           <!-- TODO: make this appearance slide down/up -->
           <div class="bottom-row" *ngIf="focused">

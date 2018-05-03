@@ -35,9 +35,24 @@
     box-sizing: border-box;
     border: 1px solid $mediumgrey;
     border-radius: 3px;
+    margin-right: 5px;
     &:focus {
         border: 1px solid cornflowerblue;
         color: $darkgrey;
+    }
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    & span {
+        color: $grey;
+        transition: color 100ms;
+        &:hover {
+            transition: color 100ms;
+            color: $darkgrey;
+            cursor: pointer;
+        }
     }
 }
 

@@ -42,8 +42,12 @@ export class TaskItemComponent implements OnInit, OnDestroy {
     this.todosService.selectTask(task);
   }
 
-  triggerHover() {
-    this.hovered = !this.hovered
+  hover() {
+    this.hovered = true;
+  }
+
+  unhover() {
+    this.hovered = false;
   }
 
   ngOnDestroy() {

@@ -3,8 +3,8 @@
   (click)="selectTask(task)"
   [routerLink]="['tasks', task.id]"
   [ngClass]="{ background: task.id === selectedId }"
-  (mouseover)="triggerHover()"
-  (mouseleave)="triggerHover()">
+  (mouseover)="hover()"
+  (mouseleave)="unhover()">
 
   <i 
     [ngClass]="{ 'fa fa-ellipsis-v': hovered }">
