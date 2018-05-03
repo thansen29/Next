@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, length: { minimum: 5, allow_nil: true }
 
-  has_many :lists
-  has_many :tasks
+  has_many :lists, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   attr_reader :password
   after_initialize :ensure_session_token

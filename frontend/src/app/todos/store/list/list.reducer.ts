@@ -44,6 +44,14 @@ export const listReducer = (state: State = initialState, action: ListActions.Lis
         ...state,
         lists: updatedLists
       }
+    case ListActions.DELETE_LIST:
+      let oldLists = _.assign({}, state);
+      delete oldLists.lists[action.payload];
+      return {
+        ...state,
+        lists: oldLists['lists'],
+        selectedList: null
+      };
     default:
       return state;
   }  

@@ -11,6 +11,7 @@
 
 class List < ApplicationRecord
     validates :user, :title, presence: true
+    # validates :title, uniqueness: { scope: :user }
 
     belongs_to :user
     has_many :tasks

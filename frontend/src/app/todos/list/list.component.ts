@@ -21,6 +21,7 @@ export class ListComponent implements OnInit, OnDestroy {
   selectedId: number;
   modalState: any; 
   mode: string;
+  first: number;
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
@@ -84,6 +85,12 @@ export class ListComponent implements OnInit, OnDestroy {
       this.todosService.editList(this.selectedId, title)
     }
     this.closeModal();
+  }
+
+  deleteList() {
+    this.todosService.deleteList(this.selectedId);
+    this.closeModal();
+    this.router.navigate(['']);
   }
 
   ngOnDestroy() {

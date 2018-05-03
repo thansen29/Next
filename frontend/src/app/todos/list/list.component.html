@@ -29,6 +29,14 @@
                   [ngClass]="{ 'add-button': form.valid, 'add-button-disabled': form.invalid }">
                   {{ mode }}
                 </button>
+
+                <button 
+                  *ngIf="mode === 'Edit'"
+                  class="add-button"
+                  type="button"
+                  (click)="deleteList()">
+                  Delete List
+              </button>
     
                 <button 
                   class="cancel-button" 

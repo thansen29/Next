@@ -15,5 +15,5 @@ class Task < ApplicationRecord
     validates :completed, inclusion: { in: [true, false] }
 
     belongs_to :user
-    belongs_to :list
+    belongs_to :list, dependent: :destroy
 end 

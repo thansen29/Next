@@ -73,6 +73,19 @@ export class TodosService {
     this.fetchTasks(list.id);
   }
 
+  deleteList(id: number) {
+    this.httpClient.delete(`api/lists/${id}`)
+      .subscribe(
+        (response) => {
+          this.store.dispatch(new ListActions.DeleteList(id));
+        },
+        (error) => {
+          debugger
+        }
+      );
+
+  }
+
   fetchTasks(id: number) {
     this.httpClient.get(`api/tasks/lists/${id}`)    
       .subscribe(
