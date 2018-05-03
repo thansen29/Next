@@ -23,6 +23,7 @@ export class AuthService {
     this.httpClient.post('api/session', { email, password })
       .subscribe(
         (response) => {
+          debugger
           const first = response['listId'];
           localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signin());

@@ -1,5 +1,16 @@
 @import '../../../variables.scss';
 
+.all-tasks-container {
+    display: flex;
+    height: 100%;
+}
+
+.main-tasks {
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid $blue;
+}
+
 .task-header {
     padding: 20px;
     display: flex;
@@ -69,4 +80,9 @@
     &:hover {
         cursor: default;
     }
+}
+
+.task-view-parent {
+    width: 50%;
+    height: 100%;
 }

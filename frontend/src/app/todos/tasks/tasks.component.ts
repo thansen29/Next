@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
@@ -20,7 +20,6 @@ export class TasksComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   focused: boolean = false;
   
-
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
               private route: ActivatedRoute) { }
@@ -28,6 +27,12 @@ export class TasksComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
     this.todosService.fetchTasks(this.id);
+
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = params['id'];
+      }
+    );
     
     this.subscription = this.store.select('task')
       .subscribe(
@@ -51,6 +56,8 @@ export class TasksComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    console.log('tasks have been dee stroyed');
+    
     this.subscription.unsubscribe();
     this.todosService.clearEverything();
   }

@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
+// import { Router } from '@angular/router';
 
 import { AppState } from '../store/app.reducer';
 import * as ListActions from './store/list/list.actions';
@@ -83,6 +84,7 @@ export class TodosService {
 
   selectTask(task: Task) {
     this.store.dispatch(new TaskActions.SelectTask(task));
+    // this.router.navigate(['/tasks', task.id]);
   }
 
   createTask(title: string, description: string, listId: number) {
