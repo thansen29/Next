@@ -2,7 +2,6 @@ import { ActionReducer, Action } from '@ngrx/store';
 import * as _ from 'lodash';
 import * as TaskActions from './task.actions';
 
-
 export interface State {
   tasks: Object,
   selectedTask: Object
@@ -43,6 +42,17 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
       return {
         ...state,
         selectedTask: action.payload
+      }
+    case TaskActions.DELETE_TASKS:
+      let oldTasks = _.assign({}, state);
+      let filteredTasks = _.filter(oldTasks.tasks, task => {
+        return !action.payload.includes(task.id);
+      });
+      filteredTasks = _.keyBy(filteredTasks, 'id')
+      return {
+        ...state,
+        tasks: filteredTasks,
+        selectedTask: null
       }
     default:
       return state;

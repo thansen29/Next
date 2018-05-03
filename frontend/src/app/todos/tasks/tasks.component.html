@@ -4,6 +4,7 @@
     <header class="task-header">
         <div class="top-row">
             Tasks header and such
+            <button (click)="deleteTasks()">Delete</button>
         </div>
     
         <!-- TODO: why the fuck does the form/header change size by 10 px when typing in input -->
@@ -50,7 +51,8 @@
     <ul class="task-ul">
       <task-item 
         *ngFor="let task of tasks"
-        [task]="task">
+        [task]="task"
+        (checkedTask)="checkItem($event)">
     
       </task-item>
       </ul>

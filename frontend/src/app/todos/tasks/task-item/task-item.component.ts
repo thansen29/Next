@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, OnDestroy, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -18,6 +18,9 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   hovered: boolean = false;
 
+  @Output() checkedTask = new EventEmitter<number>();
+
+
   constructor(private todosService: TodosService,
               private store: Store<AppState>) { }
 
@@ -29,13 +32,16 @@ export class TaskItemComponent implements OnInit, OnDestroy {
             this.selectedId = state.selectedTask.id;
           }
         }
-      )
+      ) 
   }
 
   // will need to do more with this soon
   handleCheck(event) {
     event.stopPropagation();
     this.checked = !this.checked;
+    this.checkedTask.emit(this.task.id);
+
+
   }
 
   selectTask(task: Task) {

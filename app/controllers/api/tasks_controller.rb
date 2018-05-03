@@ -25,11 +25,11 @@ class Api::TasksController < ApplicationController
     #     # current user.lists.find(params[:id])
     # end 
 
-    # def delete
-    #     list = List.find(params[:id])
-    #     list.destroy!
-    #     render json: {}
-    # end 
+    def destroy
+        task = Task.find(params[:id])
+        task.destroy!
+        render json: {}
+    end 
 
 
     def task_params

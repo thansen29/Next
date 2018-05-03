@@ -4,6 +4,7 @@ import { Task } from '../../../shared/task.model';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const SELECT_TASK = 'SELECT_TASK';
+export const DELETE_TASKS = 'DELETE_TASKS';
 export const CLEAR_SELECTED = 'CLEAR_SELECTED';
 export const CLEAR_TASKS = 'CLEAR_TASKS';
 
@@ -18,10 +19,14 @@ export class ReceiveTask implements Action {
   constructor(public payload: Object ) {}
 }
 
-
 export class SelectTask implements Action {
   readonly type = SELECT_TASK;
   constructor(public payload: Task ) {}
+}
+
+export class DeleteTasks implements Action {
+  readonly type = DELETE_TASKS;
+  constructor(public payload: number[] ) {}
 }
 
 export class ClearSelected implements Action {
@@ -36,6 +41,7 @@ export type TaskActions = (
   ReceiveTasks |
   ReceiveTask |
   SelectTask |
+  DeleteTasks |
   ClearSelected |
   ClearTasks
 );
