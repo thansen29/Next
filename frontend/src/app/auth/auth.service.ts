@@ -26,7 +26,7 @@ export class AuthService {
           const first = response['listId'];
           localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signin());
-          this.router.navigate(['todos', first]);
+          this.router.navigate(['lists', first]);
         },
         (error) => {
           console.log('LOGIN FAILED');
@@ -57,7 +57,7 @@ export class AuthService {
         (response) => {
           localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signup());
-          this.router.navigate(['todos']);
+          this.router.navigate(['lists']);
         },
         (error) => {
           console.log("SIGNUP FAILED")

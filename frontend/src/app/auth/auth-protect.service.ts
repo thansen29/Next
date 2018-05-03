@@ -8,7 +8,7 @@ export class AuthProtect implements CanActivate {
 
   canActivate() {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['/todos']);
+      this.router.navigate(['/lists']);
       return false;
     } else {
       return true;

@@ -9,7 +9,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthProtect] },
   { path: 'signup', component: SignupComponent, canActivate: [AuthProtect] },
   { path: 'login', component: LoginComponent, canActivate: [AuthProtect] },
-  { path: 'todos', loadChildren: './todos/todos.module#TodosModule' },
+  { path: 'lists', loadChildren: './todos/todos.module#TodosModule' },
   { path: '**', redirectTo: '' },
 
 ];
