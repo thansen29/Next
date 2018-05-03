@@ -11,6 +11,9 @@
         background: $softblue;
         cursor: pointer;
     }
+    &:focus {
+        outline: none;
+    }
     position: relative;
 }
 

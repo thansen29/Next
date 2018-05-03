@@ -82,9 +82,18 @@ export class TodosService {
       )
   }
 
+  fetchTask(id: number) {
+    this.httpClient.get(`api/tasks/${id}`)
+      .subscribe(
+        (task) => {
+          const newTask = new Task(task['id'], task['title'], task['description'], task['created_at'], task['completed'], task['updated_at'])
+          this.store.dispatch(new TaskActions.SelectTask(newTask));
+        }
+      )
+  }
+
   selectTask(task: Task) {
     this.store.dispatch(new TaskActions.SelectTask(task));
-    // this.router.navigate(['/tasks', task.id]);
   }
 
   createTask(title: string, description: string, listId: number) {

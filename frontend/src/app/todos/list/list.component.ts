@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
+import { Router, Event } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import * as _ from 'lodash';
 
@@ -29,15 +29,14 @@ export class ListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.todosService.fetchLists();
-      
+    
     //remember list selection on page refresh
-    // broken now with new routing
-    // const url = this.router.url.split('/');
-    // let id;
-    // if (!isNaN(+url[url.length - 1])) {
-    //   id = +url[url.length - 1];
-    //   this.todosService.fetchList(id);
-    // }
+    const url = this.router.url.split('/');
+    if (url.length > 2) {
+      let id;
+      id = +url[2];
+      this.todosService.fetchList(id);
+    }
     
     this.subscription = this.store.select('list')
       .subscribe(

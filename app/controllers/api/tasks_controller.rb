@@ -16,9 +16,9 @@ class Api::TasksController < ApplicationController
         end 
     end 
 
-    # def show
-    #     @list = List.find(params[:id])
-    # end 
+    def show
+        @task = Task.find(params[:id])
+    end 
 
     # def update
     #     # @list = List.find(params[:id])
