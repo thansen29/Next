@@ -4,14 +4,23 @@
     <list-component [ngStyle]="{ 'width': '100%'}" ></list-component>
   </aside>
 
-  <main class="task-container">
+  <!-- conditional class width 42% or 100% if url is "lists" -->
+  <main 
+    class="task-container"
+    [ngStyle]="{ 'width': currentRoute === '/lists' ? '42%' : '100%' }">
     <!-- placeholder -->
+    <div *ngIf="currentRoute === '/lists'">
+      task placeholder
+    </div>
+    
     <router-outlet></router-outlet>
   </main>
 
-  <!-- <aside class="task-view-container"> -->
+  <!-- ng if current route is "lists" -->
+  <aside class="task-view-container" *ngIf="currentRoute === '/lists'">
     <!-- placeholder -->
+    task view placeholder
     <!-- <router-outlet></router-outlet> -->
-  <!-- </aside> -->
+  </aside>
 
 </section>

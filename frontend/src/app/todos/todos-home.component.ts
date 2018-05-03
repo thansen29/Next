@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Event } from '@angular/router';
 
 @Component({
   selector: 'app-todos-home',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todos-home.component.scss']
 })
 export class TodosHomeComponent implements OnInit {
-
-  constructor() { }
+  currentRoute: string;
+  constructor(private router: Router) { }
 
   ngOnInit() {  
+    this.currentRoute = this.router.url;
+    this.router.events.subscribe(
+      (event: Event) => {
+        this.currentRoute = event['url'];
+      }
+    )
   }
 
 }
