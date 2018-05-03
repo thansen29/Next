@@ -51,6 +51,22 @@
   </main>
   
   <aside class="task-view-parent">
+      <header class="list-title">
+          {{ listName }}
+        </header>
+      
+        <main class="task-data-wrapper">
+          <div class="task-data">
+            <span class="task-count">{{ taskCount }}</span>
+            <span class="count-label">tasks</span>
+          </div>
+      
+          <div class="task-data completed">
+            <span>{{ completedCount }}</span>
+            <span class="count-label">completed</span>
+          </div>
+        </main>
+        
     <router-outlet></router-outlet>
   
   </aside>

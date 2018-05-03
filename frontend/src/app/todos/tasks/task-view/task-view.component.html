@@ -1,21 +1,4 @@
-<!-- TODO: Something about when nothing is selected -->
-<section class="task-view-container" *ngIf="listName">
-  <header class="list-title">
-    {{ listName }}
-  </header>
-
-  <main class="task-data-wrapper">
-    <div class="task-data">
-      <span class="task-count">{{ taskCount }}</span>
-      <span class="count-label">tasks</span>
-    </div>
-
-    <div class="task-data completed">
-      <span>{{ completedCount }}</span>
-      <span class="count-label">completed</span>
-    </div>
-  </main>
-
+<section class="task-view-container" *ngIf="task">
   <section 
     class="task-info"
     *ngIf="task">

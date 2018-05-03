@@ -17,11 +17,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TaskViewComponent implements OnInit, OnDestroy {
   task: Task;
-  listName: string;
-  taskCount: number;
-  completedCount: number;
   subscription: Subscription;
-  listSub: Subscription;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -35,25 +31,12 @@ export class TaskViewComponent implements OnInit, OnDestroy {
       .subscribe(
         (state) => {
           this.task = state.selectedTask;
-          this.taskCount = _.size(state.tasks);
-          this.completedCount = _.filter(state.tasks, ['completed', true]).length;
         }
       )
-
-    this.listSub = this.store.select('list')
-      .subscribe(
-        (state) => {
-          debugger
-          if (state.selectedList) {
-            this.listName = state.selectedList.title;
-          }
-        }
-      )  
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.listSub.unsubscribe();
     this.store.dispatch(new TaskActions.ClearSelected());
   }
 

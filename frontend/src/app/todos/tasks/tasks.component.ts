@@ -19,6 +19,11 @@ export class TasksComponent implements OnInit, OnDestroy {
   id: number;
   subscription: Subscription;
   focused: boolean = false;
+
+  listName: string;
+  taskCount: number;
+  completedCount: number;
+  listSub: Subscription;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -39,9 +44,21 @@ export class TasksComponent implements OnInit, OnDestroy {
         (state) => {
           this.tasks = _.map(state.tasks, task => {
             return new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at);
-          })
+          });
+
+          this.taskCount = _.size(state.tasks);
+          this.completedCount = _.filter(state.tasks, ['completed', true]).length;
         }
       );
+
+    this.listSub = this.store.select('list')
+      .subscribe(
+        (state) => {
+          if (state.selectedList) {
+            this.listName = state.selectedList.title;
+          }
+        }
+      )
   }
 
   focus() {
@@ -59,6 +76,7 @@ export class TasksComponent implements OnInit, OnDestroy {
     console.log('tasks have been dee stroyed');
     
     this.subscription.unsubscribe();
+    this.listSub.unsubscribe();
     this.todosService.clearEverything();
   }
 
