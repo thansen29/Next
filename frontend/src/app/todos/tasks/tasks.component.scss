@@ -20,6 +20,25 @@
 
 .top-row {
     margin-bottom: 10px;
+    display: flex;
+}
+
+.tab {
+    padding: 15px;
+    border: 1px solid transparent;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.active {
+    color: $darkblue;
+    border-top: 1px dotted;
+    border-right: 1px dotted;
+    border-left: 1px dotted;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;    
+    
 }
 
 .create-task-form {

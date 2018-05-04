@@ -12,7 +12,8 @@ import { AppState } from '../../../store/app.reducer';
   styleUrls: ['./task-item.component.scss']
 })
 export class TaskItemComponent implements OnInit, OnDestroy {
-  @Input() task: Task
+  @Input() task: Task;
+  @Input() tab;
   selectedId: number;
   checked: boolean;
   subscription: Subscription;

@@ -15,7 +15,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit, OnDestroy {
-  tasks: Task[];
+  completedTasks: Task[];
+  incompleteTasks: Task[];
   id: number;
   subscription: Subscription;
   focused: boolean = false;
@@ -24,7 +25,8 @@ export class TasksComponent implements OnInit, OnDestroy {
   taskCount: number;
   completedCount: number;
   listSub: Subscription;
-
+  
+  selectedTab = 0;
   checkedTasks = [];
   
   constructor(private store: Store<AppState>,
@@ -45,9 +47,15 @@ export class TasksComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select('task')
       .subscribe(
         (state) => {
-          this.tasks = _.map(state.tasks, task => {
-            return new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at);
+          this.completedTasks = _.filter(state.tasks, ['completed', true]);
+          this.completedTasks = _.map(this.completedTasks, task => {
+              return new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at);
           });
+
+          this.incompleteTasks = _.filter(state.tasks, ['completed', false]);  
+          this.incompleteTasks = _.map(this.incompleteTasks, task => {
+            return new Task(task.id, task.title, task.description, task.created_at, task.completed, task.updated_at);
+          });        
 
           this.taskCount = _.size(state.tasks);
           this.completedCount = _.filter(state.tasks, ['completed', true]).length;
@@ -90,6 +98,10 @@ export class TasksComponent implements OnInit, OnDestroy {
   deleteTasks() {
     this.todosService.deleteTasks(this.checkedTasks);
     this.router.navigate(['/lists', this.id]);
+  }
+
+  selectTab(index: number) {
+    this.selectedTab = index;
   }
 
   ngOnDestroy() {
