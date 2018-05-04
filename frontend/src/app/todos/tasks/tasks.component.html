@@ -3,20 +3,33 @@
   <main class="main-tasks">
     <header class="task-header">
         <div class="top-row">
-          <div 
-            class="tab"
-            (click)="selectTab(0)"
-            [ngClass]="{ active: selectedTab === 0 }">
-            Not Completed
+          <div class="tabs">
+            <div 
+              class="tab"
+              (click)="selectTab(0)"
+              [ngClass]="{ active: selectedTab === 0 }">
+              Not Completed
+            </div>
+  
+            <div 
+              class="tab"
+              (click)="selectTab(1)"
+              [ngClass]="{ active: selectedTab === 1 }">
+              Completed
+            </div>
+
           </div>
 
-          <div 
-            class="tab"
-            (click)="selectTab(1)"
-            [ngClass]="{ active: selectedTab === 1 }">
-            Completed
+          <div class="buttons">
+            <button>
+              <i class="check fa fa-check"></i>
+            </button>
+
+            <button class="delete-button" (click)="deleteTasks()">
+              &times;
+            </button>
+            
           </div>
-            <!-- <button (click)="deleteTasks()">Delete</button> -->
         </div>
     
         <!-- TODO: why the fuck does the form/header change size by 10 px when typing in input -->

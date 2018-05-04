@@ -16,10 +16,16 @@
     display: flex;
     flex-direction: column;
     border-bottom: 1px dotted;
+    border-bottom-color: $darkgrey;
 }
 
 .top-row {
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabs {
     display: flex;
 }
 
@@ -31,6 +37,32 @@
     }
 }
 
+.buttons {
+    display: flex;
+    margin-right: 5px;
+    align-items: center;
+  & button {
+        border: 1px solid $mediumgrey;
+        margin: 0 5px;
+        padding: 5px 20px;
+        font-size: 20px;
+        color: $darkgrey;
+        transition: color 100ms;
+        &:hover {
+            transition: color 100ms;            
+            color: black;
+        }
+  }
+}
+
+.check {
+    font-size: 16px;
+}
+
+.delete-button {
+    font-size: 20px;
+}
+
 .active {
     color: $darkblue;
     border-top: 1px dotted;
@@ -38,6 +70,10 @@
     border-left: 1px dotted;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;    
+    border-top-color: $darkgrey;
+    border-left-color: $darkgrey;
+    border-right-color: $darkgrey;
+    
     
 }
 
