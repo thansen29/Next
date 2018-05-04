@@ -35,13 +35,10 @@ export class TaskItemComponent implements OnInit, OnDestroy {
       ) 
   }
 
-  // will need to do more with this soon
   handleCheck(event) {
     event.stopPropagation();
-    this.checked = !this.checked;
+    // this.checked = !this.checked;
     this.checkedTask.emit(this.task.id);
-
-
   }
 
   selectTask(task: Task) {

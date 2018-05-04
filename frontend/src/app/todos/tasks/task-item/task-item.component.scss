@@ -6,6 +6,9 @@
     border-bottom-color: $darkblue;
     transition: background-color 200ms;
     display: flex;
+    align-items: center;    
+    width: 100%;
+    box-sizing: border-box;
     &:hover {
         transition: background-color 200ms;        
         background: $softblue;
@@ -46,4 +49,11 @@
 
 .invisible {
     display: none;
+}
+
+.label {
+    width: 100%;
+    &:hover {
+        cursor: pointer;
+    }
 }

@@ -1,22 +1,23 @@
-<div 
+<!-- TODO: selecting item doesnt check box when it should -->
+<label 
   class="task-item-wrapper"
+  [ngClass]="{ background: task.id === selectedId }"
   (click)="selectTask(task)"
   [routerLink]="['tasks', task.id]"
-  [ngClass]="{ background: task.id === selectedId }"
   (mouseover)="hover()"
   (mouseleave)="unhover()">
-
-  <i 
-    [ngClass]="{ 'fa fa-ellipsis-v': hovered }">
-  </i>
-
+  
   <input 
     type="checkbox"
     class="checkbox"
     (click)="handleCheck($event)">
+    
+  <i 
+    [ngClass]="{ 'fa fa-ellipsis-v': hovered }">
+  </i>
 
   <li class="task-item">
     {{ task.title }}
   </li> 
 
-</div>
+</label>

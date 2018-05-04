@@ -126,14 +126,12 @@ export class TodosService {
       this.httpClient.delete(`api/tasks/${id}`)
         .subscribe(
           (response) => {
-            
           },
           (error) => {
-
           }
         )
     });
-    this.store.dispatch(new TaskActions.DeleteTasks(ids))
+    this.store.dispatch(new TaskActions.DeleteTasks(ids));
   }
 
   clearEverything() {
