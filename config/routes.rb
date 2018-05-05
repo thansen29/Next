@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :lists, only: [:index, :show, :update, :create, :destroy]
     get 'tasks/lists/:id', to: 'tasks#index'
+    get 'tasks/all', to: 'tasks#all'
+    
     resources :tasks, only: [:show, :update, :create, :destroy] 
 
 

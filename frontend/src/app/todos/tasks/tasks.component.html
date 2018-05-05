@@ -77,7 +77,6 @@
     </header>
     
     <ul class="task-ul">
-      <!-- clicking on a task duplictes the whole set ???? -->
       <ng-template [ngIf]="selectedTab === 0">
         <task-item
           *ngFor="let task of incompleteTasks"
@@ -89,7 +88,7 @@
 
       <ng-template [ngIf]="selectedTab === 1">
         <task-item
-          *ngFor="let task of completedTasks"
+          *ngFor="let task of completedTasks"      
           [task]="task"
           [tab]="selectedTab"
           (checkedTask)="checkItem($event)"
@@ -105,7 +104,13 @@
     class="task-view-parent"
     [ngClass]="{ opaque: !viewingTask }">
       <header class="list-title">
-          {{ listName }}
+          <span>{{ listName }}</span>
+          <span 
+            *ngIf="viewingTask"
+            (click)="closeTaskView()"
+            class="close-task-view">
+            close &times;
+          </span>
         </header>
       
         <main class="task-data-wrapper">

@@ -15,9 +15,27 @@
     <router-outlet></router-outlet>
   </main>
 
-  <aside class="task-view-container" *ngIf="currentRoute === '/lists'">
-    <!-- placeholder -->
-    task view placeholder
+  <aside 
+    class="task-view-container" 
+    *ngIf="currentRoute === '/lists'"
+    [ngClass]="{ opaque: currentRoute === '/lists' }">
+
+      <header class="list-title">
+          <span>Welcome to Next!</span>
+      </header>
+      
+      <main class="task-data-wrapper">
+        <div class="task-data">
+          <span class="task-count">{{ taskCount }}</span>
+          <span class="count-label">tasks</span>
+        </div>
+    
+        <div class="task-data completed">
+          <span>{{ completedCount }}</span>
+          <span class="count-label">completed</span>
+        </div>
+      </main>
+
   </aside>
 
 </section>

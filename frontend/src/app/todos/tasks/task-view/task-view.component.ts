@@ -20,18 +20,19 @@ import { Observable } from 'rxjs/Observable';
         'opacity': 1,
         transform: 'translateX(0)'
       })),
-      transition('void => *', [
+      transition(':enter', [
         style({
           'opacity': 0,
           transform: 'translateX(100%)'
         }),
         animate(500)
       ]),
-      transition('* => void', [
-        animate(500, style({
+      transition(':leave', [
+        style({
           'opacity': 0,
-          transform: 'translateX(0px)'
-        }))
+          transform: 'translateX(-100%)'
+        }),
+        animate(500)
       ]),
     ]),
   ]

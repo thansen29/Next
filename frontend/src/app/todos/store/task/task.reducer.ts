@@ -73,6 +73,11 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
         tasks: taskList.tasks,
         selectedTask: action.payload
       } 
+    case TaskActions.RECEIVE_ALL_TASKS:
+      return {
+        ...state,
+        tasks: action.payload
+      }
     default:
       return state;
   }  

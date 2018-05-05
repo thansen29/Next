@@ -17,7 +17,16 @@
   </i>
 
   <li class="task-item">
-    {{ task.title }}
+    <span 
+      [ngClass]="{ 'completed-task': tab }">
+      {{ task.title }}
+    </span>
+
+    <span
+      *ngIf="tab"
+      class="completed-date">
+      {{ task.updatedAt | amDateFormat:'MMMM Do' }}
+    </span>
   </li> 
 
 </label>

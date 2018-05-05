@@ -4,6 +4,13 @@ class Api::TasksController < ApplicationController
             .where(list_id: params[:id])
     end 
 
+    def all
+        @tasks = Task.all
+            .where(user_id: current_user.id)
+        
+            render :index
+    end 
+
     def create
         title = task_params['title']
         desc = task_params['description']

@@ -57,3 +57,20 @@
         cursor: pointer;
     }
 }
+
+.task-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.completed-task {
+    text-decoration: line-through;
+    color: $darkgrey
+}
+
+.completed-date {
+    margin-right: 15px;
+    color: $darkgrey;
+    font-size: 14px;
+}

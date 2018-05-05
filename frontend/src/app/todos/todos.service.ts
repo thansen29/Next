@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
-// import { Router } from '@angular/router';
 
 import { AppState } from '../store/app.reducer';
 import * as ListActions from './store/list/list.actions';
@@ -83,7 +82,18 @@ export class TodosService {
           debugger
         }
       );
+  }
 
+  getAllTasks() {
+    this.httpClient.get(`api/tasks/all`)
+      .subscribe(
+        (tasks) => {
+          this.store.dispatch(new TaskActions.ReceiveAllTasks(tasks));
+        }, 
+        (error) => {
+          debugger
+        }
+      );
   }
 
   fetchTasks(id: number) {

@@ -9,7 +9,7 @@ import { AppState } from '../../../store/app.reducer';
 @Component({
   selector: 'task-item',
   templateUrl: './task-item.component.html',
-  styleUrls: ['./task-item.component.scss']
+  styleUrls: ['./task-item.component.scss'],
 })
 export class TaskItemComponent implements OnInit, OnDestroy {
   @Input() task: Task;

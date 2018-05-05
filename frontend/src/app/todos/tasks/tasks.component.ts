@@ -15,7 +15,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./tasks.component.scss'],
   animations: [
     trigger('formDetails', [
-      state('in', style({
+      state('formState', style({
         'opacity': 1,
         transform: 'translateY(100%)'
       })),
@@ -32,7 +32,7 @@ import { NgForm } from '@angular/forms';
           transform: 'translateY(-100%)'
         }))
       ])
-    ])
+    ]),
   ]
 })
 export class TasksComponent implements OnInit, OnDestroy {
@@ -146,6 +146,10 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   selectTab(index: number) {
     this.selectedTab = index;
+  }
+
+  closeTaskView() {
+    this.router.navigate(['/lists', this.id]);
   }
 
   ngOnDestroy() {
