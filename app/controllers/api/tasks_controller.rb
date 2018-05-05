@@ -20,10 +20,15 @@ class Api::TasksController < ApplicationController
         @task = Task.find(params[:id])
     end 
 
-    # def update
-    #     # @list = List.find(params[:id])
-    #     # current user.lists.find(params[:id])
-    # end 
+    def update
+        @task = Task.find(params[:id])
+        @task.completed = !@task.completed
+        if @task.save!
+            render json: { message: "Successfully updated" }
+        else 
+            render json: { error: @task.errors.full_messages }
+        end 
+    end 
 
     def destroy
         task = Task.find(params[:id])
