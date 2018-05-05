@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
@@ -28,6 +28,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   
   selectedTab = 0;
   checkedTasks = [];
+  viewingTask: boolean;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -37,6 +38,16 @@ export class TasksComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
     this.todosService.fetchTasks(this.id);
+
+    this.viewingTask = this.router.url.includes('tasks');
+    this.router.events
+      .subscribe(
+        (event) => {
+          if (event instanceof NavigationEnd) {
+            this.viewingTask = event.url.includes('task');
+          }
+        }
+      )
 
     this.route.params.subscribe(
       (params: Params) => {

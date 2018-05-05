@@ -5,6 +5,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskViewComponent } from './tasks/task-view/task-view.component';
 
 import { AuthGuard } from '../auth/auth-guard.service';
+import { ListComponent } from './list/list.component';
 
 const todoRoutes: Routes = [
   { path: '', component: TodosHomeComponent, canActivate: [AuthGuard], children: [

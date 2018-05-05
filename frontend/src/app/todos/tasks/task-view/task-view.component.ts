@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, style, transition, animate} from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs/Subscription';
@@ -13,7 +13,28 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'task-view',
   templateUrl: './task-view.component.html',
-  styleUrls: ['./task-view.component.scss']
+  styleUrls: ['./task-view.component.scss'],
+  animations: [
+    trigger('taskView', [
+      state('in', style({
+        'opacity': 1,
+        transform: 'translateX(0)'
+      })),
+      transition('void => *', [
+        style({
+          'opacity': 0,
+          transform: 'translateX(100%)'
+        }),
+        animate(500)
+      ]),
+      transition('* => void', [
+        animate(500, style({
+          'opacity': 0,
+          transform: 'translateX(0px)'
+        }))
+      ]),
+    ]),
+  ]
 })
 export class TaskViewComponent implements OnInit, OnDestroy {
   task: Task;

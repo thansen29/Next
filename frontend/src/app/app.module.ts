@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
 import { reducers } from './store/app.reducer';
@@ -30,6 +31,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
     HttpModule,

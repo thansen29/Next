@@ -102,7 +102,9 @@
   
   </main>
   
-  <aside class="task-view-parent">
+  <aside 
+    class="task-view-parent"
+    [ngClass]="{ opaque: !viewingTask }">
       <header class="list-title">
           {{ listName }}
         </header>
