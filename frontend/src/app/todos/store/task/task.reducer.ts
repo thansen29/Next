@@ -65,6 +65,14 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
         ...state,
         tasks: updatedTasks.tasks,
       }
+    case TaskActions.UPDATE_TASK:
+      let taskList = _.assign({}, state);
+      taskList.tasks[action.payload['id']] = action.payload;
+      return {
+        ...state,
+        tasks: taskList.tasks,
+        selectedTask: action.payload
+      } 
     default:
       return state;
   }  

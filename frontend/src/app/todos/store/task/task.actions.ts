@@ -5,6 +5,7 @@ export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const SELECT_TASK = 'SELECT_TASK';
 export const DELETE_TASKS = 'DELETE_TASKS';
+export const UPDATE_TASK = 'UPDATE_TASK';
 export const UPDATE_TASKS = 'UPDATE_TASKS';
 export const CLEAR_SELECTED = 'CLEAR_SELECTED';
 export const CLEAR_TASKS = 'CLEAR_TASKS';
@@ -30,6 +31,11 @@ export class DeleteTasks implements Action {
   constructor(public payload: number[] ) {}
 }
 
+export class UpdateTask implements Action {
+  readonly type = UPDATE_TASK;
+  constructor(public payload: Object ) {}
+}
+
 export class UpdateTasks implements Action {
   readonly type = UPDATE_TASKS;
   constructor(public payload: number[] ) {}
@@ -48,6 +54,7 @@ export type TaskActions = (
   ReceiveTask |
   SelectTask |
   DeleteTasks |
+  UpdateTask |
   UpdateTasks |
   ClearSelected |
   ClearTasks

@@ -5,12 +5,19 @@
 
     <div class="row">
       <span class="info-label">Title</span>
-      <span>{{ task.title }}</span>
+      <input
+        class="input"
+        [(ngModel)]="task.title"
+        (blur)="updateTask()">
     </div>
 
-    <div class="row" *ngIf="task.description">
+    <div class="row">
       <span class="info-label">Description</span>
-      <span>{{ task.description }}</span>
+      <input
+        class="input"
+        [(ngModel)]="task.description"
+        placeholder="Add a description"
+        (blur)="updateTask()">
     </div>
 
     <div class="row">

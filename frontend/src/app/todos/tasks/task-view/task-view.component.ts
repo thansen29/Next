@@ -56,6 +56,11 @@ export class TaskViewComponent implements OnInit, OnDestroy {
       )
   }
 
+  updateTask() {
+    this.todosService.updateTask(this.task.id, this.task.title, this.task.description);
+    
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.store.dispatch(new TaskActions.ClearSelected());

@@ -147,7 +147,19 @@ export class TodosService {
         )
     });
     this.store.dispatch(new TaskActions.UpdateTasks(ids));
-    
+  }
+
+  updateTask(id: number, title: string, description: string) {
+    this.httpClient.patch(`api/tasks/${id}`, { title, description })
+      .subscribe(
+        (task) => {
+          const newTask = new Task(task['id'], task['title'], task['description'], task['created_at'], task['completed'], task['updated_at'])
+          this.store.dispatch(new TaskActions.UpdateTask(newTask));
+        }, 
+        (error) => {
+          debugger
+        }
+      );
   }
 
   clearEverything() {

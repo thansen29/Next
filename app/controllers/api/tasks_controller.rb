@@ -22,9 +22,20 @@ class Api::TasksController < ApplicationController
 
     def update
         @task = Task.find(params[:id])
-        @task.completed = !@task.completed
+        if params["title"] || params["description"]
+            if params["title"]
+                @task.title = params["title"]
+            end 
+
+            if params["description"]
+                @task.description = params["description"]
+            end 
+        else 
+            @task.completed = !@task.completed
+        end 
+
         if @task.save!
-            render json: { message: "Successfully updated" }
+            render :show
         else 
             render json: { error: @task.errors.full_messages }
         end 
