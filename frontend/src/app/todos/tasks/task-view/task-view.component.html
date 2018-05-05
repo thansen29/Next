@@ -5,19 +5,22 @@
 
     <div class="row">
       <span class="info-label">Title</span>
-      <input
+      <textarea
+        rows="1"
         class="input"
         [(ngModel)]="task.title"
         (blur)="updateTask()">
+        </textarea>
     </div>
 
     <div class="row">
       <span class="info-label">Description</span>
-      <input
+      <textarea
         class="input"
         [(ngModel)]="task.description"
         placeholder="Add a description"
         (blur)="updateTask()">
+      </textarea>
     </div>
 
     <div class="row">
