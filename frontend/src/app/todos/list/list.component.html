@@ -54,12 +54,14 @@
     <header>
       <h1>Lists</h1>
       <button 
-        class="add-list"
+        class="add-list tooltip"
         (click)="createList()">
         +
+        <span class="tooltip-text">Add list</span>        
       </button>
 
       <button
+        class="tooltip"
         [ngClass]="{ 'edit-list': selectedId, 'invisible': !selectedId }"
         (click)="editList()"
         [disabled]="!selectedId">
@@ -67,16 +69,17 @@
           class="fa fa-pencil"
           *ngIf="selectedId">
         </i>
+        <span class="tooltip-text">Edit list</span>
       </button>
     </header>
   
     <ul class="list-ul">
       <li
-      class="list-item"
-      *ngFor="let list of lists"
-      [routerLink]="[list.id]"
-      [ngClass]="{ active: selectedId === list.id }"
-      (click)="selectList(list)">
+        class="list-item"
+        *ngFor="let list of lists"
+        [routerLink]="[list.id]"
+        [ngClass]="{ active: selectedId === list.id }"
+        (click)="selectList(list)">
         {{ list.title }} <br>
       </li> 
     </ul>
