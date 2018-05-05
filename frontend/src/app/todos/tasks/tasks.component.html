@@ -36,7 +36,6 @@
           </div>
         </div>
     
-        <!-- TODO: why the fuck does the form/header change size by 10 px when typing in input -->
         <form 
           class="create-task-form"
           (ngSubmit)="onSubmit(form)"
@@ -59,7 +58,7 @@
           </div>
             
           <!-- TODO: make this appearance slide down/up -->
-          <div class="bottom-row" *ngIf="focused">
+          <div class="bottom-row" *ngIf="focused" [@formDetails]>
             <textarea 
               name="description" 
               ngModel

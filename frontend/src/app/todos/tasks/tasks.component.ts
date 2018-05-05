@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, style, transition, animate } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,7 +12,28 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'tasks-component',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.scss']
+  styleUrls: ['./tasks.component.scss'],
+  animations: [
+    trigger('formDetails', [
+      state('in', style({
+        'opacity': 1,
+        transform: 'translateY(100%)'
+      })),
+      transition('void => *', [
+        style({
+          'opacity': 0,
+          transform: 'translateY(-100%)'
+        }),
+        animate(300)
+      ]),
+      transition('* => void', [
+        animate(300, style({
+          'opacity': 0,
+          transform: 'translateY(-100%)'
+        }))
+      ])
+    ])
+  ]
 })
 export class TasksComponent implements OnInit, OnDestroy {
   completedTasks: Task[];
