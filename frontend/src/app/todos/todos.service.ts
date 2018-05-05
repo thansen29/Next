@@ -134,6 +134,22 @@ export class TodosService {
     this.store.dispatch(new TaskActions.DeleteTasks(ids));
   }
 
+  completeTasks(ids: number[]) {
+    _.forEach(ids, id => {
+      this.httpClient.patch(`api/tasks/${id}`, {})
+        .subscribe(
+          (response) => {
+          },
+          (error) => {
+            console.log(error);
+            
+          }
+        )
+    });
+    this.store.dispatch(new TaskActions.UpdateTasks(ids));
+    
+  }
+
   clearEverything() {
     this.store.dispatch(new TaskActions.ClearTasks())
     this.store.dispatch(new TaskActions.ClearSelected());   

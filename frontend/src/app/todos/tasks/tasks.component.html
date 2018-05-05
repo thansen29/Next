@@ -21,12 +21,14 @@
           </div>
 
           <div class="buttons">
-            <button class="tooltip">
+            <button class="tooltip" (click)="completeTasks()">
               <i class="check fa fa-check"></i>
               <span class="tooltip-text">Complete</span>
             </button>
 
-            <button class="tooltip delete-button" (click)="deleteTasks()">
+            <button 
+              class="tooltip delete-button" 
+              (click)="deleteTasks()">
               &times;
               <span class="tooltip-text">Delete</span>
             </button>
@@ -81,7 +83,8 @@
         <task-item
           *ngFor="let task of incompleteTasks"
           [task]="task"
-          (checkedTask)="checkItem($event)">
+          (checkedTask)="checkItem($event)"
+          (clearCheckedTasks)="clearCheckedTasks()">
         </task-item>
       </ng-template>
 
@@ -90,7 +93,8 @@
           *ngFor="let task of completedTasks"
           [task]="task"
           [tab]="selectedTab"
-          (checkedTask)="checkItem($event)">
+          (checkedTask)="checkItem($event)"
+          (clearCheckedTasks)="clearCheckedTasks()">
         </task-item>
 
       </ng-template>

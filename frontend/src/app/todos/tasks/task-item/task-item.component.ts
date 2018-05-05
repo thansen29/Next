@@ -20,7 +20,7 @@ export class TaskItemComponent implements OnInit, OnDestroy {
   hovered: boolean = false;
 
   @Output() checkedTask = new EventEmitter<number>();
-
+  @Output() clearCheckedTasks = new EventEmitter();
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>) { }
@@ -38,12 +38,12 @@ export class TaskItemComponent implements OnInit, OnDestroy {
 
   handleCheck(event) {
     event.stopPropagation();
-    // this.checked = !this.checked;
     this.checkedTask.emit(this.task.id);
   }
 
   selectTask(task: Task) {
     this.todosService.selectTask(task);
+    this.clearCheckedTasks.emit();
   }
 
   hover() {

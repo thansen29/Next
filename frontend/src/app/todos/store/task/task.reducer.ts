@@ -54,6 +54,17 @@ export const taskReducer = (state: State = initialState, action: TaskActions.Tas
         tasks: filteredTasks,
         selectedTask: null
       }
+    case TaskActions.UPDATE_TASKS:
+      let updatedTasks = _.assign({}, state);
+      _.forEach(updatedTasks.tasks, task => {
+        if (action.payload.includes(task.id)) {
+          task.completed = !task.completed;
+        }
+      });
+      return {
+        ...state,
+        tasks: updatedTasks.tasks,
+      }
     default:
       return state;
   }  

@@ -82,7 +82,7 @@ export class TasksComponent implements OnInit, OnDestroy {
 
   checkItem(id: number) {
     if (this.checkedTasks.includes(id)) {
-      this.checkedTasks = this.checkedTasks.splice(id, 1);
+      this.checkedTasks.splice(this.checkedTasks.indexOf(id), 1);
     } else {
       this.checkedTasks.push(id);
     }
@@ -96,8 +96,20 @@ export class TasksComponent implements OnInit, OnDestroy {
   }
 
   deleteTasks() {
-    this.todosService.deleteTasks(this.checkedTasks);
-    this.router.navigate(['/lists', this.id]);
+    if (this.checkedTasks.length) {
+      this.todosService.deleteTasks(this.checkedTasks);
+      this.router.navigate(['/lists', this.id]);
+      this.checkedTasks = [];
+    }
+  }
+
+  completeTasks() {
+    this.todosService.completeTasks(this.checkedTasks);
+    this.checkedTasks = [];    
+  }
+
+  clearCheckedTasks() {
+    this.checkedTasks = [];
   }
 
   selectTab(index: number) {
