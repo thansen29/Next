@@ -3,14 +3,13 @@
     src="../../../assets/check.png"
     class="check" />
 
-    <div class="auth-error" *ngIf="(authState | async).error">
-      {{ (authState | async).error }}
-    </div>
+  <div class="auth-error" *ngIf="(authState | async).error">
+    {{ (authState | async).error }}
+  </div>
 
-    <!-- TODO: Make this form reactive to handle this error better - it doesnt disappear when email is good but password empty -->
-    <div class="auth-error" *ngIf="form.invalid && form.touched">
-      Please enter a valid email
-    </div>
+  <div class="auth-error" *ngIf="form.invalid && form.controls.email.touched">
+    Please enter a valid email and password
+  </div>
 
   <form
     class="auth-form"
