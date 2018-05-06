@@ -50,6 +50,8 @@ export class TasksComponent implements OnInit, OnDestroy {
   selectedTab = 0;
   checkedTasks = [];
   viewingTask: boolean;
+
+  hidden = true;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -102,6 +104,10 @@ export class TasksComponent implements OnInit, OnDestroy {
           }
         }
       )
+  }
+
+  toggleHidden() {
+    this.hidden = !this.hidden;
   }
 
   focus() {

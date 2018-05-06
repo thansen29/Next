@@ -1,6 +1,33 @@
 <section class="all-tasks-container">
 
-  <main class="main-tasks">
+  <main 
+    class="main-tasks">
+
+      <div class="hidden-details opaque">
+        <div class="flex">
+          <span>{{ listName }} </span>
+          <i 
+            (click)="toggleHidden()" 
+            class="arrow fa"
+            [ngClass]="{ 'fa-angle-down': hidden, 'fa-angle-up': !hidden }">
+          </i>
+        </div>
+  
+        <div class="hidden-pt2" *ngIf="!hidden">
+          <main class="task-data-wrapper">
+              <div class="task-data">
+                <span class="task-count">{{ taskCount }}</span>
+                <span class="count-label">tasks</span>
+              </div>
+          
+              <div class="task-data completed">
+                <span>{{ completedCount }}</span>
+                <span class="count-label">completed</span>
+              </div>
+            </main>
+        </div>
+      </div>
+
     <header class="task-header">
         <div class="top-row">
           <div class="tabs">
@@ -57,7 +84,6 @@
                 (click)="unfocus()">&times;</span>
           </div>
             
-          <!-- TODO: make this appearance slide down/up -->
           <div class="bottom-row" *ngIf="focused" [@formDetails]>
             <textarea 
               name="description" 

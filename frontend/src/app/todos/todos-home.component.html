@@ -8,7 +8,7 @@
     class="task-container"
     [ngClass]="{ 'med-width': currentRoute === '/lists', 'lg-width': currentRoute !== '/lists'}">
 
-    <div class="hidden-details opaque">
+    <div class="hidden-details opaque" *ngIf="currentRoute === '/lists'">
       <div class="flex">
         <span>Welcome to Next!</span>
         <i 

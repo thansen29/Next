@@ -232,3 +232,36 @@
     }
     position: relative;
 }
+
+@media screen and (max-width: 60em) {
+    .task-view-parent {
+        display: none;
+        background: rgb(236, 243, 250);
+    }
+
+    .main-tasks {
+        width: 100%;
+    }
+
+    .hidden-details {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .task-view-parent {
+        display: block;
+    }
+
+    .main-tasks {
+        width: 50%;
+    }
+
+    .hidden-details {
+        display: none;
+    }
+}
+
+.opaque {
+    background: rgb(236, 243, 250);
+}
