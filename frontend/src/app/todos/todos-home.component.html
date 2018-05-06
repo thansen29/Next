@@ -6,7 +6,7 @@
 
   <main 
     class="task-container"
-    [ngStyle]="{ 'width': currentRoute === '/lists' ? '42%' : '100%' }">
+    [ngClass]="{ 'med-width': currentRoute === '/lists', 'lg-width': currentRoute !== '/lists'}">
 
     <div class="hidden-details opaque">
       <div class="flex">

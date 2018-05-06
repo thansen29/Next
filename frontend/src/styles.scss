@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
 
 body {
   margin: 0;
@@ -82,4 +83,33 @@ img:focus {
 .tooltip:hover .tooltip-text {
   transition: opacity 0s linear 1s;  
   opacity: 1;
+}
+
+.hidden-details {
+  display: none;
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.arrow {
+  transition: color 100ms;
+  margin-left: 10px;
+  &:hover {
+      transition: color 100ms;        
+      cursor: pointer;
+      color: $darkestgrey;
+  }
+}
+
+.hidden-pt2 {
+  margin-top: 10px;
 }
