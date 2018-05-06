@@ -27,7 +27,7 @@ export class TodosHomeComponent implements OnInit, OnDestroy {
     this.router.events
       .subscribe(
         (event) => {
-          if (event instanceof NavigationEnd) {
+          if (event instanceof NavigationEnd && event.url === '/lists') {
             this.todosService.getAllTasks();
           }
         }
