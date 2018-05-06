@@ -7,6 +7,31 @@
   <main 
     class="task-container"
     [ngStyle]="{ 'width': currentRoute === '/lists' ? '42%' : '100%' }">
+
+    <div class="hidden-details opaque">
+      <div class="flex">
+        <span>Welcome to Next!</span>
+        <i 
+          (click)="toggleHidden()" 
+          class="arrow fa"
+          [ngClass]="{ 'fa-angle-down': hidden, 'fa-angle-up': !hidden }">
+        </i>
+      </div>
+
+      <div class="hidden-pt2" *ngIf="!hidden">
+        <main class="task-data-wrapper">
+            <div class="task-data">
+              <span class="task-count">{{ taskCount }}</span>
+              <span class="count-label">tasks</span>
+            </div>
+        
+            <div class="task-data completed">
+              <span>{{ completedCount }}</span>
+              <span class="count-label">completed</span>
+            </div>
+          </main>
+      </div>
+    </div>
     
     <div class="task-content-wrapper" *ngIf="currentRoute === '/lists'">
       <header>

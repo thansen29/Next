@@ -16,6 +16,7 @@ export class TodosHomeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   taskCount: number;
   completedCount: number;
+  hidden = true;
 
   constructor(private router: Router,
               private todosService: TodosService,
@@ -49,6 +50,10 @@ export class TodosHomeComponent implements OnInit, OnDestroy {
         }
       }
     );
+  }
+
+  toggleHidden() {
+    this.hidden = !this.hidden;
   }
 
   ngOnDestroy() {
