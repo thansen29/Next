@@ -8,8 +8,50 @@
     class="task-container"
     [ngStyle]="{ 'width': currentRoute === '/lists' ? '42%' : '100%' }">
     
-    <div *ngIf="currentRoute === '/lists'">
-      task placeholder
+    <div class="task-content-wrapper" *ngIf="currentRoute === '/lists'">
+      <header>
+        <h2>Welcome List</h2>
+        <div>Here's a list of tasks to get you started</div>
+      </header>
+
+      <div class="sample-item-wrapper">
+
+        <ul 
+          class="sample-list">
+          <li class="sample-item">
+            <input type="checkbox">
+            <span>Create a list</span> 
+          </li>
+          <li class="sample-item">
+            <input type="checkbox">
+            <span>Create some tasks</span> 
+          </li>
+          <li class="sample-item">
+            <input type="checkbox">
+            <span>Complete some tasks!</span> 
+          </li>
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                        
+          <li class="sample-item-empty">hire me</li>                                                          
+        </ul>
+      </div>
+
+
     </div>
     
     <router-outlet></router-outlet>

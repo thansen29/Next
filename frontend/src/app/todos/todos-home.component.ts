@@ -44,9 +44,11 @@ export class TodosHomeComponent implements OnInit, OnDestroy {
     this.currentRoute = this.router.url;
     this.router.events.subscribe(
       (event: Event) => {
-        this.currentRoute = event['url'];
+        if (event instanceof NavigationEnd) {
+          this.currentRoute = event['url'];
+        }
       }
-    )
+    );
   }
 
   ngOnDestroy() {

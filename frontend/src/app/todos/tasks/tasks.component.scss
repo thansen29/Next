@@ -3,6 +3,7 @@
 .all-tasks-container {
     display: flex;
     height: 100%;
+    overflow: hidden;
 }
 
 .main-tasks {
@@ -10,6 +11,7 @@
     height: 100%;
     border-right: 1px solid $darkgrey;
     border-top-right-radius: 5px;
+    overflow: scroll;
 }
 
 .task-header {
@@ -210,4 +212,23 @@
 .opaque {
     background: rgba(228, 238, 248, 0.7);
     transition: opacity 500ms;
+}
+
+.sample-item-empty {
+    color: transparent;
+    border-bottom: 1px dotted;
+    padding: 10px 10px 10px 20px;
+    border-bottom-color: $darkgrey;
+    transition: background-color 200ms;
+    display: flex;
+    align-items: center;    
+    width: 100%;
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: default;
+    }
+    position: relative;
 }
