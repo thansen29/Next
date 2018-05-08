@@ -23,9 +23,10 @@ export class AuthService {
     this.httpClient.post('api/session', { email, password })
       .subscribe(
         (response) => {
+          const id = response['listId'];
           localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signin());
-          this.router.navigate(['lists']);
+          this.router.navigate(['lists', id]);
         },
         (error) => {
           console.log('LOGIN FAILED');
@@ -44,8 +45,7 @@ export class AuthService {
           this.router.navigate(['/login']);
         },
         (error) => {
-          console.log('SIGNOUT FAILED');
-          
+          console.log('SIGNOUT FAILED');  
         }
       )
   }

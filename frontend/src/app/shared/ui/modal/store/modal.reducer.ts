@@ -9,7 +9,7 @@ const initialState: State = {
   isOpen: false
 }
 
-export const modalReducer = (state: State = initialState, action: ModalActions.ModalActions) => {
+export function modalReducer (state: State = initialState, action: ModalActions.ModalActions) {
   switch (action.type) {
     case ModalActions.OPEN_MODAL:
       return {

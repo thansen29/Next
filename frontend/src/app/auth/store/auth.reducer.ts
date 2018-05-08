@@ -11,7 +11,7 @@ const initialState: State = {
   error: ''
 }
 
-export const authReducer = (state: State = initialState, action: AuthActions.AuthActions) => {
+export function authReducer (state: State = initialState, action: AuthActions.AuthActions) {
   switch (action.type) {
     case AuthActions.SIGNUP:
       case AuthActions.SIGNIN:
