@@ -13,12 +13,12 @@
         <span>Welcome to Next!</span>
         <i 
           (click)="toggleHidden()" 
-          class="arrow fa"
-          [ngClass]="{ 'fa-angle-down': hidden, 'fa-angle-up': !hidden }">
+          class="fa fa-angle-down arrow"
+          [ngClass]="{ 'open': !hidden }">
         </i>
       </div>
 
-      <div class="hidden-pt2" *ngIf="!hidden">
+      <div class="hidden-pt2" *ngIf="!hidden" [@taskData]>
         <main class="task-data-wrapper">
             <div class="task-data">
               <span class="task-count">{{ taskCount }}</span>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, transition, style, animate } from '@angular/core';
 import { Router, Event, NavigationEnd } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
@@ -9,7 +9,22 @@ import { AppState } from '../store/app.reducer';
 @Component({
   selector: 'app-todos-home',
   templateUrl: './todos-home.component.html',
-  styleUrls: ['./todos-home.component.scss']
+  styleUrls: ['./todos-home.component.scss'],
+  animations: [
+    trigger('taskData', [
+      state('taskState', style({
+        'opacity': 1,
+        transform: 'translateY(0px)'
+      })),
+      transition('void => *', [
+        style({
+          'opacity': 0,
+          transform: 'translateY(-100%)'
+        }),
+        animate(300)
+      ]),
+    ]),
+  ]
 })
 export class TodosHomeComponent implements OnInit, OnDestroy {
   currentRoute: string;

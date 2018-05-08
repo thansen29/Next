@@ -27,13 +27,6 @@ import { Observable } from 'rxjs/Observable';
         }),
         animate(500)
       ]),
-      transition(':leave', [
-        style({
-          'opacity': 0,
-          transform: 'translateX(-100%)'
-        }),
-        animate(500)
-      ]),
     ]),
   ]
 })

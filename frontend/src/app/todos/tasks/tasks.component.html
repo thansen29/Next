@@ -2,18 +2,17 @@
 
   <main 
     class="main-tasks">
-
       <div class="hidden-details opaque">
         <div class="flex">
           <span>{{ listName }} </span>
           <i 
             (click)="toggleHidden()" 
-            class="arrow fa"
-            [ngClass]="{ 'fa-angle-down': hidden, 'fa-angle-up': !hidden }">
+            class="fa fa-angle-down arrow"
+            [ngClass]="{ 'open': !hidden }">
           </i>
         </div>
   
-        <div class="hidden-pt2" *ngIf="!hidden">
+        <div class="hidden-pt2" *ngIf="!hidden" [@taskData]>
           <main class="task-data-wrapper">
               <div class="task-data">
                 <span class="task-count">{{ taskCount }}</span>
@@ -168,9 +167,46 @@
             <span class="count-label">completed</span>
           </div>
         </main>
-        
-    <router-outlet></router-outlet>
   
+        <router-outlet></router-outlet>
   </aside>
+
+  <!-- TODO: Animate this to slide in -->
+  <aside 
+    class="task-view-parent-over"
+    [ngClass]="{ opaque: !viewingTask }"
+    *ngIf="viewingTask">
+    <span class="close-task-view" (click)="closeTaskView()">
+      <i class="fa fa-arrow-left"></i>  
+      {{ listName }}
+    </span>
+    <main class="padding">
+      <header class="list-title">
+          <span>{{ listName }}</span>
+          <span 
+            *ngIf="viewingTask"
+            (click)="closeTaskView()"
+            class="close-task-view">
+            close &times;
+          </span>
+        </header>
+      
+        <main class="task-data-wrapper">
+          <div class="task-data">
+            <span class="task-count">{{ taskCount }}</span>
+            <span class="count-label">tasks</span>
+          </div>
+      
+          <div class="task-data completed">
+            <span>{{ completedCount }}</span>
+            <span class="count-label">completed</span>
+          </div>
+        </main>
+  
+        <router-outlet></router-outlet>
+      
+    </main>
+      
+</aside>
   
 </section>

@@ -17,7 +17,7 @@ import { NgForm } from '@angular/forms';
     trigger('formDetails', [
       state('formState', style({
         'opacity': 1,
-        transform: 'translateY(100%)'
+        transform: 'translateY(0px)'
       })),
       transition('void => *', [
         style({
@@ -26,13 +26,21 @@ import { NgForm } from '@angular/forms';
         }),
         animate(300)
       ]),
-      transition('* => void', [
-        animate(300, style({
+    ]),
+    trigger('taskData', [
+      state('taskState', style({
+        'opacity': 1,
+        transform: 'translateY(0px)'
+      })),
+      transition('void => *', [
+        style({
           'opacity': 0,
           transform: 'translateY(-100%)'
-        }))
-      ])
+        }),
+        animate(300)
+      ]),
     ]),
+    
   ]
 })
 export class TasksComponent implements OnInit, OnDestroy {

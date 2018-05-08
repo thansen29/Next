@@ -101,13 +101,18 @@ img:focus {
 }
 
 .arrow {
-  transition: color 100ms;
+  transform: rotate(0);
+  transition: linear 200ms;
   margin-left: 10px;
   &:hover {
-      transition: color 100ms;        
       cursor: pointer;
       color: $darkestgrey;
   }
+}
+
+.open {
+  transform: rotate(180deg);
+  transition: 200ms linear;
 }
 
 .hidden-pt2 {

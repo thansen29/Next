@@ -11,7 +11,8 @@
     height: 100%;
     margin-top: 2%;
     margin-left: 5%;
-    width: 10%;
+    // width: 12%;
+    min-width: 125px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -135,6 +136,10 @@
         display: none;
     }
 
+    .list-container {
+        width: 15%;
+    }
+
     .med-width {
         width: 80%;
     }
@@ -147,6 +152,10 @@
 @media screen and (min-width: 60em) {
     .task-view-container {
         display: block;
+    }
+
+    .list-container {
+        width: 12%;
     }
 
     .hidden-details {
