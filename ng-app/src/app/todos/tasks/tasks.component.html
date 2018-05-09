@@ -1,0 +1,222 @@
+<section class="all-tasks-container">
+
+  <main 
+    class="main-tasks">
+      <div class="hidden-details opaque">
+        <div class="flex">
+          <span>{{ listName }} </span>
+          <i 
+            (click)="toggleHidden()" 
+            class="fa fa-angle-down arrow"
+            [ngClass]="{ 'open': !hidden }">
+          </i>
+        </div>
+  
+        <div class="hidden-pt2" *ngIf="!hidden" [@taskData]>
+          <main class="task-data-wrapper">
+              <div class="task-data">
+                <span class="task-count">{{ taskCount }}</span>
+                <span class="count-label">tasks</span>
+              </div>
+          
+              <div class="task-data completed">
+                <span>{{ completedCount }}</span>
+                <span class="count-label">completed</span>
+              </div>
+            </main>
+        </div>
+      </div>
+
+    <header class="task-header">
+        <div class="top-row">
+          <div class="tabs">
+            <div 
+              class="tab"
+              (click)="selectTab(0)"
+              [ngClass]="{ active: selectedTab === 0 }">
+              Not Completed
+            </div>
+  
+            <div 
+              class="tab"
+              (click)="selectTab(1)"
+              [ngClass]="{ active: selectedTab === 1 }">
+              Completed
+            </div>
+
+          </div>
+
+          <div class="buttons">
+            <button class="tooltip" (click)="completeTasks()">
+              <i class="check fa fa-check"></i>
+              <span class="tooltip-text">Complete</span>
+            </button>
+
+            <button 
+              class="tooltip delete-button" 
+              (click)="deleteTasks()">
+              &times;
+              <span class="tooltip-text">Delete</span>
+            </button>
+            
+          </div>
+        </div>
+    
+        <form 
+          class="create-task-form"
+          (ngSubmit)="onSubmit(form)"
+          #form="ngForm">
+    
+          <div class="row">
+
+            <input 
+              type="text"
+              class="task-input"
+              placeholder="Add a task..."
+              (focus)="focus()"
+              ngModel
+              name="title"
+              required>
+
+              <span 
+                *ngIf="focused"
+                (click)="unfocus()">&times;</span>
+          </div>
+            
+          <div class="bottom-row" *ngIf="focused" [@formDetails]>
+            <textarea 
+              name="description" 
+              ngModel
+              placeholder="Description(optional)">
+            </textarea>
+    
+            <button
+              [ngClass]="{ 'create-task-button': !form.invalid, 'create-task-button-disabled': form.invalid }">
+              Add Task
+            </button>
+    
+          </div>
+    
+        </form>
+    
+    </header>
+    
+    <ul class="task-ul">
+      <ng-template [ngIf]="selectedTab === 0">
+        <task-item
+          *ngFor="let task of incompleteTasks"
+          [task]="task"
+          (checkedTask)="checkItem($event)"
+          (clearCheckedTasks)="clearCheckedTasks()">
+        </task-item>
+      </ng-template>
+
+      <ng-template [ngIf]="selectedTab === 1">
+        <task-item
+          *ngFor="let task of completedTasks"      
+          [task]="task"
+          [tab]="selectedTab"
+          (checkedTask)="checkItem($event)"
+          (clearCheckedTasks)="clearCheckedTasks()">
+        </task-item>
+
+      </ng-template>
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li>                        
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+        <li class="sample-item-empty">hire me</li> 
+      </ul>
+  
+  </main>
+  
+  <aside 
+    class="task-view-parent"
+    [ngClass]="{ opaque: !viewingTask }">
+      <header class="list-title">
+          <span>{{ listName }}</span>
+          <span 
+            *ngIf="viewingTask"
+            (click)="closeTaskView()"
+            class="close-task-view">
+            close &times;
+          </span>
+        </header>
+      
+        <main class="task-data-wrapper">
+          <div class="task-data">
+            <span class="task-count">{{ taskCount }}</span>
+            <span class="count-label">tasks</span>
+          </div>
+      
+          <div class="task-data completed">
+            <span>{{ completedCount }}</span>
+            <span class="count-label">completed</span>
+          </div>
+        </main>
+  
+        <router-outlet></router-outlet>
+  </aside>
+
+  <!-- TODO: Animate this to slide in -->
+  <aside 
+    class="task-view-parent-over"
+    [ngClass]="{ opaque: !viewingTask }"
+    *ngIf="viewingTask">
+    <span class="close-task-view" (click)="closeTaskView()">
+      <i class="fa fa-arrow-left"></i>  
+      {{ listName }}
+    </span>
+    <main class="padding">
+      <header class="list-title">
+          <span>{{ listName }}</span>
+          <span 
+            *ngIf="viewingTask"
+            (click)="closeTaskView()"
+            class="close-task-view">
+            close &times;
+          </span>
+        </header>
+      
+        <main class="task-data-wrapper">
+          <div class="task-data">
+            <span class="task-count">{{ taskCount }}</span>
+            <span class="count-label">tasks</span>
+          </div>
+      
+          <div class="task-data completed">
+            <span>{{ completedCount }}</span>
+            <span class="count-label">completed</span>
+          </div>
+        </main>
+  
+        <router-outlet></router-outlet>
+      
+    </main>
+      
+</aside>
+  
+</section>

@@ -1,0 +1,50 @@
+<nav class="navbar">
+  <img
+    src="../../assets/logo.png"
+    alt="logo"
+    class="logo"
+    [routerLink]="['/']" />
+
+  <main class="navbar-main">
+    <ul class="navbar-items">
+      <li class="social-link">
+        <a class="link" href="http://www.tomhansen.io">Portfolio</a>
+      </li>
+
+      <li class="social-link">
+        <a class="link" href="https://github.com/thansen29/next">Github</a>
+      </li>
+
+      <li class="social-link">
+        <a class="link" href="https://www.linkedin.com/in/thomas-hansen-1a0a51132/">LinkedIn</a>
+      </li>
+
+      <li class="nav-button">
+        <button
+          *ngIf="!(authState | async).authenticated"
+          class="navbar-signup"
+          [routerLink]="['/signup']">
+          Sign up
+        </button>
+
+        <button
+          *ngIf="(authState | async).authenticated"
+          class="navbar-signup"
+          (click)="signoutUser()">
+          Sign out
+        </button>
+      </li>
+
+      <li class="nav-button" *ngIf="!(authState | async).authenticated">
+        <button
+          class="navbar-signup"
+          [routerLink]="['/login']">
+          Log in
+        </button>
+      </li>
+    </ul>
+
+    <i class="fa fa-bars icon"></i>
+
+  </main>
+</nav>

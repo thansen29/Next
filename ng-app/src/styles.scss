@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+h1 {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.modal-screen {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+img:focus {
+  outline: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  opacity: 0;
+  width: 75px;
+  bottom: 110%;
+  left: -40%;
+  font-size: 12px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  transition: all 200ms;
+  position: absolute;
+  z-index: 1;
+  font-weight: 100;
+}
+
+.tooltip:hover .tooltip-text {
+  transition: opacity 0s linear 1s;  
+  opacity: 1;
+}
+
+.hidden-details {
+  display: none;
+  padding: 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.arrow {
+  transform: rotate(0);
+  transition: linear 200ms;
+  margin-left: 10px;
+  &:hover {
+      cursor: pointer;
+      color: $darkestgrey;
+  }
+}
+
+.open {
+  transform: rotate(180deg);
+  transition: 200ms linear;
+}
+
+.hidden-pt2 {
+  margin-top: 10px;
+}

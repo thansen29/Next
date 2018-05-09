@@ -1,0 +1,164 @@
+@import '../../variables.scss';
+
+.todos-container {
+    height: 100%;
+    background: $softblue;    
+    display: flex;
+    padding-bottom: 50px;
+}
+
+.list-container {
+    height: 100%;
+    margin-top: 2%;
+    margin-left: 5%;
+    // width: 12%;
+    min-width: 125px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.task-container {
+    margin-top: 2%;
+    margin-left: 2%;
+    background:white;
+    border-radius: 5px;    
+}
+
+.task-view-container {
+    width: 42%;
+    margin-top: 2%;
+    padding: 20px 30px;    
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-right: 10px;
+}
+
+.opaque {
+    background: rgb(236, 243, 250);
+}
+
+.list-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-data-wrapper {
+    display: flex;
+}
+
+.task-data {
+    padding: 15px;
+    background: $darksoftblue;
+    border-radius: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.task-count {
+    color: $darkblue;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.count-label {
+    font-size: 14px;
+}
+
+.completed > span{
+    opacity: .4;
+}
+
+.task-content-wrapper {
+    & header {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px dotted;
+    }
+}
+
+.sample-item {
+    border-bottom: 1px dotted;
+    padding: 10px 10px 10px 15px;
+    border-bottom-color: $darkgrey;
+    transition: background-color 200ms;
+    display: flex;
+    align-items: center;    
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    &:focus {
+        outline: none;
+    }
+    position: relative;
+    & input {
+        margin-right: 5px;
+    }
+}
+
+.sample-item-empty {
+    color: transparent;
+    border-bottom: 1px dotted;
+    padding: 10px 10px 10px 20px;
+    border-bottom-color: $darkgrey;
+    transition: background-color 200ms;
+    display: flex;
+    align-items: center;    
+    width: 100%;
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: default;
+    }
+    position: relative;
+}
+
+.med-width {
+    width: 42%;
+}
+
+.lg-width {
+    width: 100%;
+}
+
+@media screen and (max-width: 60em) {
+    .task-view-container {
+        display: none;
+    }
+
+    .list-container {
+        width: 15%;
+    }
+
+    .med-width {
+        width: 80%;
+    }
+
+    .hidden-details {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .task-view-container {
+        display: block;
+    }
+
+    .list-container {
+        width: 12%;
+    }
+
+    .hidden-details {
+        display: none;
+    }
+}

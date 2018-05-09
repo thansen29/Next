@@ -1,0 +1,32 @@
+<!-- TODO: selecting item doesnt check box when it should -->
+<label
+  class="task-item-wrapper"
+  [ngClass]="{ background: task.id === selectedId }"
+  (click)="selectTask(task)"
+  [routerLink]="['tasks', task.id]"
+  (mouseover)="hover()"
+  (mouseleave)="unhover()">
+  
+  <input 
+    type="checkbox"
+    class="checkbox"
+    (click)="handleCheck($event)">
+    
+  <i 
+    [ngClass]="{ 'fa fa-ellipsis-v': hovered }">
+  </i>
+
+  <li class="task-item">
+    <span 
+      [ngClass]="{ 'completed-task': tab }">
+      {{ task.title }}
+    </span>
+
+    <span
+      *ngIf="tab"
+      class="completed-date">
+      {{ task.updatedAt | amDateFormat:'MMMM Do' }}
+    </span>
+  </li> 
+
+</label>

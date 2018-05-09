@@ -1,0 +1,57 @@
+@import '../../../../variables.scss';
+
+
+.task-view-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.row {
+    display: flex;
+    padding: 10px 0;
+}
+
+.info-label {
+    margin-right: 20px;
+    color: $grey;
+    min-width: 80px;
+}
+
+.input {
+    // padding: 5px 5px 5px 0;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    resize: none;
+    &:hover {
+        border: 1px solid $mediumgrey;
+    }
+    &:focus {
+        border: 1px solid cornflowerblue
+    }
+}
+
+*::-webkit-input-placeholder {
+    font-size: 14px;
+    font-style: italic;
+}
+*:-moz-placeholder {
+    font-size: 14px;
+    font-style: italic;
+}
+*::-moz-placeholder {
+    font-size: 14px;
+    font-style: italic;
+}
+*:-ms-input-placeholder {
+    font-size: 14px;
+    font-style: italic;
+}
