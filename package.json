@@ -50,6 +50,6 @@
   "scripts": {
     "build": "(cd ng-app; ng build --prod)",
     "start": "ng serve --proxy-config proxy.config.json",
-    "postinstall": "build"
+    "postinstall": "start"
   }
 }
