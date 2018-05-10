@@ -12,7 +12,7 @@ const initialState: State = {
   selectedList: null
 }
 
-export function listReducer (state: State = initialState, action: ListActions.ListActions) {
+export const listReducer = (state: State = initialState, action: ListActions.ListActions) => {
   switch (action.type) {
     case ListActions.RECEIVE_LISTS:
       return {

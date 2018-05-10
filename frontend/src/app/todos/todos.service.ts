@@ -25,7 +25,7 @@ export class TodosService {
           this.store.dispatch(new ListActions.ReceiveLists(lists))
         },
         (error) => {
-          console.log("FETCH LISTS ERROR");
+          debugger
         }
       )
   }
@@ -37,7 +37,7 @@ export class TodosService {
           this.store.dispatch(new ListActions.SelectList(list))
         },
         (error) => {
-          console.log("FETCH LIST ERROR");          
+          debugger
         }
       )
   }
@@ -49,8 +49,7 @@ export class TodosService {
           this.store.dispatch(new ListActions.ReceiveList(list));
         },
         (error) => {
-          console.log("CREATE LIST ERROR");
-          
+          debugger
         }
       )
   }
@@ -62,8 +61,7 @@ export class TodosService {
           this.store.dispatch(new ListActions.UpdateList(list));
         },
         (error) => {
-          console.log("EDIT LIST ERROR");
-          
+          debugger
         }
       )
   }
@@ -81,8 +79,7 @@ export class TodosService {
           this.store.dispatch(new ListActions.DeleteList(id));
         },
         (error) => {
-          console.log("DELETE LIST ERROR");
-          
+          debugger
         }
       );
   }
@@ -94,8 +91,7 @@ export class TodosService {
           this.store.dispatch(new TaskActions.ReceiveAllTasks(tasks));
         }, 
         (error) => {
-          console.log("GET ALL TASKS ERROR");
-          
+          debugger
         }
       );
   }
@@ -130,8 +126,7 @@ export class TodosService {
           this.store.dispatch(new TaskActions.ReceiveTask(task));
         },
         (error) => {
-          console.log("FETCH LISTS ERROR");
-            
+          debugger
         }
       )
   }
@@ -172,8 +167,7 @@ export class TodosService {
           this.store.dispatch(new TaskActions.UpdateTask(newTask));
         }, 
         (error) => {
-          console.log("UPDATE TASKS ERROR");
-          
+          debugger
         }
       );
   }

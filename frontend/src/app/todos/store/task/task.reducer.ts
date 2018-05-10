@@ -13,7 +13,7 @@ const initialState: State = {
 
 }
 
-export function taskReducer (state: State = initialState, action: TaskActions.TaskActions) {
+export const taskReducer = (state: State = initialState, action: TaskActions.TaskActions) => {
   switch (action.type) {
     case TaskActions.RECEIVE_TASKS:
       return {
