@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "start"
+    "heroku-postbuild": "start"
   },
   "engine": {
     "node": "v6.10.1",
