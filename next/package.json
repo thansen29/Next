@@ -4,17 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "(cd frontend; ng serve --proxy-config proxy.config.json)",
+    "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "(cd next; npm run prod)",
-    "heroku-postbuild": "npm run prod"
-  },
-  "engine": {
-    "node": "v6.10.1",
-    "npm:": "5.7.1"
+    "prod": "ng build --prod --output-hashing=none"    
   },
   "private": true,
   "dependencies": {

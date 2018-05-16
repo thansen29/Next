@@ -37,7 +37,7 @@ gem 'aws-sdk', '< 3.0'
 # gem 'devise_token_auth'
 # gem 'devise'
 # gem 'omniauth'
-gem 'rack-cors'
+# gem 'rack-cors'
 # gem 'omniauth-facebook'
 # gem 'omniauth-google-oauth2'
 
