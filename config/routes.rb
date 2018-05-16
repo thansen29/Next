@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#root'
 
-  # get '*unmatchedroute', to: 'static_pages#root'
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create]
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
     
     resources :tasks, only: [:show, :update, :create, :destroy] 
 
-
-     
   end 
+  
+  get '*unmatchedroute', to: 'static_pages#root'  
 end
