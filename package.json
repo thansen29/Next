@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "(cd next; npm run prod)",
+    "prod": "(cd next; npm run start)",
     "heroku-postbuild": "npm run prod"
   },
   "engine": {

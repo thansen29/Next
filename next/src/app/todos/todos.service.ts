@@ -20,49 +20,49 @@ export class TodosService {
 
   fetchLists() {
     console.log('HELLO');
-    this.httpClient.get('https://localhost:3000/api/lists')
+    this.httpClient.get('api/lists')
       .subscribe(
         (lists) => {
           this.store.dispatch(new ListActions.ReceiveLists(lists))
         },
         (error) => {
-          debugger
+          console.log(error);
         }
       )
   }
 
   fetchList(listId: number) {
-    this.httpClient.get(`https://localhost:3000/api/lists/${listId}`)
+    this.httpClient.get(`api/lists/${listId}`)
       .subscribe(
         (list) => {
           this.store.dispatch(new ListActions.SelectList(list))
         },
         (error) => {
-          debugger
+          console.log(error);
         }
       )
   }
 
   createList(title: string) {
-    this.httpClient.post('https://localhost:3000/api/lists', { title })
+    this.httpClient.post('api/lists', { title })
       .subscribe(
         (list) => {
           this.store.dispatch(new ListActions.ReceiveList(list));
         },
         (error) => {
-          debugger
+          console.log(error);
         }
       )
   }
 
   editList(id: number, title: string) {
-    this.httpClient.patch(`https://localhost:3000/api/lists/${id}`, { title })
+    this.httpClient.patch(`api/lists/${id}`, { title })
       .subscribe(
         (list) => {
           this.store.dispatch(new ListActions.UpdateList(list));
         },
         (error) => {
-          debugger
+          console.log(error);
         }
       )
   }
@@ -74,31 +74,31 @@ export class TodosService {
   }
 
   deleteList(id: number) {
-    this.httpClient.delete(`https://localhost:3000/api/lists/${id}`)
+    this.httpClient.delete(`api/lists/${id}`)
       .subscribe(
         (response) => {
           this.store.dispatch(new ListActions.DeleteList(id));
         },
         (error) => {
-          debugger
+          console.log(error);          
         }
       );
   }
 
   getAllTasks() {
-    this.httpClient.get(`https://localhost:3000/api/tasks/all`)
+    this.httpClient.get(`api/tasks/all`)
       .subscribe(
         (tasks) => {
           this.store.dispatch(new TaskActions.ReceiveAllTasks(tasks));
         }, 
         (error) => {
-          debugger
+          console.log(error);
         }
       );
   }
 
   fetchTasks(id: number) {
-    this.httpClient.get(`https://localhost:3000/api/tasks/lists/${id}`)    
+    this.httpClient.get(`api/tasks/lists/${id}`)    
       .subscribe(
         (tasks) => {
           this.store.dispatch(new TaskActions.ReceiveTasks(tasks))
@@ -107,7 +107,7 @@ export class TodosService {
   }
 
   fetchTask(id: number) {
-    this.httpClient.get(`https://localhost:3000/api/tasks/${id}`)
+    this.httpClient.get(`api/tasks/${id}`)
       .subscribe(
         (task) => {
           const newTask = new Task(task['id'], task['title'], task['description'], task['created_at'], task['completed'], task['updated_at'])
@@ -121,24 +121,25 @@ export class TodosService {
   }
 
   createTask(title: string, description: string, listId: number) {
-    this.httpClient.post('https://localhost:3000/api/tasks', { task: { title, description, list_id: listId } })
+    this.httpClient.post('api/tasks', { task: { title, description, list_id: listId } })
       .subscribe(
         (task) => {
           this.store.dispatch(new TaskActions.ReceiveTask(task));
         },
         (error) => {
-          debugger
+          console.log(error);
         }
       )
   }
 
   deleteTasks(ids: number[]) {
     _.forEach(ids, id => {
-      this.httpClient.delete(`https://localhost:3000/api/tasks/${id}`)
+      this.httpClient.delete(`api/tasks/${id}`)
         .subscribe(
           (response) => {
           },
           (error) => {
+            console.log(error);            
           }
         )
     });
@@ -147,13 +148,12 @@ export class TodosService {
 
   completeTasks(ids: number[]) {
     _.forEach(ids, id => {
-      this.httpClient.patch(`https://localhost:3000/api/tasks/${id}`, {})
+      this.httpClient.patch(`api/tasks/${id}`, {})
         .subscribe(
           (response) => {
           },
           (error) => {
             console.log(error);
-            
           }
         )
     });
@@ -161,14 +161,14 @@ export class TodosService {
   }
 
   updateTask(id: number, title: string, description: string) {
-    this.httpClient.patch(`https://localhost:3000/api/tasks/${id}`, { title, description })
+    this.httpClient.patch(`api/tasks/${id}`, { title, description })
       .subscribe(
         (task) => {
           const newTask = new Task(task['id'], task['title'], task['description'], task['created_at'], task['completed'], task['updated_at'])
           this.store.dispatch(new TaskActions.UpdateTask(newTask));
         }, 
         (error) => {
-          debugger
+          console.log(error);          
         }
       );
   }

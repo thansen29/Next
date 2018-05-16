@@ -20,7 +20,7 @@ export class AuthService {
                 this.authState = this.store.select('auth');
               }
   logInUser(email: string, password: string) {
-    this.httpClient.post('https://localhost:3000/api/session', { email, password })
+    this.httpClient.post('api/session', { email, password })
       .subscribe(
         (response) => {
           const id = response['listId'];
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   signoutUser() {
-    this.httpClient.delete('https://localhost:3000/api/session')
+    this.httpClient.delete('api/session')
       .subscribe(
         (response) => {
           localStorage.removeItem('token');
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   signupUser(email: string, password: string) {
-    this.httpClient.post('https://localhost:3000/api/users', { user: { email, password }})
+    this.httpClient.post('api/users', { user: { email, password }})
       .subscribe(
         (response) => {
           localStorage.setItem('token', response['token']);
