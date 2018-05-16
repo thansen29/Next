@@ -18,7 +18,8 @@
   margin-top: 5px;
   border-radius: 5px;
   border: 1px solid $lightgrey;
-  width: 25%;
+  // width: 25%;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
   background: white;
@@ -101,12 +102,14 @@
   display: flex;
   justify-content: center;
   align-self: center;
+  margin: 0 20px;
   margin-bottom: 15px;
 }
 
 .service {
   color: $darkgrey;
   justify-self: center;
+  margin-left: 3px;
   &:hover {
     cursor: pointer;
     color: $darkestgrey;

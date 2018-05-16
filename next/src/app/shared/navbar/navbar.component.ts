@@ -14,6 +14,7 @@ import { AppState } from '../../store/app.reducer';
 })
 export class NavbarComponent implements OnInit {
   authState: Observable<AuthState>;
+  viewable = false;
 
   constructor(private authService: AuthService,
               private store: Store<AppState>) { }
@@ -28,6 +29,10 @@ export class NavbarComponent implements OnInit {
 
   signoutUser() {
     this.authService.signoutUser()
+  }
+
+  openMenu() {
+    this.viewable = true;
   }
 
 }

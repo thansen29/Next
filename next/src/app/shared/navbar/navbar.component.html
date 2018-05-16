@@ -6,7 +6,8 @@
     [routerLink]="['/']" />
 
   <main class="navbar-main">
-    <ul class="navbar-items">
+    <ul class="navbar-items" 
+    [ngClass]="{ viewable: viewable }">
       <li class="social-link">
         <a class="link" href="http://www.tomhansen.io">Portfolio</a>
       </li>
@@ -44,7 +45,10 @@
       </li>
     </ul>
 
-    <i class="fa fa-bars icon"></i>
+    <i 
+      class="fa fa-bars icon"
+      (click)="openMenu()"
+      (mouseover)="openMenu()"></i>
 
   </main>
 </nav>
