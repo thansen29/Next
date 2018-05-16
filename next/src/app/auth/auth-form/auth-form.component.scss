@@ -98,12 +98,15 @@
 .terms {
   font-size: 12px;
   color: $blue;
+  display: flex;
+  justify-content: center;
   align-self: center;
   margin-bottom: 15px;
 }
 
 .service {
   color: $darkgrey;
+  justify-self: center;
   &:hover {
     cursor: pointer;
     color: $darkestgrey;
