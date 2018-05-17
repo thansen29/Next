@@ -22,6 +22,7 @@ export class ListComponent implements OnInit, OnDestroy {
   modalState: any; 
   mode: string;
   first: number;
+  hidden = false;
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
@@ -91,6 +92,10 @@ export class ListComponent implements OnInit, OnDestroy {
     this.todosService.deleteList(this.selectedId);
     this.closeModal();
     this.router.navigate(['']);
+  }
+
+  closeLists() {
+    this.hidden = !this.hidden;
   }
 
   ngOnDestroy() {

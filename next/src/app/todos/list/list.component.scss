@@ -17,6 +17,23 @@ header {
     padding-bottom: 10px;
 }
 
+.blue {
+    margin-right: 5px;
+    color: $blue;
+    padding: 2px 4px;
+    transform: rotate(0deg);
+    transition: linear 200ms;
+    &:hover {
+        cursor: pointer;    
+        background: #d7e4f1;
+    }
+}
+
+.closed {
+    transform: rotate(-90deg);
+    transition: 200ms linear;
+}
+
 .add-list {
     border: 1px solid #7ab2e0;
     border-radius: 5px;
@@ -55,8 +72,16 @@ header {
 .list-ul {
     background: $softblue;
     border-radius: 3px;
-    // padding-left: 5px;
-    // padding-top: 5px;
+    
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.3s, opacity 0.3s linear; 
+}
+
+.list-toggle {
+    transition: visibility 0.3s, opacity 0.3s linear;     
+    visibility: hidden;
+    opacity: 0;
 }
 
 .list-item {
