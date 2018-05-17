@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
@@ -19,6 +19,8 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+// AngularFontAwesomeModule,
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,6 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     AppRoutingModule,
     HttpModule,
     HttpClientModule,
-    AngularFontAwesomeModule,
     FormsModule,
     StoreModule.forRoot(reducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

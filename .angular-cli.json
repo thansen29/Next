@@ -19,8 +19,7 @@
       "testTsconfig": "./next/src/tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "./next/styles.scss",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "./next/styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
