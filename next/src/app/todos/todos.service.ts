@@ -19,7 +19,6 @@ export class TodosService {
 
 
   fetchLists() {
-    console.log('HELLO');
     this.httpClient.get('api/lists')
       .subscribe(
         (lists) => {
@@ -171,6 +170,10 @@ export class TodosService {
           console.log(error);          
         }
       );
+  }
+
+  clearTasks() {
+    this.store.dispatch(new TaskActions.ClearTasks());    
   }
 
   clearEverything() {

@@ -38,7 +38,10 @@ export class TodosHomeComponent implements OnInit, OnDestroy {
               private store: Store<AppState>) { }
 
   ngOnInit() {  
-    this.todosService.getAllTasks();
+    let url = this.router.url.split('/');
+    if (!(+url[url.length-1] > 0)) {
+      this.todosService.getAllTasks();
+    }
 
     this.router.events
       .subscribe(
@@ -53,7 +56,7 @@ export class TodosHomeComponent implements OnInit, OnDestroy {
       .subscribe(
         (state) => {
           this.taskCount = _.size(state.tasks);
-          this.completedCount = _.filter(state.tasks, ['completed, true']).length;
+          this.completedCount = _.filter(state.tasks, ['completed', true]).length;
         }
       )
 

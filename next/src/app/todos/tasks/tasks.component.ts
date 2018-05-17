@@ -67,6 +67,7 @@ export class TasksComponent implements OnInit, OnDestroy {
               private router: Router) { }
 
   ngOnInit() {
+    this.todosService.clearTasks()
     this.id = +this.route.snapshot.params['id'];
     this.todosService.fetchTasks(this.id);
 
