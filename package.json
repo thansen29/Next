@@ -12,7 +12,7 @@
     "prod": "(cd next; npm run build)",
     "heroku-postbuild": "npm run prod"
   },
-  "engine": {
+  "engines": {
     "node": "v6.10.1",
     "npm:": "5.7.1"
   },
