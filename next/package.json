@@ -5,11 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
-    "build": "ng build --prod --proxy-config proxy.config.json",
+    "build": "ng build --prod --output-hashing=none",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "ng build --prod --output-hashing=none"    
+    "prod": "ng build --prod --output-hashing=none"
   },
   "engine": {
     "node": "v6.10.1",
