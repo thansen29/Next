@@ -60,7 +60,7 @@
         <h1>Lists</h1>
       </div>
 
-      <div>
+      <div class="list-buttons">
         <button 
           class="add-list tooltip"
           (click)="createList()">
@@ -79,6 +79,23 @@
           </i>
           <span class="tooltip-text">Edit list</span>
         </button>
+
+        <div class="relative">
+          <button
+            class="list-sort">
+            <i class="fa fa-caret-down caret-down">
+            </i>
+          </button>
+  
+          <div class="sort-options">
+            <div 
+              class="sort-item"
+              (click)="sortLists()">
+              Sort Alphabetically
+            </div>
+          </div>
+
+        </div>
       </div>
     </header>
   

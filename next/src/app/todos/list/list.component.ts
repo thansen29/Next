@@ -98,6 +98,10 @@ export class ListComponent implements OnInit, OnDestroy {
     this.hidden = !this.hidden;
   }
 
+  sortLists() { 
+    this.lists = _.sortBy(this.lists, [list => list.title.toLowerCase()], ['title']);
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
