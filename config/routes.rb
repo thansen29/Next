@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
+    get 'signed_in', to: 'sessions#signed_in'
     resources :lists, only: [:index, :show, :update, :create, :destroy]
     get 'tasks/lists/:id', to: 'tasks#index'
     get 'tasks/all', to: 'tasks#all'

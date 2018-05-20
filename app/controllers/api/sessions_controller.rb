@@ -11,6 +11,7 @@ class Api::SessionsController < ApplicationController
     end
   
     def destroy
+      # debugger
       if current_user.nil?
         render json: { logout: 'Not logged in' }, status: 422 
       else
@@ -18,4 +19,9 @@ class Api::SessionsController < ApplicationController
         render json: {}
       end
     end
+
+    def signed_in 
+      render json: { loggedIn: logged_in? }
+    end 
+
   end

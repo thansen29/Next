@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
+// import  from 'rxjs/map'
+import 'rxjs/add/operator/map';
 
 import { State as AuthState } from './store/auth.reducer';
 import { AppState } from '../store/app.reducer';
@@ -24,9 +26,13 @@ export class AuthService {
       .subscribe(
         (response) => {
           const id = response['listId'];
-          localStorage.setItem('token', response['token']);
+          // localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signin());
-          this.router.navigate(['lists', id]);
+          if (id) {
+            this.router.navigate(['lists', id]);
+          } else {
+            this.router.navigate(['lists']);            
+          }
         },
         (error) => {
           console.log('LOGIN FAILED');
@@ -40,7 +46,7 @@ export class AuthService {
     this.httpClient.delete('api/session')
       .subscribe(
         (response) => {
-          localStorage.removeItem('token');
+          // localStorage.removeItem('token');
           this.store.dispatch(new AuthActions.Logout())
           this.router.navigate(['/login']);
         },
@@ -55,7 +61,7 @@ export class AuthService {
     this.httpClient.post('api/users', { user: { email, password }})
       .subscribe(
         (response) => {
-          localStorage.setItem('token', response['token']);
+          // localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signup());
           this.router.navigate(['lists']);
         },
@@ -68,6 +74,14 @@ export class AuthService {
   }
 
   isSignedIn() {
-    return Boolean(localStorage.getItem('token'));
+    return this.httpClient.get('api/signed_in')
+      .map(
+        (res) => {
+          return res['loggedIn'];
+        },
+        (err) => {
+
+        }
+      )
   }
 }
