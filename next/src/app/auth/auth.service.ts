@@ -61,7 +61,6 @@ export class AuthService {
     this.httpClient.post('api/users', { user: { email, password }})
       .subscribe(
         (response) => {
-          // localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signup());
           this.router.navigate(['lists']);
         },
@@ -73,11 +72,33 @@ export class AuthService {
       )
   }
 
-  isSignedIn() {
+  authGuard() {
     return this.httpClient.get('api/signed_in')
       .map(
         (res) => {
-          return res['loggedIn'];
+          if (res['loggedIn']) {  
+            return true;
+          } else {
+              this.router.navigate(['/login']);
+              return false;
+          }
+        },
+        (err) => {
+
+        }
+      )
+  }
+
+  authProtect() {
+    return this.httpClient.get('api/signed_in')
+      .map(
+        (res) => {
+          if (res['loggedIn']) {
+            this.router.navigate(['/lists']);            
+            return false;
+          } else {
+              return true;
+          }
         },
         (err) => {
 

@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.authState = this.store.select('auth');
-    this.authService.isSignedIn()
+    this.authService.authGuard()
       .subscribe(
         (response) => {
           if (response) {
@@ -33,18 +33,6 @@ export class NavbarComponent implements OnInit {
       )
   }
 
-  navigate() {
-    this.authService.isSignedIn()
-      .subscribe(
-        (response) => {
-          if (response) {
-            this.router.navigate(['/lists'])
-          } else {
-            this.router.navigate(['/']);
-          }
-        }
-      )
-  }
 
   signoutUser() {
     this.authService.signoutUser()
