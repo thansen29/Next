@@ -23,6 +23,7 @@ export class ListComponent implements OnInit, OnDestroy {
   mode: string;
   first: number;
   hidden = false;
+  sorted = false;
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
@@ -49,6 +50,10 @@ export class ListComponent implements OnInit, OnDestroy {
 
           if (state.selectedList) {
             this.selectedId = state.selectedList.id;
+          }
+
+          if (this.sorted) {
+            this.lists = _.sortBy(this.lists, [list => list.title.toLowerCase()], ['title']);            
           }
         }
       )
@@ -100,6 +105,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
   sortLists() { 
     this.lists = _.sortBy(this.lists, [list => list.title.toLowerCase()], ['title']);
+    this.sorted = true;
   }
 
   ngOnDestroy() {
