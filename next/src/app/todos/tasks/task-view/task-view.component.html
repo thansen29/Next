@@ -6,7 +6,9 @@
     <div class="saved">
         <div 
           [ngClass]="{ visible: saved, invisible: !saved }">
-          Saved!
+          <span *ngIf="!error">Saved!</span>
+          <span *ngIf="error" class="error">{{ error }}</span>
+          
         </div>      
     </div>
 

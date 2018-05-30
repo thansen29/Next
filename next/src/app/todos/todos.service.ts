@@ -167,7 +167,7 @@ export class TodosService {
           this.store.dispatch(new TaskActions.UpdateTask(newTask));
         }, 
         (error) => {
-          console.log(error);          
+          this.store.dispatch(new TaskActions.TaskError("Title can't be blank"));
         }
       );
   }

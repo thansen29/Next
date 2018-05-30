@@ -10,6 +10,7 @@ export const UPDATE_TASK = 'UPDATE_TASK';
 export const UPDATE_TASKS = 'UPDATE_TASKS';
 export const CLEAR_SELECTED = 'CLEAR_SELECTED';
 export const CLEAR_TASKS = 'CLEAR_TASKS';
+export const TASK_ERROR = 'TASK_ERROR';
 
 export class ReceiveAllTasks implements Action {
   readonly type = RECEIVE_ALL_TASKS;
@@ -54,6 +55,11 @@ export class ClearTasks implements Action {
   readonly type = CLEAR_TASKS;
 }
 
+export class TaskError implements Action {
+  readonly type = TASK_ERROR;
+  constructor(public payload: string ) {}
+}
+
 export type TaskActions = (
   ReceiveAllTasks |
   ReceiveTasks |
@@ -63,5 +69,6 @@ export type TaskActions = (
   UpdateTask |
   UpdateTasks |
   ClearSelected |
+  TaskError
   ClearTasks
 );

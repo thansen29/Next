@@ -4,12 +4,14 @@ import * as TaskActions from './task.actions';
 
 export interface State {
   tasks: Object,
-  selectedTask: Object
+  selectedTask: Object,
+  error: string
 }
 
 const initialState: State = {
   tasks: {},
-  selectedTask: null
+  selectedTask: null,
+  error: ''
 
 }
 
@@ -18,30 +20,35 @@ export function taskReducer (state: State = initialState, action: TaskActions.Ta
     case TaskActions.RECEIVE_TASKS:
       return {
         ...state,
-        tasks: action.payload
+        tasks: action.payload,
+        error: ''
       };  
     case TaskActions.RECEIVE_TASK:
       let newTask = { [action.payload['id']]: action.payload };
       let newTasks = _.assign(state.tasks, newTask);
       return {
         ...state,
-        tasks: newTasks
+        tasks: newTasks,
+        error: ''
       }; 
     case TaskActions.CLEAR_TASKS:
       return {
         ...state,
         tasks: {},
-        selectedTask: null
+        selectedTask: null,
+        error: ''
       }
     case TaskActions.CLEAR_SELECTED:
       return {
         ...state,
-        selectedTask: initialState.selectedTask
+        selectedTask: initialState.selectedTask,
+        error: ''
       }
     case TaskActions.SELECT_TASK:
       return {
         ...state,
-        selectedTask: action.payload
+        selectedTask: action.payload,
+        error: ''
       }
     case TaskActions.DELETE_TASKS:
       let oldTasks = _.assign({}, state);
@@ -52,7 +59,8 @@ export function taskReducer (state: State = initialState, action: TaskActions.Ta
       return {
         ...state,
         tasks: filteredTasks,
-        selectedTask: null
+        selectedTask: null,
+        error: ''
       }
     case TaskActions.UPDATE_TASKS:
       let updatedTasks = _.assign({}, state);
@@ -64,6 +72,7 @@ export function taskReducer (state: State = initialState, action: TaskActions.Ta
       return {
         ...state,
         tasks: updatedTasks.tasks,
+        error: ''
       }
     case TaskActions.UPDATE_TASK:
       let taskList = _.assign({}, state);
@@ -71,12 +80,18 @@ export function taskReducer (state: State = initialState, action: TaskActions.Ta
       return {
         ...state,
         tasks: taskList.tasks,
-        selectedTask: action.payload
+        selectedTask: action.payload,
+        error: ''
       } 
     case TaskActions.RECEIVE_ALL_TASKS:
       return {
         ...state,
         tasks: action.payload
+      }
+    case TaskActions.TASK_ERROR:
+      return {
+        ...state,
+        error: action.payload
       }
     default:
       return state;

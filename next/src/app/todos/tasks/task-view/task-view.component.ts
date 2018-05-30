@@ -34,6 +34,7 @@ export class TaskViewComponent implements OnInit, OnDestroy {
   task: Task;
   subscription: Subscription;
   saved = false;
+  error: string;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -47,6 +48,7 @@ export class TaskViewComponent implements OnInit, OnDestroy {
       .subscribe(
         (state) => {
           this.task = state.selectedTask;
+          this.error = state.error;
         }
       )
   }
@@ -65,9 +67,13 @@ export class TaskViewComponent implements OnInit, OnDestroy {
   }
 
   showSaved() {
-    this.saved = true;
     setTimeout(() => {
-      this.saved = false;
+      this.saved = true;
+    }, 100);
+    setTimeout(() => {
+      if (!this.error) {
+        this.saved = false;
+      }
     }, 2000)
   }
   
