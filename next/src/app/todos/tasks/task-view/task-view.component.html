@@ -3,10 +3,19 @@
     class="task-info"
     *ngIf="task">
 
+    <div class="saved">
+        <div 
+          [ngClass]="{ visible: saved, invisible: !saved }">
+          Saved!
+        </div>      
+    </div>
+
     <div class="row">
       <span class="info-label">Title</span>
       <textarea
+        (keydown)="keyPress($event)"
         rows="1"
+        id="title"
         class="input"
         [(ngModel)]="task.title"
         (blur)="updateTask()">
@@ -15,12 +24,14 @@
 
     <div class="row">
       <span class="info-label">Description</span>
-      <textarea
-        class="input"
-        [(ngModel)]="task.description"
-        placeholder="Add a description"
-        (blur)="updateTask()">
-      </textarea>
+        <textarea
+          (keydown)="keyPress($event)"
+          class="input"
+          id="description"
+          [(ngModel)]="task.description"
+          placeholder="Add a description"
+          (blur)="updateTask()">
+        </textarea>
     </div>
 
     <div class="row">

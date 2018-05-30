@@ -33,6 +33,7 @@ import { Observable } from 'rxjs/Observable';
 export class TaskViewComponent implements OnInit, OnDestroy {
   task: Task;
   subscription: Subscription;
+  saved = false;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -50,11 +51,26 @@ export class TaskViewComponent implements OnInit, OnDestroy {
       )
   }
 
-  updateTask() {
-    this.todosService.updateTask(this.task.id, this.task.title, this.task.description);
-    
+  keyPress(event) {
+    if (event.keyCode === 13) {     
+      this.updateTask();
+    }
   }
 
+  updateTask() {
+    this.todosService.updateTask(this.task.id, this.task.title, this.task.description);
+    document.getElementById('title').blur();
+    document.getElementById('description').blur(); 
+    this.showSaved();
+  }
+
+  showSaved() {
+    this.saved = true;
+    setTimeout(() => {
+      this.saved = false;
+    }, 2000)
+  }
+  
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.store.dispatch(new TaskActions.ClearSelected());

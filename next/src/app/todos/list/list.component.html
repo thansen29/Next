@@ -62,7 +62,10 @@
       </section>
   </modal-component>
 
-    <header class="list-header">
+    <header 
+      class="list-header"
+      (mouseover)="toggleHover()"
+      (mouseleave)="toggleHover()">
       <div class="flex">
         <i 
           class="fa fa-caret-down blue"
@@ -91,7 +94,7 @@
           <span class="tooltip-text">Edit list</span>
         </button>
 
-        <div class="relative">
+        <div class="relative" *ngIf="selectedId">
           <button
             class="list-sort">
             <i class="fa fa-caret-down caret-down">

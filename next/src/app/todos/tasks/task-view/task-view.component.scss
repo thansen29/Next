@@ -10,7 +10,6 @@
 .task-info {
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
 }
 
 .row {
@@ -37,6 +36,21 @@
     &:focus {
         border: 1px solid cornflowerblue
     }
+}
+
+.invisible {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.saved {
+    margin-top: 10px;
+    font-style: italic;
+    color: $darkestgrey;
 }
 
 *::-webkit-input-placeholder {
