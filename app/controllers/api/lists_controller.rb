@@ -6,7 +6,8 @@ class Api::ListsController < ApplicationController
     end 
 
     def create
-        @list = List.new(user_id: current_user.id, title: list_params['title'])
+        @list = List.new(list_params)
+        @list.user_id = current_user.id
         if @list.save
             render :show
         else
@@ -20,7 +21,8 @@ class Api::ListsController < ApplicationController
 
     def update
         @list = List.find(params[:id])
-        if @list.update(title: list_params['title'])
+        # if @list.update(title: list_params['title'])
+        if @list.update(list_params)
             render :show
         else 
           render json: { list: "You must give your list a title" }, status: 422            

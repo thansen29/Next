@@ -131,7 +131,7 @@ header {
 }
 
 .list-toggle {
-    transition: visibility 0.3s, opacity 0.3s linear;     
+    transition: visibility 0.3s, opacity 0.3s linear, margin-top -100px;   
     visibility: hidden;
     opacity: 0;
 }

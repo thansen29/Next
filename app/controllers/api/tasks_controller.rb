@@ -12,10 +12,9 @@ class Api::TasksController < ApplicationController
     end 
 
     def create
-        title = task_params['title']
-        desc = task_params['description']
-        list_id = task_params['list_id']
-        @task = Task.new(user_id: current_user.id, list_id: list_id, title: title, description: desc)
+        @task = Task.new(task_params)
+        @task.user_id = current_user.id
+        debugger
         if @task.save
             render :show
         else
@@ -27,6 +26,7 @@ class Api::TasksController < ApplicationController
         @task = Task.find(params[:id])
     end 
 
+    # separate when editing title, description, or completion
     def update
         @task = Task.find(params[:id])
         if params["title"] || params["description"]
