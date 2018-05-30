@@ -24,6 +24,7 @@ export class ListComponent implements OnInit, OnDestroy {
   first: number;
   hidden = false;
   sorted = false;
+  listName: string;
 
   constructor(private todosService: TodosService,
               private store: Store<AppState>,
@@ -50,6 +51,7 @@ export class ListComponent implements OnInit, OnDestroy {
 
           if (state.selectedList) {
             this.selectedId = state.selectedList.id;
+            this.listName = state.selectedList.title;
           }
 
           if (this.sorted) {

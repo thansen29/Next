@@ -60,6 +60,9 @@ export class TasksComponent implements OnInit, OnDestroy {
   viewingTask: boolean;
 
   hidden = true;
+  dropdown = false;
+  nameSort = false;
+  dateSort = false;
   
   constructor(private store: Store<AppState>,
               private todosService: TodosService,
@@ -102,6 +105,17 @@ export class TasksComponent implements OnInit, OnDestroy {
 
           this.taskCount = _.size(state.tasks);
           this.completedCount = _.filter(state.tasks, ['completed', true]).length;
+
+          if (this.nameSort) {
+            this.completedTasks = _.sortBy(this.completedTasks, [task => task.title.toLowerCase()], ['title']);
+            this.incompleteTasks = _.sortBy(this.incompleteTasks, [task => task.title.toLowerCase()], ['title']);
+          }
+
+          if (this.dateSort) {
+            this.completedTasks = this.completedTasks.reverse();
+            this.incompleteTasks = this.incompleteTasks.reverse();
+          }
+          
         }
       );
 
@@ -113,6 +127,27 @@ export class TasksComponent implements OnInit, OnDestroy {
           }
         }
       )
+  }
+
+  sortNames() {
+    this.dateSort = false;
+    this.nameSort = true;
+    this.completedTasks = _.sortBy(this.completedTasks, [task => task.title.toLowerCase()], ['title']);
+    this.incompleteTasks = _.sortBy(this.incompleteTasks, [task => task.title.toLowerCase()], ['title']);
+  }
+
+  sortDates() {
+    console.log(this.incompleteTasks);
+    this.nameSort = false;    
+    this.dateSort = true;
+    this.completedTasks = this.completedTasks.reverse();
+    this.incompleteTasks = this.incompleteTasks.reverse();
+    console.log(this.incompleteTasks);
+    
+  }
+
+  toggleDropdown() {
+    this.dropdown = !this.dropdown;
   }
 
   toggleHidden() {

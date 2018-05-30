@@ -47,17 +47,46 @@
           </div>
 
           <div class="buttons">
-            <button class="tooltip" (click)="completeTasks()">
+            <button class="tooltip button" (click)="completeTasks()">
               <i class="check fa fa-check"></i>
               <span class="tooltip-text">Complete</span>
             </button>
-
+ 
             <button 
-              class="tooltip delete-button" 
+              class="tooltip delete-button button" 
               (click)="deleteTasks()">
               &times;
               <span class="tooltip-text">Delete</span>
+          </button>
+
+          <div class="dropdown-wrapper">
+            <button 
+              class="tooltip settings" 
+              (click)="toggleDropdown()">
+                <i class="fa fa-cog"></i>
+                <i class="fa fa-caret-down caret"></i>
+              <span class="tooltip-text">View Settings</span>
             </button>
+
+            <div 
+              class="dropdown-content"
+              (click)="toggleDropdown()"
+              *ngIf="dropdown">
+
+              <div 
+                class="dropdown-item"
+                (click)="sortNames()">
+                Sort by task name
+              </div>
+                            
+              <div 
+                class="dropdown-item"
+                (click)="sortDates()">
+                  Sort by most recent
+              </div>
+
+            </div>
+          </div>
             
           </div>
         </div>

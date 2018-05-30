@@ -16,13 +16,24 @@
             class="add-list-form">
             
             <label>Please enter a new list name:</label>
+
             <input 
+              *ngIf="mode === 'Edit'"
               type="text"
               required
-              autofocus
+              [ngModel]="listName"
+              name="title" 
+              class="form-input"
+              autofocus>
+
+            <input 
+              *ngIf="mode === 'Create'"
+              type="text"
+              required
               ngModel
               name="title" 
-              class="form-input">
+              class="form-input"
+              autofocus>
 
               <div class="button-wrapper">
                 <button 

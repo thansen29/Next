@@ -70,6 +70,7 @@ img:focus {
 
 .tooltip .tooltip-text {
   // opacity: 0;
+  white-space: nowrap;
   visibility: hidden;
   width: 75px;
   bottom: 110%;
