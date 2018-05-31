@@ -69,6 +69,6 @@ export type TaskActions = (
   UpdateTask |
   UpdateTasks |
   ClearSelected |
-  TaskError
+  TaskError |
   ClearTasks
 );
