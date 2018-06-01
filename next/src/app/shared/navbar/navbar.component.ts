@@ -23,10 +23,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.authState = this.store.select('auth');
-    this.authService.authGuard()
+    this.authService.isLoggedIn()
       .subscribe(
         (response) => {
-          if (response) {
+          if (response['loggedIn']) {
             this.store.dispatch(new authActions.Signin());
           }
         }

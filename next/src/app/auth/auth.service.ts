@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
-// import  from 'rxjs/map'
 import 'rxjs/add/operator/map';
 
 import { State as AuthState } from './store/auth.reducer';
@@ -26,12 +25,11 @@ export class AuthService {
       .subscribe(
         (response) => {
           const id = response['listId'];
-          // localStorage.setItem('token', response['token']);
           this.store.dispatch(new AuthActions.Signin());
           if (id) {
             this.router.navigate(['lists', id]);
           } else {
-            this.router.navigate(['lists']);            
+            this.router.navigate(['lists']);
           }
         },
         (error) => {
@@ -46,7 +44,6 @@ export class AuthService {
     this.httpClient.delete('api/session')
       .subscribe(
         (response) => {
-          // localStorage.removeItem('token');
           this.store.dispatch(new AuthActions.Logout())
           this.router.navigate(['/login']);
         },
@@ -72,11 +69,15 @@ export class AuthService {
       )
   }
 
+  isLoggedIn() {
+    return this.httpClient.get('api/signed_in');
+  }
+
   authGuard() {
     return this.httpClient.get('api/signed_in')
       .map(
         (res) => {
-          if (res['loggedIn']) {  
+          if (res['loggedIn']) {
             return true;
           } else {
               this.router.navigate(['/login']);
@@ -94,7 +95,7 @@ export class AuthService {
       .map(
         (res) => {
           if (res['loggedIn']) {
-            this.router.navigate(['/lists']);            
+            this.router.navigate(['/lists']);
             return false;
           } else {
               return true;
